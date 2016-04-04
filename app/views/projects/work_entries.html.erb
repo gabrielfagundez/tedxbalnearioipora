@@ -1,0 +1,64 @@
+<%= render partial: 'shared/page_title', locals: { title: "#{ @project.name } - Time Entries " } %>
+
+<section class="content">
+  <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="box box-danger">
+            <% @team_members.each do |tm| %>
+              <div class="box-header with-border">
+                <h3 class="box-title"><%= tm.name %></h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                      <label>Communication</label>
+                      <input type="text" class="form-control" placeholder="Communication">
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                      <label>Development</label>
+                      <input type="text" class="form-control" placeholder="Development">
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                      <label>Bug Fixing</label>
+                      <input type="text" class="form-control" placeholder="Bug Fixing">
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                      <label>Code Review</label>
+                      <input type="text" class="form-control" placeholder="Code Review">
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                      <label>QA</label>
+                      <input type="text" class="form-control" placeholder="QA">
+                    </div>
+                  </div>
+                  <div class="col-xs-1">
+                    <div class="form-group">
+                      <label><small>Infrastructure</small></label>
+                      <input type="text" class="form-control" placeholder="Infrastructure">
+                    </div>
+                  </div>
+                  <div class="col-xs-1">
+                    <div class="form-group">
+                      <label><small>UX/UI</small></label>
+                      <input type="text" class="form-control" placeholder="UX/UI">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+      </div>
+
+</section>

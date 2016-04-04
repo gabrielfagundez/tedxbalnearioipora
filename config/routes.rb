@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :clients
-  resources :projects
   resources :team_members
+  resources :projects do
+    member do
+      get :work_entries, as: 'work_entries'
+    end
+  end
+
 end

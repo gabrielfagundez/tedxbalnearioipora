@@ -1,0 +1,13 @@
+<%= render partial: 'shared/page_title', locals: { title: 'Team Members' } %>
+
+<section class="content">
+
+  <div class="row">
+    <% @team_members.each do |client| %>
+      <%= render partial: 'team_members/team_member_box' %>
+    <% end %>
+    <%= render partial: 'team_members/team_member_box', locals: { name: 'Add new team member', role: '-', link: new_client_path } %>
+    </div>
+  </div>
+
+</section>

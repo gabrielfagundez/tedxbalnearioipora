@@ -4,9 +4,9 @@
 
   <div class="row">
     <% @clients.each do |client| %>
-      <%= render partial: 'clients/client_box' %>
+      <%= render partial: 'clients/client_box', locals: { name: client.name, url: client_path(client), new: false } %>
     <% end %>
-    <%= render partial: 'clients/client_box', locals: { name: 'Add new client', url: '', image_url: new_client_path } %>
+    <%= render partial: 'clients/client_box', locals: { name: 'Add new client', url: new_client_path, new: true } %>
     </div>
   </div>
 

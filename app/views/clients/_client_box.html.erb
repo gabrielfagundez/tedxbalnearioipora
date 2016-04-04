@@ -1,16 +1,11 @@
 <div class="col-md-4">
   <div class="box box-widget widget-user">
-    <% if image_url.present? %>
-      <a class="img-circle" href="<%= image_url %>">
-          <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header bg-gray">
-            <h3 class="widget-user-username"><%= name %></h3>
-          </div>
-        </div>
-      </a>
+    <a class="img-circle" href="<%= url %>">
+    <% if new %>
+      <div class="widget-user-header bg-gray">
+        <h3 class="widget-user-username"><%= name %></h3>
+      </div>
     <% else %>
-    <div class="box box-widget widget-user">
-      <!-- Add the bg color to the header using any of the bg-* classes -->
       <div class="widget-user-header bg-aqua-active">
         <h3 class="widget-user-username"><%= name %></h3>
         <h5 class="widget-user-desc"><%= url %></h5>
@@ -42,5 +37,6 @@
           </div>
         </div>
       <% end %>
+      </a>
     </div>
 </div>

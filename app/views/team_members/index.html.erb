@@ -3,10 +3,10 @@
 <section class="content">
 
   <div class="row">
-    <% @team_members.each do |client| %>
-      <%= render partial: 'team_members/team_member_box' %>
+    <% @team_members.each do |tm| %>
+      <%= render partial: 'team_members/team_member_box', locals: { name: tm.name, role: tm.role, link: team_member_path(tm), new: false } %>
     <% end %>
-    <%= render partial: 'team_members/team_member_box', locals: { name: 'Add new team member', role: '-', link: new_client_path } %>
+    <%= render partial: 'team_members/team_member_box', locals: { name: 'Add new team member', role: '-', link: new_client_path, new: true } %>
     </div>
   </div>
 

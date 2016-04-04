@@ -1,1 +1,15 @@
 <%= render partial: 'shared/page_title', locals: { title: 'Projects' } %>
+
+<section class="content">
+
+  <% @clients.each do |client| %>
+    <h2 class="page-header"><%= client.name %></h2>
+
+    <div class="row">
+      <% client.projects.each do |project| %>
+        <%= render partial: 'clients/client_box', locals: { name: project.name, url: project_path(project), new: false } %>
+      <% end %>
+    </div>
+  <% end %>
+
+</section>

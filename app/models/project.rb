@@ -20,11 +20,15 @@ class Project < ActiveRecord::Base
 
   def stats
     {
-      three_weeks_ago: self.weekly_entries.where(week: (Date.today.beginning_of_week(:monday) - 3.week).to_s),
-      two_weeks_ago: self.weekly_entries.where(week: (Date.today.beginning_of_week(:monday) - 2.week).to_s),
-      one_week_ago: self.weekly_entries.where(week: (Date.today.beginning_of_week(:monday) - 1.week).to_s),
-      this_week: self.weekly_entries.where(week: Date.today.beginning_of_week(:monday).to_s)
+      three_weeks_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 3.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
+      two_weeks_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 2.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
+      one_week_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
+      this_week: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday)).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s }
     }
+  end
+
+  def total_hours_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end
 
 end

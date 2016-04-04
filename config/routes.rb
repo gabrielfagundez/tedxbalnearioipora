@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :projects do
     member do
       get :work_entries, as: 'work_entries'
+      post :enter_work_entries, as: 'enter_work_entries'
     end
   end
 

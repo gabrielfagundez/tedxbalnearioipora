@@ -1,64 +1,44 @@
 <%= render partial: 'shared/page_title', locals: { title: "#{ @project.name } - Time Entries " } %>
 
 <section class="content">
-  <section class="content">
-      <div class="row">
-        <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-danger">
+        <%= form_tag(enter_work_entries_project_path, method: "post") do %>
+          <% @team_members.each do |tm| %>
+            <div class="box-header with-border">
+              <h3 class="box-title"><%= tm.name %></h3>
+            </div>
 
-          <div class="box box-danger">
-            <% @team_members.each do |tm| %>
-              <div class="box-header with-border">
-                <h3 class="box-title"><%= tm.name %></h3>
+            <div class="box-body">
+              <div class="row">
+                <% [
+                      { cat_id: 1, name: 'Communication', size: 2 },
+                      { cat_id: 2, name: 'Development', size: 2 },
+                      { cat_id: 3, name: 'Bug Fixing', size: 2 },
+                      { cat_id: 4, name: 'Code Review', size: 2 },
+                      { cat_id: 5, name: 'QA', size: 2 },
+                      { cat_id: 6, name: 'Infraestructure', size: 1 },
+                      { cat_id: 7, name: 'UXUI', size: 1 }
+                   ].each do |cat| %>
+
+                   <div class="col-xs-<%= cat[:size] %>">
+                     <div class="form-group">
+                       <label><%= cat[:size] == 1 ? "<small>#{cat[:name]}</small>".html_safe : cat[:name] %></label>
+                       <%= text_field_tag "entries[#{tm.id}--#{cat[:cat_id]}]", "", class: "form-control", placeholder: cat[:name] %>
+                     </div>
+                   </div>
+
+                 <% end %>
               </div>
-              <div class="box-body">
-                <div class="row">
-                  <div class="col-xs-2">
-                    <div class="form-group">
-                      <label>Communication</label>
-                      <input type="text" class="form-control" placeholder="Communication">
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <div class="form-group">
-                      <label>Development</label>
-                      <input type="text" class="form-control" placeholder="Development">
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <div class="form-group">
-                      <label>Bug Fixing</label>
-                      <input type="text" class="form-control" placeholder="Bug Fixing">
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <div class="form-group">
-                      <label>Code Review</label>
-                      <input type="text" class="form-control" placeholder="Code Review">
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <div class="form-group">
-                      <label>QA</label>
-                      <input type="text" class="form-control" placeholder="QA">
-                    </div>
-                  </div>
-                  <div class="col-xs-1">
-                    <div class="form-group">
-                      <label><small>Infrastructure</small></label>
-                      <input type="text" class="form-control" placeholder="Infrastructure">
-                    </div>
-                  </div>
-                  <div class="col-xs-1">
-                    <div class="form-group">
-                      <label><small>UX/UI</small></label>
-                      <input type="text" class="form-control" placeholder="UX/UI">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            </div>
+          <% end %>
+
+          <div class="box-footer">
+            <%= submit_tag "Submit", class: "btn btn-primary" %>
           </div>
-
+        <% end %>
       </div>
-
+    </div>
+  </div>
 </section>

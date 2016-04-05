@@ -13,6 +13,7 @@
           <li><a href="#">Iteration Plannings <span class="pull-right badge bg-blue"><%= @project.iteration_planning || "No data about iteration planning" %></span></a></li>
           <li><a href="#">Estimates Model <span class="pull-right badge bg-blue"><%= @project.estimates_model || "No data about estimates model" %></span></a></li>
           <li><a href="#">Issue Tracker <span class="pull-right badge bg-blue"><%= @project.issue_tracker || "No data about issue tracker" %></span></a></li>
+          <li><a href="#">Current Version <span class="pull-right badge bg-blue"><%= @project.versions.last || "-" %></span></a></li>
         </ul>
       </div>
     </div>

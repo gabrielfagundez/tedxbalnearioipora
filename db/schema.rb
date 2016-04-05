@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160405223619) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "version", force: :cascade do |t|
+  create_table "versions", force: :cascade do |t|
     t.string   "name"
     t.integer  "project_id"
     t.datetime "created_at", null: false

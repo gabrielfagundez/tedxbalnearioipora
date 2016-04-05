@@ -12,6 +12,10 @@ class ProjectsController < ApplicationController
     render json: Project.find(params[:id]).summary.to_json
   end
 
+  def radar
+    render json: Project.find(params[:id]).radar.to_json
+  end
+
   def overview
     render json: Project.find(params[:id]).overview.to_json
   end

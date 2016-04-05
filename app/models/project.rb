@@ -213,6 +213,51 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def radar
+    weeks = [
+      (Date.today.beginning_of_week(:monday) - 3.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 2.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
+      (Date.today.beginning_of_week(:monday)).to_s
+    ]
+
+    {
+      labels: [weeks[0], weeks[1], weeks[2], weeks[3]],
+      datasets: [
+        {
+          label: "Development",
+          fillColor: "rgba(127,255,127,0.2)",
+          strokeColor: "rgba(127,255,127,1)",
+          pointColor: "rgba(127,255,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(127,255,127,1)",
+          data: [
+            total_development_for_week(weeks[0]),
+            total_development_for_week(weeks[1]),
+            total_development_for_week(weeks[2]),
+            total_development_for_week(weeks[3]),
+          ]
+        },
+        {
+          label: "Bugs",
+          fillColor: "rgba(255,127,127,0.2)",
+          strokeColor: "rgba(255,127,127,1)",
+          pointColor: "rgba(255,127,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(255,127,127,1)",
+          data: [
+            total_bugs_for_week(weeks[0]),
+            total_bugs_for_week(weeks[1]),
+            total_bugs_for_week(weeks[2]),
+            total_bugs_for_week(weeks[3]),
+          ]
+        }
+      ]
+    }
+  end
+
   def total_hours_for_week(week)
     self.weekly_entries.where(week: week).map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end

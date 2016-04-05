@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :work_entries, as: 'work_entries'
       get :summary
       get :overview
+      get :radar
       post :enter_work_entries, as: 'enter_work_entries'
     end
   end

@@ -1,42 +1,16 @@
 <div class="col-md-4">
   <div class="box box-widget widget-user">
     <a class="img-circle" href="<%= url %>">
-    <% if new %>
-      <div class="widget-user-header bg-gray">
-        <h3 class="widget-user-username"><%= name %></h3>
-      </div>
-    <% else %>
-      <div class="widget-user-header bg-aqua-active">
-        <h3 class="widget-user-username"><%= name %></h3>
-        <h5 class="widget-user-desc"><%= url %></h5>
-      </div>
-        <div class="widget-user-image">
-          <img class="img-circle" src="<%= image_path('user1-128x128.jpg') %>" alt="User Avatar">
+      <% if new %>
+        <div class="widget-user-header bg-gray">
+          <h3 class="widget-user-username"><%= name %></h3>
         </div>
-
-        <div class="box-footer">
-          <div class="row">
-            <div class="col-sm-4 border-right">
-              <div class="description-block">
-                <h5 class="description-header">3,200</h5>
-                <span class="description-text">SALES</span>
-              </div>
-            </div>
-            <div class="col-sm-4 border-right">
-              <div class="description-block">
-                <h5 class="description-header">13,000</h5>
-                <span class="description-text">URL</span>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="description-block">
-                <h5 class="description-header">35</h5>
-                <span class="description-text">PROJECTS</span>
-              </div>
-            </div>
-          </div>
+      <% else %>
+        <div class="widget-user-header bg-blue">
+          <h3 class="widget-user-username"><%= name %></h3>
+          <h5 class="widget-user-desc"><%= description %></h5>
         </div>
       <% end %>
-      </a>
+    </a>
     </div>
 </div>

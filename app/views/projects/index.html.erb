@@ -7,7 +7,7 @@
 
     <div class="row">
       <% client.projects.each do |project| %>
-        <%= render partial: 'clients/client_box', locals: { name: project.name, url: project_path(project), new: false } %>
+        <%= render partial: 'projects/project_box', locals: { name: project.name, url: project_path(project), description: project.vision, new: false } %>
       <% end %>
     </div>
   <% end %>

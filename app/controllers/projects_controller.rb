@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @clients = Client.all.includes(:projects)
+    @clients = params[:client_id].present? ? Client.includes(:projects).where(id: params[:client_id]) : Client.all.includes(:projects)
   end
 
   def show

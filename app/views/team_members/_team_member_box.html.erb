@@ -1,18 +1,18 @@
 <div class="col-md-4">
   <div class="box box-widget widget-user-2">
-    <a href="<%= link %>">
+    <!-- <a href="<%= link %>"> -->
     <% if new %>
         <div class="widget-user-header bg-gray">
           <div class="widget-user-image">
-            <img class="img-circle" src="<%= image_path('user7-128x128.jpg') %>" alt="User Avatar">
+            <img src="<%= image_path('user.svg') %>" alt="User Avatar">
           </div>
           <h3 class="widget-user-username"><%= name %></h3>
           <h5 class="widget-user-desc"><%= role %></h5>
         </div>
     <% else %>
-      <div class="widget-user-header bg-green">
+      <div class="widget-user-header bg-blue">
         <div class="widget-user-image">
-          <img class="img-circle" src="<%= image_path('user7-128x128.jpg') %>" alt="User Avatar">
+          <img src="<%= image_path('user.svg') %>" alt="User Avatar">
         </div>
         <h3 class="widget-user-username"><%= name %></h3>
         <h5 class="widget-user-desc"><%= role %></h5>
@@ -28,6 +28,6 @@
       </div> -->
 
     <% end %>
-    </a>
+    <!-- </a> -->
   </div>
 </div>

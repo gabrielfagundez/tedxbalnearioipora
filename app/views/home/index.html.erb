@@ -10,24 +10,25 @@
           <div class="box-header with-border">
             <div class="user-block">
               <span class="username" style="margin-left: 0"><%= "#{project.client.name} - #{project.name}" %></span>
-              <span class="description" style="margin-left: 0">Time distribution over the last 8 weeks</span>
+              <span class="description" style="margin-left: 0">Velocity report over the last 10 weeks</span>
             </div>
           </div>
           <div class="box-body">
-            <canvas class="project_summary" data-id=<%= project.id %> height="200" width="600"></canvas>
+            <canvas class="project_velocity" data-id=<%= project.id %> height="200" width="600"></canvas>
           </div>
         </div>
       </div>
+      
       <div class="col-md-6">
         <div class="box box-widget">
           <div class="box-header with-border">
             <div class="user-block">
               <span class="username" style="margin-left: 0"><%= "#{project.client.name} - #{project.name}" %></span>
-              <span class="description" style="margin-left: 0">Weekly rate over the last 11 weeks</span>
+              <span class="description" style="margin-left: 0">Time distribution over the last 8 weeks</span>
             </div>
           </div>
           <div class="box-body">
-            <canvas class="project_overview" data-id=<%= project.id %> height="200" width="600"></canvas>
+            <canvas class="project_summary" data-id=<%= project.id %> height="200" width="600"></canvas>
           </div>
         </div>
       </div>

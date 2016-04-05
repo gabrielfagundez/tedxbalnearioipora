@@ -1,18 +1,19 @@
 <%= render partial: 'shared/page_title', locals: { title: @project.name } %>
 
-<section id= "content" class="content" data-id=<%= params[:id] %>>
+<section id= "content" class="content" %>
+
   <%= render partial: 'projects/summary' %>
 
   <h2 class="page-header">Time distribution over the last 2 months</h2>
-  <canvas id="project_summary" height="200" width="600"></canvas>
+  <canvas id="project_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
   <h2 class="page-header">Weekly rate over the last 2 months</h2>
-  <canvas id="project_overview" height="200" width="600"></canvas>
+  <canvas id="project_overview" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
   <h2 class="page-header">Development vs Bugs radar over the last 4 weeks</h2>
-  <canvas id="project_radar" height="200" width="600"></canvas>
+  <canvas id="project_radar" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
   <h2 class="page-header">Historical time distribution</h2>
-  <canvas id="project_historical" height="200" width="600"></canvas>
+  <canvas id="project_historical" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
 </section>

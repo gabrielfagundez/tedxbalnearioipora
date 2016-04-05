@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :summary
       get :overview
       get :radar
+      get :historical
       post :enter_work_entries, as: 'enter_work_entries'
     end
   end

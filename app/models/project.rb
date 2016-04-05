@@ -192,7 +192,7 @@ class Project < ActiveRecord::Base
           ]
         },
         {
-          label: "Infrastructure",
+          label: "UI/UX",
           fillColor: "rgba(191,127,255,0.2)",
           strokeColor: "rgba(191,127,255,1)",
           pointColor: "rgba(191,127,255,1)",
@@ -211,6 +211,52 @@ class Project < ActiveRecord::Base
         }
       ]
     }
+  end
+
+  def historical
+    [
+      {
+          value: self.weekly_entries.map{ |we| we.communication }.sum().to_f,
+          color:"rgba(127,127,255,1)",
+          highlight: "rgba(127,127,255,1)",
+          label: "Communication"
+      },
+      {
+          value: self.weekly_entries.map{ |we| we.development }.sum().to_f,
+          color:"rgba(127,255,127,1)",
+          highlight: "rgba(127,255,127,1)",
+          label: "Development"
+      },
+      {
+          value: self.weekly_entries.map{ |we| we.bugs }.sum().to_f,
+          color:"rgba(255,127,127,1)",
+          highlight: "rgba(255,127,127,1)",
+          label: "Bugs"
+      },
+      {
+          value: self.weekly_entries.map{ |we| we.code_review }.sum().to_f,
+          color:"rgba(127,127,127,1)",
+          highlight: "rgba(127,127,127,1)",
+          label: "Code Review"
+      },{
+          value: self.weekly_entries.map{ |we| we.qa }.sum().to_f,
+          color:"rgba(255,255,127,1)",
+          highlight: "rgba(255,255,127,1)",
+          label: "QA"
+      },
+      {
+          value: self.weekly_entries.map{ |we| we.infraestructure }.sum().to_f,
+          color:"rgba(255,191,127,1)",
+          highlight: "rgba(255,191,127,1)",
+          label: "Infrastructure"
+      },
+      {
+          value: self.weekly_entries.map{ |we| we.uxui }.sum().to_f,
+          color:"rgba(191,127,255,1)",
+          highlight: "rgba(191,127,255,1)",
+          label: "UI/UX"
+      }
+    ]
   end
 
   def radar

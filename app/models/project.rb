@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
 
   has_many :weekly_entries
+  has_many :points_completed_entries
+  has_many :versions
   belongs_to :team_leader, class_name: 'TeamMember'
   belongs_to :client
 
@@ -42,6 +44,25 @@ class Project < ActiveRecord::Base
       self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 4.week)) / 4
   end
 
+  def velocity
+    weeks = points_completed_entries.limit(10).collect(&:period).compact
+    values = points_completed_entries.limit(10).collect(&:points_completed).compact
+
+    @velocity ||= {
+    labels: weeks,
+    datasets: [
+        {
+            label: "Points Completed",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: values
+        }
+      ]
+    }
+  end
+
   def overview
     weeks = [
       (Date.today.beginning_of_week(:monday) - 10.week).to_s,
@@ -53,7 +74,7 @@ class Project < ActiveRecord::Base
       (Date.today.beginning_of_week(:monday) - 4.week).to_s,
       (Date.today.beginning_of_week(:monday) - 3.week).to_s,
       (Date.today.beginning_of_week(:monday) - 2.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s
     ]
 
     {

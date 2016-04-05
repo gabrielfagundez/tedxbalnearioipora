@@ -5,16 +5,69 @@
   <%= render partial: 'projects/details' %>
   <%= render partial: 'projects/summary' %>
 
-  <h2 class="page-header">Time distribution over the last 8 weeks</h2>
-  <canvas class="project_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username" style="margin-left: 0">Velocity report over the last 10 weeks</span>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas class="project_velocity" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="page-header">Weekly rate over the last 11 weeks</h2>
-  <canvas class="project_overview" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+    <div class="col-xs-12">
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username" style="margin-left: 0">Time distribution over the last 8 weeks</span>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas class="project_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="page-header">Development vs Bugs radar over the last 4 weeks</h2>
-  <canvas class="project_radar" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+    <div class="col-xs-12">
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username" style="margin-left: 0">Weekly rate over the last 10 weeks</span>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas class="project_overview" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="page-header">Historical time distribution</h2>
-  <canvas class="project_historical" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+    <div class="col-xs-6">
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username" style="margin-left: 0">Development vs Bugs radar over the last 4 weeks</span>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas class="project_radar" data-id=<%= params[:id] %> height="200" width="600"></canvas>        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username" style="margin-left: 0">Historical time distribution</span>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas class="project_historical" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>

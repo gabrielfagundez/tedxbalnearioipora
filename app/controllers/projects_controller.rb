@@ -24,6 +24,10 @@ class ProjectsController < ApplicationController
     render json: Project.find(params[:id]).overview.to_json
   end
 
+  def velocity
+    render json: Project.find(params[:id]).velocity.to_json
+  end
+
   def work_entries
     @project = Project.find(params[:id])
     @team_members = TeamMember.all

@@ -2,8 +2,8 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3><%= @project.stats[:three_weeks_ago][:hours] %><sup style="font-size: 15px"> hours</sup></h3>
-        <p><%= @project.stats[:three_weeks_ago][:week] %></p>
+        <h3><%= @project.stats[:avg_four_weeks] %><sup style="font-size: 15px"> hours/week</sup></h3>
+        <p>Avg weekly hours (last 4 weeks)</p>
       </div>
     </div>
   </div>
@@ -11,8 +11,8 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3><%= @project.stats[:two_weeks_ago][:hours] %><sup style="font-size: 15px"> hours</sup></h3>
-        <p><%= @project.stats[:two_weeks_ago][:week] %></p>
+        <h3><%= @project.stats[:expected_hours] %><sup style="font-size: 15px"> hours</sup></h3>
+        <p>Expected weekly hours</p>
       </div>
     </div>
   </div>
@@ -20,8 +20,8 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3><%= @project.stats[:one_week_ago][:hours] %><sup style="font-size: 15px"> hours</sup></h3>
-        <p><%= @project.stats[:one_week_ago][:week] %></p>
+        <h3><%= @project.stats[:remaining_weeks] %><sup style="font-size: 15px"> weeks</sup></h3>
+        <p>Remaining weeks</p>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
       <a href="<%= work_entries_project_path %>">
         <div class="small-box bg-blue">
           <div class="inner">
-            <h3>This week</h3>
+            <h3>-</h3>
             <p>Add data for this week</p>
           </div>
         </div>

@@ -25,11 +25,19 @@ class Project < ActiveRecord::Base
 
   def stats
     {
-      three_weeks_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 3.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
-      two_weeks_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 2.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
-      one_week_ago: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s },
-      this_week: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday)).to_s, week: (Date.today.beginning_of_week(:monday) - 3.week).to_s }
+      avg_four_weeks: average_four_weeks.round(1),
+      remaining_weeks: hired_hours.present? ? (hired_hours / average_four_weeks).round(1) : "~",
+      expected_hours: expected_hours.present? ? expected_hours : "~",
+      this_week: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week).to_s, week: "Last week: #{(Date.today.beginning_of_week(:monday) - 1.week).to_s}" }
     }
+  end
+
+  def average_four_weeks
+    @average_four_weeks ||=
+      self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week) +
+      self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 2.week) +
+      self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 3.week) +
+      self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 4.week)) / 4
   end
 
   def overview

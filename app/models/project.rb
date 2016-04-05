@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
   has_many :weekly_entries
+  belongs_to :team_leader, class_name: 'TeamMember'
   belongs_to :client
 
   def self.favourites

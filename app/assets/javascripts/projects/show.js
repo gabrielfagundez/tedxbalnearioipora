@@ -1,4 +1,4 @@
-window.onload = function(){
+$(function(){
   if(document.getElementById("project_summary") != undefined) {
     var ctx = document.getElementById("project_summary").getContext("2d");
     var project_id = $('#content').data().id;
@@ -9,4 +9,4 @@ window.onload = function(){
       });
     })
   }
-}
+})

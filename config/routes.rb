@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get :work_entries, as: 'work_entries'
       get :summary
+      get :overview
       post :enter_work_entries, as: 'enter_work_entries'
     end
   end

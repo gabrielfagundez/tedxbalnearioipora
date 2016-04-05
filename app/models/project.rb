@@ -27,6 +27,48 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def overview
+    weeks = [
+      (Date.today.beginning_of_week(:monday) - 10.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 9.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 8.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 7.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 6.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 5.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 4.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 3.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 2.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
+      (Date.today.beginning_of_week(:monday)).to_s
+    ]
+
+    {
+    labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7], weeks[8], weeks[9], weeks[10]],
+    datasets: [
+        {
+            label: "Hours",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [
+              total_hours_for_week(weeks[0]),
+              total_hours_for_week(weeks[1]),
+              total_hours_for_week(weeks[2]),
+              total_hours_for_week(weeks[3]),
+              total_hours_for_week(weeks[4]),
+              total_hours_for_week(weeks[5]),
+              total_hours_for_week(weeks[6]),
+              total_hours_for_week(weeks[7]),
+              total_hours_for_week(weeks[8]),
+              total_hours_for_week(weeks[9]),
+              total_hours_for_week(weeks[10])
+            ]
+        }
+    ]
+    }
+  end
+
   def summary
     weeks = [
       (Date.today.beginning_of_week(:monday) - 6.week).to_s,

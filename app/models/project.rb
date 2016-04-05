@@ -19,15 +19,16 @@ class Project < ActiveRecord::Base
     Project.create(client_id: numerex.id, name: 'iTank')
 
     Project.create(client_id: youscience.id, name: 'Web App')
-    
+
     Project.create(client_id: semmons.id, name: 'YoYoBlox')
     Project.create(client_id: semmons.id, name: 'Studio Movie Grill')
   end
 
   def stats
-    {
+    @stats ||= {
       avg_four_weeks: average_four_weeks.round(1),
-      remaining_weeks: hired_hours.present? ? (hired_hours / average_four_weeks).round(1) : "~",
+      remaining_weeks: hired_hours.present? ? (hired_hours / average_four_weeks).round(1) : nil,
+      contract_end_date: contract_end_date || "~",
       expected_hours: expected_hours.present? ? expected_hours : "~",
       this_week: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week).to_s, week: "Last week: #{(Date.today.beginning_of_week(:monday) - 1.week).to_s}" }
     }

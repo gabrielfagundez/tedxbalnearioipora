@@ -7,7 +7,7 @@
       </div>
       <div class="box-footer no-padding">
         <ul class="nav nav-stacked">
-          <li><a href="#">Team Leader <span class="pull-right badge bg-blue"><%= @project.team_leader.name || "-" %></span></a></li>
+          <li><a href="#">Team Leader <span class="pull-right badge bg-blue"><%= @project.team_leader.try(:name) || "-" %></span></a></li>
           <li><a href="#">Daily Meetings <span class="pull-right badge bg-blue"><%= @project.daily_meeting || "No data about daily meetings" %></span></a></li>
           <li><a href="#">Retrospectives <span class="pull-right badge bg-blue"><%= @project.retrospectives || "No data about retrospectives" %></span></a></li>
           <li><a href="#">Iteration Plannings <span class="pull-right badge bg-blue"><%= @project.iteration_planning || "No data about iteration planning" %></span></a></li>

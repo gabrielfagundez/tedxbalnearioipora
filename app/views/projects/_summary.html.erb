@@ -20,8 +20,13 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3><%= @project.stats[:remaining_weeks] %><sup style="font-size: 15px"> weeks</sup></h3>
-        <p>Remaining weeks</p>
+        <% if @project.stats[:remaining_weeks] %>
+          <h3><%= @project.stats[:remaining_weeks] %><sup style="font-size: 15px"> weeks</sup></h3>
+          <p>Remaining weeks</p>
+        <% else %>
+          <h3><%= @project.stats[:contract_end_date] %></sup></h3>
+          <p>Contract End Date</p>
+        <% end %>
       </div>
     </div>
   </div>

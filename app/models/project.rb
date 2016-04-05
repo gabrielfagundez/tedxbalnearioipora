@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
 
   def average_four_weeks
     @average_four_weeks ||=
-      self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week) +
+      (self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week) +
       self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 2.week) +
       self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 3.week) +
       self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 4.week)) / 4
@@ -52,11 +52,10 @@ class Project < ActiveRecord::Base
       (Date.today.beginning_of_week(:monday) - 3.week).to_s,
       (Date.today.beginning_of_week(:monday) - 2.week).to_s,
       (Date.today.beginning_of_week(:monday) - 1.week).to_s,
-      (Date.today.beginning_of_week(:monday)).to_s
     ]
 
     {
-    labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7], weeks[8], weeks[9], weeks[10]],
+    labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7], weeks[8], weeks[9]],
     datasets: [
         {
             label: "Hours",
@@ -74,24 +73,23 @@ class Project < ActiveRecord::Base
               total_hours_for_week(weeks[6]),
               total_hours_for_week(weeks[7]),
               total_hours_for_week(weeks[8]),
-              total_hours_for_week(weeks[9]),
-              total_hours_for_week(weeks[10])
+              total_hours_for_week(weeks[9])
             ]
         }
-    ]
+      ]
     }
   end
 
   def summary
     weeks = [
+      (Date.today.beginning_of_week(:monday) - 8.week).to_s,
       (Date.today.beginning_of_week(:monday) - 7.week).to_s,
       (Date.today.beginning_of_week(:monday) - 6.week).to_s,
       (Date.today.beginning_of_week(:monday) - 5.week).to_s,
       (Date.today.beginning_of_week(:monday) - 4.week).to_s,
       (Date.today.beginning_of_week(:monday) - 3.week).to_s,
       (Date.today.beginning_of_week(:monday) - 2.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
-      (Date.today.beginning_of_week(:monday)).to_s
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s
     ]
 
     {
@@ -282,10 +280,10 @@ class Project < ActiveRecord::Base
 
   def radar
     weeks = [
+      (Date.today.beginning_of_week(:monday) - 4.week).to_s,
       (Date.today.beginning_of_week(:monday) - 3.week).to_s,
       (Date.today.beginning_of_week(:monday) - 2.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
-      (Date.today.beginning_of_week(:monday)).to_s
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s
     ]
 
     {

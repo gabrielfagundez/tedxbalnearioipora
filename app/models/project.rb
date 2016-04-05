@@ -1,6 +1,11 @@
 class Project < ActiveRecord::Base
 
   has_many :weekly_entries
+  belongs_to :client
+
+  def self.favourites
+    where(favourite: true)
+  end
 
   def self.load_seeds
     numerex = Client.where(name: 'Numerex').first

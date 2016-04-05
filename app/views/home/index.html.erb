@@ -1,1 +1,37 @@
 <%= render partial: 'shared/page_title', locals: { title: 'Dashboard' } %>
+
+
+<section id= "content" class="content" %>
+
+  <% @favourite_projects.each do |project| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-widget">
+          <div class="box-header with-border">
+            <div class="user-block">
+              <span class="username" style="margin-left: 0"><%= project.name %> - Time distribution over the last 8 weeks</span>
+              <span class="description" style="margin-left: 0"><%= project.client.name %></span>
+            </div>
+          </div>
+          <div class="box-body">
+            <canvas class="project_summary" data-id=<%= project.id %> height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box box-widget">
+          <div class="box-header with-border">
+            <div class="user-block">
+              <span class="username" style="margin-left: 0"><%= project.name %> - Weekly rate over the last 8 weeks</span>
+              <span class="description" style="margin-left: 0"><%= project.client.name %></span>
+            </div>
+          </div>
+          <div class="box-body">
+            <canvas class="project_overview" data-id=<%= project.id %> height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</section>

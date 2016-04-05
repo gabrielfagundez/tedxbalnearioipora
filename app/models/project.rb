@@ -27,8 +27,180 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def summary
+    weeks = [
+      (Date.today.beginning_of_week(:monday) - 6.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 5.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 4.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 3.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 2.week).to_s,
+      (Date.today.beginning_of_week(:monday) - 1.week).to_s,
+      (Date.today.beginning_of_week(:monday)).to_s
+    ]
+
+    {
+      labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6]],
+      datasets: [
+        {
+          label: "Communication",
+          fillColor: "rgba(127,127,255,0.2)",
+          strokeColor: "rgba(127,127,255,1)",
+          pointColor: "rgba(127,127,255,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(127,127,255,1)",
+          data: [
+            total_communication_for_week(weeks[0]),
+            total_communication_for_week(weeks[1]),
+            total_communication_for_week(weeks[2]),
+            total_communication_for_week(weeks[3]),
+            total_communication_for_week(weeks[4]),
+            total_communication_for_week(weeks[5]),
+            total_communication_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "Development",
+          fillColor: "rgba(127,255,127,0.2)",
+          strokeColor: "rgba(127,255,127,1)",
+          pointColor: "rgba(127,255,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(127,255,127,1)",
+          data: [
+            total_development_for_week(weeks[0]),
+            total_development_for_week(weeks[1]),
+            total_development_for_week(weeks[2]),
+            total_development_for_week(weeks[3]),
+            total_development_for_week(weeks[4]),
+            total_development_for_week(weeks[5]),
+            total_development_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "Bugs",
+          fillColor: "rgba(255,127,127,0.2)",
+          strokeColor: "rgba(255,127,127,1)",
+          pointColor: "rgba(255,127,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(255,127,127,1)",
+          data: [
+            total_bugs_for_week(weeks[0]),
+            total_bugs_for_week(weeks[1]),
+            total_bugs_for_week(weeks[2]),
+            total_bugs_for_week(weeks[3]),
+            total_bugs_for_week(weeks[4]),
+            total_bugs_for_week(weeks[5]),
+            total_bugs_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "Code Review",
+          fillColor: "rgba(127,127,127,0.2)",
+          strokeColor: "rgba(127,127,127,1)",
+          pointColor: "rgba(127,127,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(127,127,127,1)",
+          data: [
+            total_code_review_for_week(weeks[0]),
+            total_code_review_for_week(weeks[1]),
+            total_code_review_for_week(weeks[2]),
+            total_code_review_for_week(weeks[3]),
+            total_code_review_for_week(weeks[4]),
+            total_code_review_for_week(weeks[5]),
+            total_code_review_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "QA",
+          fillColor: "rgba(255,255,127,0.2)",
+          strokeColor: "rgba(255,255,127,1)",
+          pointColor: "rgba(255,255,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(255,255,127,1)",
+          data: [
+            total_qa_for_week(weeks[0]),
+            total_qa_for_week(weeks[1]),
+            total_qa_for_week(weeks[2]),
+            total_qa_for_week(weeks[3]),
+            total_qa_for_week(weeks[4]),
+            total_qa_for_week(weeks[5]),
+            total_qa_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "Infrastructure",
+          fillColor: "rgba(255,191,127,0.2)",
+          strokeColor: "rgba(255,191,127,1)",
+          pointColor: "rgba(255,191,127,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(255,191,127,1)",
+          data: [
+            total_infraestructure_for_week(weeks[0]),
+            total_infraestructure_for_week(weeks[1]),
+            total_infraestructure_for_week(weeks[2]),
+            total_infraestructure_for_week(weeks[3]),
+            total_infraestructure_for_week(weeks[4]),
+            total_infraestructure_for_week(weeks[5]),
+            total_infraestructure_for_week(weeks[6]),
+          ]
+        },
+        {
+          label: "Infrastructure",
+          fillColor: "rgba(191,127,255,0.2)",
+          strokeColor: "rgba(191,127,255,1)",
+          pointColor: "rgba(191,127,255,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(191,127,255,1)",
+          data: [
+            total_uxui_for_week(weeks[0]),
+            total_uxui_for_week(weeks[1]),
+            total_uxui_for_week(weeks[2]),
+            total_uxui_for_week(weeks[3]),
+            total_uxui_for_week(weeks[4]),
+            total_uxui_for_week(weeks[5]),
+            total_uxui_for_week(weeks[6]),
+          ]
+        }
+      ]
+    }
+  end
+
   def total_hours_for_week(week)
     self.weekly_entries.where(week: week).map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
+  end
+
+  def total_communication_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.communication }.sum().to_f
+  end
+
+  def total_development_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.development }.sum().to_f
+  end
+
+  def total_bugs_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.bugs }.sum().to_f
+  end
+
+  def total_code_review_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.code_review }.sum().to_f
+  end
+
+  def total_qa_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.qa }.sum().to_f
+  end
+
+  def total_infraestructure_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.infraestructure }.sum().to_f
+  end
+
+  def total_uxui_for_week(week)
+    self.weekly_entries.where(week: week).map{ |we| we.uxui }.sum().to_f
   end
 
 end

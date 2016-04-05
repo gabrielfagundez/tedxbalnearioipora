@@ -1,6 +1,8 @@
 <%= render partial: 'shared/page_title', locals: { title: @project.name } %>
 
-<section class="content">
+<section id= "content" class="content" data-id=<%= params[:id] %>>
   <%= render partial: 'projects/summary' %>
+
+  <canvas id="project_summary" height="200" width="600"></canvas>
 
 </section>

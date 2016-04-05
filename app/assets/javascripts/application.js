@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require adminlte/adminlte
+//= require chart/chart
 //= require_tree .

@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def summary
+    render json: Project.find(params[:id]).summary.to_json
+  end
+
   def work_entries
     @project = Project.find(params[:id])
     @team_members = TeamMember.all

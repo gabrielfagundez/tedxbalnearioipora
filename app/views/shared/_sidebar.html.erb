@@ -3,27 +3,27 @@
   <section class="sidebar">
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li>
+      <li class="<%= controller_name == 'home' ? 'active' : '' %>">
         <a href="<%= root_path %>">
           <i class="fa fa-th"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li>
+      <li class="<%= controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
           <i class="fa fa-th"></i> <span>Clients</span>
         </a>
       </li>
-      <li>
+      <li class="<%= controller_name == 'projects' ? 'active' : '' %>">
         <a href="<%= projects_path %>">
           <i class="fa fa-th"></i> <span>Projects</span>
         </a>
       </li>
-      <li>
+      <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
         <a href="<%= team_members_path %>">
           <i class="fa fa-th"></i> <span>Team Members</span>
         </a>
       </li>
     </ul>
   </section>
-  
+
 </aside>

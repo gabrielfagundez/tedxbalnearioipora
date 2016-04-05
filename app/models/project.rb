@@ -76,6 +76,7 @@ class Project < ActiveRecord::Base
 
   def summary
     weeks = [
+      (Date.today.beginning_of_week(:monday) - 7.week).to_s,
       (Date.today.beginning_of_week(:monday) - 6.week).to_s,
       (Date.today.beginning_of_week(:monday) - 5.week).to_s,
       (Date.today.beginning_of_week(:monday) - 4.week).to_s,
@@ -86,7 +87,7 @@ class Project < ActiveRecord::Base
     ]
 
     {
-      labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6]],
+      labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7]],
       datasets: [
         {
           label: "Communication",
@@ -104,6 +105,7 @@ class Project < ActiveRecord::Base
             total_communication_for_week(weeks[4]),
             total_communication_for_week(weeks[5]),
             total_communication_for_week(weeks[6]),
+            total_communication_for_week(weeks[7])
           ]
         },
         {
@@ -122,6 +124,7 @@ class Project < ActiveRecord::Base
             total_development_for_week(weeks[4]),
             total_development_for_week(weeks[5]),
             total_development_for_week(weeks[6]),
+            total_development_for_week(weeks[7])
           ]
         },
         {
@@ -140,6 +143,7 @@ class Project < ActiveRecord::Base
             total_bugs_for_week(weeks[4]),
             total_bugs_for_week(weeks[5]),
             total_bugs_for_week(weeks[6]),
+            total_bugs_for_week(weeks[7])
           ]
         },
         {
@@ -158,6 +162,7 @@ class Project < ActiveRecord::Base
             total_code_review_for_week(weeks[4]),
             total_code_review_for_week(weeks[5]),
             total_code_review_for_week(weeks[6]),
+            total_code_review_for_week(weeks[7])
           ]
         },
         {
@@ -176,6 +181,7 @@ class Project < ActiveRecord::Base
             total_qa_for_week(weeks[4]),
             total_qa_for_week(weeks[5]),
             total_qa_for_week(weeks[6]),
+            total_qa_for_week(weeks[7])
           ]
         },
         {
@@ -194,6 +200,7 @@ class Project < ActiveRecord::Base
             total_infraestructure_for_week(weeks[4]),
             total_infraestructure_for_week(weeks[5]),
             total_infraestructure_for_week(weeks[6]),
+            total_infraestructure_for_week(weeks[7])
           ]
         },
         {
@@ -212,6 +219,7 @@ class Project < ActiveRecord::Base
             total_uxui_for_week(weeks[4]),
             total_uxui_for_week(weeks[5]),
             total_uxui_for_week(weeks[6]),
+            total_uxui_for_week(weeks[7])
           ]
         }
       ]

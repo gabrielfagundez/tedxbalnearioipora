@@ -5,10 +5,10 @@
   <%= render partial: 'projects/mision_vision' %>
   <%= render partial: 'projects/summary' %>
 
-  <h2 class="page-header">Time distribution over the last 2 months</h2>
+  <h2 class="page-header">Time distribution over the last 8 weeks</h2>
   <canvas class="project_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
-  <h2 class="page-header">Weekly rate over the last 2 months</h2>
+  <h2 class="page-header">Weekly rate over the last 11 weeks</h2>
   <canvas class="project_overview" data-id=<%= params[:id] %> height="200" width="600"></canvas>
 
   <h2 class="page-header">Development vs Bugs radar over the last 4 weeks</h2>

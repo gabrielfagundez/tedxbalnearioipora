@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160405220409) do
     t.boolean  "favourite"
     t.integer  "hired_hours"
     t.integer  "expected_hours"
+    t.integer  "team_leader_id"
     t.string   "daily_meeting"
     t.string   "retrospectives"
     t.string   "iteration_planning"
@@ -58,7 +59,6 @@ ActiveRecord::Schema.define(version: 20160405220409) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "team_leader_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
     Project.create(client_id: numerex.id, name: 'iTank')
 
     Project.create(client_id: youscience.id, name: 'Web App')
-
+    
     Project.create(client_id: semmons.id, name: 'YoYoBlox')
     Project.create(client_id: semmons.id, name: 'Studio Movie Grill')
   end

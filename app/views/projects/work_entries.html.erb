@@ -5,6 +5,33 @@
     <div class="col-md-12">
       <div class="box box-danger">
         <%= form_tag(enter_work_entries_project_path, method: "post") do %>
+          <div class="box-header with-border">
+            <h3 class="box-title">Week</h3>
+          </div>
+
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= select_tag 'week',
+                          options_for_select([
+                            Date.today.beginning_of_week(:monday) - 1.week,
+                            Date.today.beginning_of_week(:monday) - 2.week,
+                            Date.today.beginning_of_week(:monday) - 3.week,
+                            Date.today.beginning_of_week(:monday) - 4.week,
+                            Date.today.beginning_of_week(:monday) - 5.week,
+                            Date.today.beginning_of_week(:monday) - 6.week,
+                            Date.today.beginning_of_week(:monday) - 7.week,
+                            Date.today.beginning_of_week(:monday) - 8.week,
+                            Date.today.beginning_of_week(:monday) - 9.week,
+                            Date.today.beginning_of_week(:monday) - 10.week
+                          ]),
+                          class: "form-control"  %>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <% @team_members.each do |tm| %>
             <div class="box-header with-border">
               <h3 class="box-title"><%= tm.name %></h3>

@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
       WeeklyEntry.create(
         team_member_id: user_id,
         project_id: params[:id],
-        week: (Date.today.beginning_of_week(:monday) - 1.week).to_s,
+        week: params[:week],
         communication: sanitized_entries[user_id]["1"].present? ? sanitized_entries[user_id]["1"].to_f : 0,
         development: sanitized_entries[user_id]["2"].present? ? sanitized_entries[user_id]["2"].to_f : 0,
         bugs: sanitized_entries[user_id]["3"].present? ? sanitized_entries[user_id]["3"].to_f : 0,
@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
         uxui: sanitized_entries[user_id]["7"].present? ? sanitized_entries[user_id]["7"].to_f : 0)
     end
 
-    redirect_to projects_path
+    redirect_to project_path(params[:id])
   end
 
   private

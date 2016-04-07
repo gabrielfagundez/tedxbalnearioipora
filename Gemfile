@@ -25,5 +25,5 @@ end
 gem 'devise'
 
 # Toggl integration
-gem 'togglv8'
-gem 'awesome_print', require: 'ap'
+# gem 'togglv8'
+# gem 'awesome_print', require: 'ap'

@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :sanitize_params, only: :update
+  before_filter :process_points_completed_entries
 
   def index
     @clients = params[:client_id].present? ? Client.includes(:projects).where(id: params[:client_id]) : Client.all.includes(:projects)
@@ -89,13 +90,29 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:mision, :vision, :team_leader_id, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+    if params[:project].present?
+      params.require(:project).permit(:mision, :vision, :team_leader_id, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+    else
+      {}
+    end
   end
 
   def sanitize_params
+    return unless params[:project].present?
+
     params[:project][:hired_hours] = params[:project][:hired_hours].to_i if params[:project][:hired_hours].present?
     params[:project][:expected_hours] = params[:project][:expected_hours].to_i if params[:project][:expected_hours].present?
     params[:project][:team_leader_id] = params[:project][:team_leader_id].to_i if params[:project][:team_leader_id].present?
+  end
+
+  def process_points_completed_entries
+    if params[:points_completed_entries].present?
+      PointsCompletedEntry.create(
+        period: params[:points_completed_entries][:period],
+        points_completed: params[:points_completed_entries][:points_completed].to_i,
+        project_id: params[:id]
+      )
+    end
   end
 
 end

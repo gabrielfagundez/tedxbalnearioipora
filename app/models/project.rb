@@ -48,8 +48,8 @@ class Project < ActiveRecord::Base
   end
 
   def velocity
-    weeks = points_completed_entries.limit(10).collect(&:period).compact
-    values = points_completed_entries.limit(10).collect(&:points_completed).compact
+    weeks = points_completed_entries.order(created_at: 'desc').limit(10).collect(&:period).reverse
+    values = points_completed_entries.order(created_at: 'desc').limit(10).collect(&:points_completed).reverse
 
     @velocity ||= {
     labels: weeks,

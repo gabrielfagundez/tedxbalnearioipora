@@ -122,6 +122,34 @@
           </div>
         <% end %>
       </div>
+
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add Velocity Entry</h3>
+        </div>
+
+        <%= form_tag(project_path(@project), method: "patch") do %>
+          <div class="box-body">
+            <div class="form-group">
+              <label>Period</label>
+              <%= text_field_tag 'points_completed_entries[period]', nil, class: "form-control", placeholder: "03-21 - 03-28" %>
+            </div>
+
+            <div class="form-group">
+              <label>Points Completed</label>
+              <%= text_field_tag 'points_completed_entries[points_completed]', nil, type: 'integer', class: "form-control", placeholder: 12 %>
+              <p class="help-block">
+                This value will be added as the last velocity entry of the project. If you have more than one entry,
+                you should enter each value in order.
+              </p>
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <%= submit_tag "Add", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 

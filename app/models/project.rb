@@ -32,11 +32,15 @@ class Project < ActiveRecord::Base
   def stats
     @stats ||= {
       avg_four_weeks: average_four_weeks.round(1),
-      remaining_weeks: hired_hours.present? ? (hired_hours / average_four_weeks).round(1) : nil,
+      remaining_weeks: hired_hours.present? ? ((hired_hours - used_hours) / average_four_weeks).round(1) : nil,
       contract_end_date: contract_end_date || "~",
       expected_hours: expected_hours.present? ? expected_hours : "~",
       this_week: { hours: self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week).to_s, week: "Last week: #{(Date.today.beginning_of_week(:monday) - 1.week).to_s}" }
     }
+  end
+
+  def used_hours
+    self.weekly_entries.map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end
 
   def average_four_weeks

@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
 
+  NULL_ATTRS = %w( hired_hours expected_hours contract_end_date mision vision daily_meeting retrospectives iteration_planning estimates_model issue_tracker )
+  before_save :nil_if_blank
+
   has_many :weekly_entries
   has_many :points_completed_entries
   has_many :versions
@@ -376,6 +379,12 @@ class Project < ActiveRecord::Base
 
   def total_uxui_for_week(week)
     self.weekly_entries.where(week: week).map{ |we| we.uxui }.sum().to_f
+  end
+
+  protected
+
+  def nil_if_blank
+    NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 
 end

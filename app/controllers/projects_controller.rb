@@ -1,11 +1,25 @@
 class ProjectsController < ApplicationController
 
+  before_filter :sanitize_params, only: :update
+
   def index
     @clients = params[:client_id].present? ? Client.includes(:projects).where(id: params[:client_id]) : Client.all.includes(:projects)
   end
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  def edit
+    @team_members = TeamMember.all
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    project = Project.find(params[:id])
+    project.update_attributes(project_params)
+
+    redirect_to project_path(project)
   end
 
   def summary
@@ -72,6 +86,16 @@ class ProjectsController < ApplicationController
     end
 
     sanitized_entries
+  end
+
+  def project_params
+    params.require(:project).permit(:mision, :vision, :team_leader_id, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+  end
+
+  def sanitize_params
+    params[:project][:hired_hours] = params[:project][:hired_hours].to_i if params[:project][:hired_hours].present?
+    params[:project][:expected_hours] = params[:project][:expected_hours].to_i if params[:project][:expected_hours].present?
+    params[:project][:team_leader_id] = params[:project][:team_leader_id].to_i if params[:project][:team_leader_id].present?
   end
 
 end

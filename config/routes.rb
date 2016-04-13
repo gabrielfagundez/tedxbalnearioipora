@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :clients
   resources :team_members
+  resources :users
   resources :projects do
     member do
       get :work_entries, as: 'work_entries'

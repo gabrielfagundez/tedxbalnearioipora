@@ -14,11 +14,13 @@
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
+              <th>Clients</th>
             </tr>
               <% @users.each do |user| %>
                 <td><%= user.first_name %></td>
                 <td><%= user.last_name %></td>
                 <td><%= user.email %></td>
+                <td><%= user.clients.collect(&:name).join(', ') %></td>
               <% end %>
             </tbody>
           </table>

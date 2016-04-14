@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :radar
       get :historical
       get :velocity
+      get :favourite
       post :enter_work_entries, as: 'enter_work_entries'
     end
   end

@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
     unless @project.client.users.collect(&:id).include? current_user.id
       redirect_to projects_path
     end
@@ -31,6 +32,17 @@ class ProjectsController < ApplicationController
     project.update_attributes(project_params)
 
     redirect_to project_path(project)
+  end
+
+  def favourite
+    favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
+    if favourite.present?
+      favourite.delete
+    else
+      FavouriteProject.create(project_id: params[:id], user_id: current_user.id)
+    end
+
+    redirect_to project_path(params[:id])
   end
 
   def summary

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-5">
     <div class="box box-widget widget-user-2">
-      <div class="widget-user-header bg-blue">
+      <div class="widget-user-header bg-green">
         <h3 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px"><%= @project.name %>
           <p class='pull-right'><%= link_to "Edit", edit_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %> - <%= link_to "Add Work Entries", work_entries_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
         </h3>
@@ -15,13 +15,13 @@
       </div>
       <div class="box-footer no-padding">
         <ul class="nav nav-stacked">
-          <li><a href="#">Team Leader <span class="pull-right badge bg-blue"><%= @project.team_leader.try(:name) || "-" %></span></a></li>
-          <li><a href="#">Daily Meetings <span class="pull-right badge bg-blue"><%= @project.daily_meeting || "No data about daily meetings" %></span></a></li>
-          <li><a href="#">Retrospectives <span class="pull-right badge bg-blue"><%= @project.retrospectives || "No data about retrospectives" %></span></a></li>
-          <li><a href="#">Iteration Plannings <span class="pull-right badge bg-blue"><%= @project.iteration_planning || "No data about iteration planning" %></span></a></li>
-          <li><a href="#">Estimates Model <span class="pull-right badge bg-blue"><%= @project.estimates_model || "No data about estimates model" %></span></a></li>
-          <li><a href="#">Issue Tracker <span class="pull-right badge bg-blue"><%= @project.issue_tracker || "No data about issue tracker" %></span></a></li>
-          <li><a href="#">Current Version <span class="pull-right badge bg-blue"><%= @project.versions.last || "-" %></span></a></li>
+          <li><a href="#">Team Leader <span class="pull-right badge bg-green"><%= @project.team_leader.try(:name) || "-" %></span></a></li>
+          <li><a href="#">Daily Meetings <span class="pull-right badge bg-green"><%= @project.daily_meeting || "No data about daily meetings" %></span></a></li>
+          <li><a href="#">Retrospectives <span class="pull-right badge bg-green"><%= @project.retrospectives || "No data about retrospectives" %></span></a></li>
+          <li><a href="#">Iteration Plannings <span class="pull-right badge bg-green"><%= @project.iteration_planning || "No data about iteration planning" %></span></a></li>
+          <li><a href="#">Estimates Model <span class="pull-right badge bg-green"><%= @project.estimates_model || "No data about estimates model" %></span></a></li>
+          <li><a href="#">Issue Tracker <span class="pull-right badge bg-green"><%= @project.issue_tracker || "No data about issue tracker" %></span></a></li>
+          <li><a href="#">Current Version <span class="pull-right badge bg-green"><%= @project.versions.last || "-" %></span></a></li>
         </ul>
       </div>
     </div>
@@ -31,20 +31,16 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text"><b>Mision</b></span>
+          <div class="info-box-content" style="margin-left: 0; border-left: 4px solid #00a65a;">
+            <span class="info-box-text" style="margin-bottom: 10px"><b>Mision</b></span>
             <span class="info-box-text"><%= @project.mision %></span>
           </div>
         </div>
       </div>
       <div class="col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text"><b>Vision</b></span>
+          <div class="info-box-content" style="margin-left: 0; border-left: 4px solid #00a65a;">
+            <span class="info-box-text" style="margin-bottom: 10px"><b>Vision</b></span>
             <span class="info-box-text"><%= @project.vision %></span>
           </div>
         </div>

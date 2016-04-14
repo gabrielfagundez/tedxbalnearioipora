@@ -24,7 +24,7 @@
         </a>
       </li>
       <% if current_user.admin? %>
-        <li class="header">MOJITO CRUD</li>
+        <li class="header">ADMIN</li>
         <li class="<%= controller_name == 'users' ? 'active' : '' %>">
           <a href="<%= users_path %>">
             <i class="fa fa-th"></i> <span>Users</span>

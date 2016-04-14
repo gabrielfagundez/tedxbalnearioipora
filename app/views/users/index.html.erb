@@ -13,19 +13,24 @@
         </div>
         <div class="box-body">
           <table class="table table-bordered">
-            <tbody><tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Clients</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Clients</th>
+              </tr>
+            </thead>
+            <tbody>
               <% @users.each do |user| %>
-                <td><%= link_to user.first_name, user_path(user) %></td>
-                <td><%= user.last_name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.role.titleize %></td>
-                <td><%= user.clients.collect(&:name).join(', ') %></td>
+                <tr>
+                  <td><%= link_to user.first_name, edit_user_path(user) %></td>
+                  <td><%= user.last_name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.role.try(:titleize) || "-" %></td>
+                  <td><%= user.clients.collect(&:name).join(', ') %></td>
+                </tr>
               <% end %>
             </tbody>
           </table>

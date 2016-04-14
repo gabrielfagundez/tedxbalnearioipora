@@ -1,0 +1,16 @@
+<%= render partial: 'shared/page_title', locals: { title: 'New User' } %>
+
+<section id= "content" class="content" %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add New User</h3>
+        </div>
+        <%= render partial: 'form', locals: { link: users_path, submit_text: "Create", method: "post" } %>
+      </div>
+    </div>
+  </div>
+
+</section>

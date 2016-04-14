@@ -1,0 +1,16 @@
+<%= render partial: 'shared/page_title', locals: { title: 'Edit User' } %>
+
+<section id= "content" class="content" %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Edit Existing User</h3>
+        </div>
+        <%= render partial: 'form', locals: { link: user_path(@user), submit_text: "Update", method: "patch" } %>
+      </div>
+    </div>
+  </div>
+
+</section>

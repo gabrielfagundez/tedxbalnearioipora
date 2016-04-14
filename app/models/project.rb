@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   has_many :weekly_entries
   has_many :points_completed_entries
   has_many :versions
+  has_many :favourite_projects
   belongs_to :team_leader, class_name: 'TeamMember'
   belongs_to :client
 

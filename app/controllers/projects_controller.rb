@@ -4,16 +4,26 @@ class ProjectsController < ApplicationController
   before_filter :process_points_completed_entries
 
   def index
-    @clients = params[:client_id].present? ? Client.includes(:projects).where(id: params[:client_id]) : Client.all.includes(:projects)
+    @clients =
+      params[:client_id].present? ?
+        current_user.clients.includes(:projects).where(id: params[:client_id]) :
+        current_user.clients.includes(:projects)
   end
 
   def show
     @project = Project.find(params[:id])
+    unless @project.client.users.collect(&:id).include? current_user.id
+      redirect_to projects_path
+    end
   end
 
   def edit
     @team_members = TeamMember.all
     @project = Project.find(params[:id])
+
+    unless @project.client.users.collect(&:id).include? current_user.id
+      redirect_to projects_path
+    end
   end
 
   def update

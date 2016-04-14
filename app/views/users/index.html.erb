@@ -17,7 +17,7 @@
               <th>Clients</th>
             </tr>
               <% @users.each do |user| %>
-                <td><%= user.first_name %></td>
+                <td><%= link_to user.first_name, user_path(user) %></td>
                 <td><%= user.last_name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.clients.collect(&:name).join(', ') %></td>

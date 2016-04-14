@@ -137,16 +137,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,127,255,1)",
           data: [
-            total_communication_for_week(weeks[0]),
-            total_communication_for_week(weeks[1]),
-            total_communication_for_week(weeks[2]),
-            total_communication_for_week(weeks[3]),
-            total_communication_for_week(weeks[4]),
-            total_communication_for_week(weeks[5]),
-            total_communication_for_week(weeks[6]),
-            total_communication_for_week(weeks[7]),
-            total_communication_for_week(weeks[8]),
-            total_communication_for_week(weeks[9])
+            average(total_communication_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_communication_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_communication_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_communication_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_communication_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_communication_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_communication_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_communication_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_communication_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_communication_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -158,16 +158,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,255,127,1)",
           data: [
-            total_development_for_week(weeks[0]),
-            total_development_for_week(weeks[1]),
-            total_development_for_week(weeks[2]),
-            total_development_for_week(weeks[3]),
-            total_development_for_week(weeks[4]),
-            total_development_for_week(weeks[5]),
-            total_development_for_week(weeks[6]),
-            total_development_for_week(weeks[7]),
-            total_development_for_week(weeks[8]),
-            total_development_for_week(weeks[9])
+            average(total_development_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_development_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_development_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_development_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_development_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_development_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_development_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_development_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_development_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_development_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -179,16 +179,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,127,127,1)",
           data: [
-            total_bugs_for_week(weeks[0]),
-            total_bugs_for_week(weeks[1]),
-            total_bugs_for_week(weeks[2]),
-            total_bugs_for_week(weeks[3]),
-            total_bugs_for_week(weeks[4]),
-            total_bugs_for_week(weeks[5]),
-            total_bugs_for_week(weeks[6]),
-            total_bugs_for_week(weeks[7]),
-            total_bugs_for_week(weeks[8]),
-            total_bugs_for_week(weeks[9])
+            average(total_bugs_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_bugs_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_bugs_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_bugs_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_bugs_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_bugs_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_bugs_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_bugs_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_bugs_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_bugs_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -200,16 +200,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,127,127,1)",
           data: [
-            total_code_review_for_week(weeks[0]),
-            total_code_review_for_week(weeks[1]),
-            total_code_review_for_week(weeks[2]),
-            total_code_review_for_week(weeks[3]),
-            total_code_review_for_week(weeks[4]),
-            total_code_review_for_week(weeks[5]),
-            total_code_review_for_week(weeks[6]),
-            total_code_review_for_week(weeks[7]),
-            total_code_review_for_week(weeks[8]),
-            total_code_review_for_week(weeks[9])
+            average(total_code_review_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_code_review_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_code_review_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_code_review_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_code_review_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_code_review_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_code_review_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_code_review_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_code_review_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_code_review_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -221,16 +221,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,255,127,1)",
           data: [
-            total_qa_for_week(weeks[0]),
-            total_qa_for_week(weeks[1]),
-            total_qa_for_week(weeks[2]),
-            total_qa_for_week(weeks[3]),
-            total_qa_for_week(weeks[4]),
-            total_qa_for_week(weeks[5]),
-            total_qa_for_week(weeks[6]),
-            total_qa_for_week(weeks[7]),
-            total_qa_for_week(weeks[8]),
-            total_qa_for_week(weeks[9])
+            average(total_qa_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_qa_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_qa_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_qa_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_qa_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_qa_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_qa_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_qa_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_qa_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_qa_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -242,16 +242,16 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,191,127,1)",
           data: [
-            total_infraestructure_for_week(weeks[0]),
-            total_infraestructure_for_week(weeks[1]),
-            total_infraestructure_for_week(weeks[2]),
-            total_infraestructure_for_week(weeks[3]),
-            total_infraestructure_for_week(weeks[4]),
-            total_infraestructure_for_week(weeks[5]),
-            total_infraestructure_for_week(weeks[6]),
-            total_infraestructure_for_week(weeks[7]),
-            total_infraestructure_for_week(weeks[8]),
-            total_infraestructure_for_week(weeks[9])
+            average(total_infraestructure_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_infraestructure_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_infraestructure_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_infraestructure_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_infraestructure_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_infraestructure_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_infraestructure_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_infraestructure_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_infraestructure_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_infraestructure_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         },
         {
@@ -263,20 +263,28 @@ class Project < ActiveRecord::Base
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(191,127,255,1)",
           data: [
-            total_uxui_for_week(weeks[0]),
-            total_uxui_for_week(weeks[1]),
-            total_uxui_for_week(weeks[2]),
-            total_uxui_for_week(weeks[3]),
-            total_uxui_for_week(weeks[4]),
-            total_uxui_for_week(weeks[5]),
-            total_uxui_for_week(weeks[6]),
-            total_uxui_for_week(weeks[7]),
-            total_uxui_for_week(weeks[8]),
-            total_uxui_for_week(weeks[9])
+            average(total_uxui_for_week(weeks[0]), total_hours_for_week(weeks[0])),
+            average(total_uxui_for_week(weeks[1]), total_hours_for_week(weeks[1])),
+            average(total_uxui_for_week(weeks[2]), total_hours_for_week(weeks[2])),
+            average(total_uxui_for_week(weeks[3]), total_hours_for_week(weeks[3])),
+            average(total_uxui_for_week(weeks[4]), total_hours_for_week(weeks[4])),
+            average(total_uxui_for_week(weeks[5]), total_hours_for_week(weeks[5])),
+            average(total_uxui_for_week(weeks[6]), total_hours_for_week(weeks[6])),
+            average(total_uxui_for_week(weeks[7]), total_hours_for_week(weeks[7])),
+            average(total_uxui_for_week(weeks[8]), total_hours_for_week(weeks[8])),
+            average(total_uxui_for_week(weeks[9]), total_hours_for_week(weeks[9]))
           ]
         }
       ]
     }
+  end
+
+  def average(value, total)
+    if total == 0.0
+      0
+    else
+      (value * 100 / total).round(1)
+    end
   end
 
   def historical

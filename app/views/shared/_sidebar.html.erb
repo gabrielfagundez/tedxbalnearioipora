@@ -18,16 +18,16 @@
           <i class="fa fa-th"></i> <span>Projects</span>
         </a>
       </li>
-      <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
-        <a href="<%= team_members_path %>">
-          <i class="fa fa-th"></i> <span>Team Members</span>
-        </a>
-      </li>
       <% if current_user.admin? %>
         <li class="header">ADMIN</li>
         <li class="<%= controller_name == 'users' ? 'active' : '' %>">
           <a href="<%= users_path %>">
             <i class="fa fa-th"></i> <span>Users</span>
+          </a>
+        </li>
+        <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
+          <a href="<%= team_members_path %>">
+            <i class="fa fa-th"></i> <span>Team Members</span>
           </a>
         </li>
       <% end %>

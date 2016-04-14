@@ -19,8 +19,8 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @team_members = TeamMember.all
     @project = Project.find(params[:id])
+    @team_members = @project.team_members.all
 
     unless @project.client.users.collect(&:id).include? current_user.id
       redirect_to projects_path
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
 
   def work_entries
     @project = Project.find(params[:id])
-    @team_members = TeamMember.all
+    @team_members = @project.team_members.all
   end
 
   def enter_work_entries

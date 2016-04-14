@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   has_many :favourite_projects
   belongs_to :team_leader, class_name: 'TeamMember'
   belongs_to :client
+  has_and_belongs_to_many :team_members
 
   def self.favourites
     where(favourite: true)

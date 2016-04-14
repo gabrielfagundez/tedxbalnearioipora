@@ -4,6 +4,5 @@ class AddUserAssignment < ActiveRecord::Migration
       t.integer :user_id
       t.integer :client_id
     end
-
   end
 end

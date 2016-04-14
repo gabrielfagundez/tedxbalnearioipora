@@ -1,0 +1,31 @@
+<%= form_tag(link, method: method) do %>
+  <div class="box-body">
+
+    <% if @team_member.errors.present? %>
+      <%= @team_member.errors.full_messages %>
+    <% end %>
+
+    <div class="form-group">
+      <label>Name</label>
+      <%= text_field_tag 'team_member[name]', @team_member.name, type: 'text', class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label>Role</label>
+      <%= text_field_tag 'team_member[role]', @team_member.role, type: 'text', class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label>Projects Assigned</label>
+      <%= select_tag 'projects', options_from_collection_for_select(@projects, "id", "name", @team_member.projects.collect(&:id)), multiple: true, class: "form-control"  %>
+      <p class="help-block">
+        Select those projects of the team member.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="box-footer">
+    <%= submit_tag submit_text, class: "btn btn-primary" %>
+  </div>
+<% end %>

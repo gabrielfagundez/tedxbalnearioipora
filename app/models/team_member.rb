@@ -1,5 +1,7 @@
 class TeamMember < ActiveRecord::Base
 
+  has_and_belongs_to_many :projects
+
   def self.load_seeds
     TeamMember.create(name: 'Gabriel Fagundez', role: 'Team Leader')
     TeamMember.create(name: 'Santiago Estrago', role: 'Developer')

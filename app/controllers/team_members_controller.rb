@@ -6,6 +6,11 @@ class TeamMembersController < ApplicationController
     @team_members = TeamMember.all
   end
 
+  def new
+    @team_member = TeamMember.new
+    @projects = Project.all
+  end
+
   def edit
     @projects = Project.all
   end
@@ -19,6 +24,19 @@ class TeamMembersController < ApplicationController
       redirect_to team_members_path
     else
       render :edit
+    end
+  end
+
+  def create
+    @team_member = TeamMember.new(tm_params)
+
+    if @team_member.save
+      params[:projects].each do |project_id|
+        @team_member.projects << Project.find(project_id)
+      end if params[:projects].present?
+      redirect_to team_members_path
+    else
+      render :new
     end
   end
 

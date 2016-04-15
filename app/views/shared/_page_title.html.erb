@@ -1,6 +1,11 @@
+<% add_link ||= nil %>
+
 <section class="content-header">
   <h1>
     <%= title %>
+    <% if add_link.present? %>
+      <%= link_to "Add", add_link, class: "label label-info" %>
+    <% end %>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

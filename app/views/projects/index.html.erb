@@ -3,12 +3,20 @@
 <section class="content">
 
   <% @clients.each do |client| %>
-    <h2 class="page-header"><%= client.name %></h2>
-
-    <div class="row">
-      <% client.projects.each do |project| %>
-        <%= render partial: 'projects/project_box', locals: { p: project, url: project_path(project), description: project.vision } %>
-      <% end %>
+    <div class="box box-widget">
+      <div class="box-header with-border">
+        <div class="user-block">
+          <span class="username" style="margin-left: 0"><%= client.name %></span>
+          <span class="description" style="margin-left: 0"><%= "#{client.projects.length} projects" %></span>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <% client.projects.each do |project| %>
+            <%= render partial: 'projects/project_box', locals: { p: project, url: project_path(project), description: project.vision } %>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 

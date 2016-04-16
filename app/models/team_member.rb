@@ -3,20 +3,6 @@ class TeamMember < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_many :weekly_entries
 
-  def self.load_seeds
-    TeamMember.create(name: 'Gabriel Fagundez', role: 'Team Leader')
-    TeamMember.create(name: 'Santiago Estrago', role: 'Developer')
-    TeamMember.create(name: 'Patricio Maite', role: 'Developer')
-    TeamMember.create(name: 'Pablo Ifrán', role: 'Technical Architect')
-    TeamMember.create(name: 'Andreas Fast', role: 'Team Leader')
-    TeamMember.create(name: 'Lesly Acuña', role: 'Developer')
-    TeamMember.create(name: 'Agustín Daguerre', role: 'Developer')
-    TeamMember.create(name: 'JR González', role: 'Developer')
-    TeamMember.create(name: 'Lucía Carozzi', role: 'Developer')
-    TeamMember.create(name: 'Checho', role: 'Developer')
-    TeamMember.create(name: 'Virgnia Rodríguez', role: 'Technical Architect')
-  end
-
   def summary
     weeks = [
       (Date.today.beginning_of_week(:monday) - 10.week).to_s,

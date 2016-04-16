@@ -83,6 +83,11 @@
               <label>Issue Tracker</label>
               <%= text_field_tag 'project[issue_tracker]', @project.issue_tracker, class: "form-control", placeholder: "JIRA" %>
             </div>
+
+            <div class="form-group">
+              <label>Code Review Model</label>
+              <%= text_field_tag 'project[code_review_model]', @project.code_review_model, class: "form-control", placeholder: "Gerrit" %>
+            </div>
           </div>
 
           <div class="box-footer">

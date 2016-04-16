@@ -1,6 +1,6 @@
 <div class="col-md-4">
   <div class="box box-widget widget-user-2">
-    <a href="<%= link %>">
+    <a href="<%= team_member_path(tm) %>">
       <div class="widget-user-header bg-green">
         <div class="widget-user-image">
           <img src="<%= image_path('user.svg') %>" alt="User Avatar">
@@ -14,6 +14,7 @@
       <ul class="nav nav-stacked">
         <li><a href="#">Role <span class="pull-right badge bg-green"><%= tm.role %></span></a></li>
         <li><a href="#">Projects <span class="pull-right badge bg-green"><%= tm.projects.collect(&:name).join(", ") %></span></a></li>
+        <li><a href="<%= edit_team_member_path(tm) %>">Edit Team Member</a></li>
       </ul>
     </div>
   </div>

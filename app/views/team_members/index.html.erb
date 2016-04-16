@@ -4,7 +4,7 @@
 
   <div class="row">
     <% @team_members.each do |tm| %>
-      <%= render partial: 'team_members/team_member_box', locals: { tm: tm, link: edit_team_member_path(tm), new: false } %>
+      <%= render partial: 'team_members/team_member_box', locals: { tm: tm } %>
     <% end %>
     </div>
   </div>

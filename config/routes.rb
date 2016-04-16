@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :clients
-  resources :team_members
+  resources :team_members do
+    member do
+      get :summary
+    end
+  end
   resources :users
   resources :projects do
     member do

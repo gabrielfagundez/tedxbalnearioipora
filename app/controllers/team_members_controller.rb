@@ -6,6 +6,14 @@ class TeamMembersController < ApplicationController
     @team_members = TeamMember.all
   end
 
+  def summary
+    render json: TeamMember.find(params[:id]).summary.to_json
+  end
+
+  def show
+    @team_member = TeamMember.find(params[:id])
+  end
+
   def new
     @team_member = TeamMember.new
     @projects = Project.all

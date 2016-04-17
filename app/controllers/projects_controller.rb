@@ -17,6 +17,17 @@ class ProjectsController < ApplicationController
     @favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
+  def new
+  end
+
+  def create
+    project = Project.create(project_params)
+    project.client_id = params[:client_id]
+    project.save
+
+    redirect_to projects_path
+  end
+
   def edit
     @project = Project.find_by_id(params[:id])
     redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
@@ -110,7 +121,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     if params[:project].present?
-      params.require(:project).permit(:mision, :vision, :team_leader_id, :code_review_model, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+      params.require(:project).permit(:name, :mision, :vision, :team_leader_id, :code_review_model, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
     else
       {}
     end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :set_user, only: [:edit, :update]
+  before_filter :check_auth
 
   def index
     @users = User.all
@@ -49,6 +50,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def check_auth
+    redirect_to root_path if cannot? :manage, :team_members
   end
 
 end

@@ -23,7 +23,4 @@ end
 
 # User management
 gem 'devise'
-
-# Toggl integration
-# gem 'togglv8'
-# gem 'awesome_print', require: 'ap'
+gem 'cancancan', '~> 1.10'

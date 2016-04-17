@@ -1,5 +1,6 @@
 class TeamMembersController < ApplicationController
 
+  before_filter :check_auth
   before_filter :set_tm, only: [:edit, :update]
 
   def index
@@ -56,6 +57,10 @@ class TeamMembersController < ApplicationController
 
   def set_tm
     @team_member = TeamMember.find(params[:id])
+  end
+
+  def check_auth
+    redirect_to root_path if cannot? :manage, :team_members
   end
 
 end

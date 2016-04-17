@@ -41,6 +41,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    cancancan (1.13.1)
     concurrent-ruby (1.0.1)
     daemons (1.2.3)
     debug_inspector (0.0.2)
@@ -153,6 +154,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancancan (~> 1.10)
   devise
   jbuilder (~> 2.0)
   jquery-rails

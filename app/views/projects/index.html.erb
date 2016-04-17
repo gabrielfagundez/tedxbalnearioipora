@@ -9,6 +9,11 @@
           <span class="username" style="margin-left: 0"><%= client.name %></span>
           <span class="description" style="margin-left: 0"><%= "#{client.projects.length} projects" %></span>
         </div>
+        <% if can? :manage, :projects %>
+          <div class="box-tools pull-right">
+            <a href="<%= new_project_path({ client_id: client.id }) %>"><span class="label label-info">Add New Project</span></a>
+          </div>
+        <% end %>
       </div>
       <div class="box-body">
         <div class="row">

@@ -11,20 +11,17 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find_by_id(params[:id])
+    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+
     @favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
-    unless @project.client.users.collect(&:id).include? current_user.id
-      redirect_to projects_path
-    end
   end
 
   def edit
-    @project = Project.find(params[:id])
-    @team_members = @project.team_members.all
+    @project = Project.find_by_id(params[:id])
+    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
 
-    unless @project.client.users.collect(&:id).include? current_user.id
-      redirect_to projects_path
-    end
+    @team_members = @project.team_members.all
   end
 
   def update

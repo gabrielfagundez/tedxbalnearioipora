@@ -3,7 +3,9 @@
 <section id= "content" class="content" %>
 
   <%= render partial: 'projects/details' %>
-  <%= render partial: 'projects/summary' %>
+  <% if can? :manage, :project_sensitive_data %>
+    <%= render partial: 'projects/summary' %>
+  <% end %>
 
   <div class="row">
     <div class="col-xs-12">

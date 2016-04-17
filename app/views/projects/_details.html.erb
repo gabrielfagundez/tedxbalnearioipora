@@ -3,13 +3,15 @@
     <div class="box box-widget widget-user-2">
       <div class="widget-user-header bg-green">
         <h3 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px"><%= @project.name %>
-          <p class='pull-right'><%= link_to "Edit", edit_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %> - <%= link_to "Add Work Entries", work_entries_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
+          <% if @favourite %>
+            <p class='pull-right'><%= link_to "Remove Favourite", favourite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
+          <% else %>
+            <p class='pull-right'><%= link_to "Mark as Favourite", favourite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
+          <% end %>
         </h3>
         <h5 class="widget-user-desc" style="margin-left: 0"><%= @project.client.name %>
-          <% if @favourite %>
-            <p class='pull-right'><%= link_to "Remove Favourite", favourite_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %></p>
-          <% else %>
-            <p class='pull-right'><%= link_to "Mark as Favourite", favourite_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %></p>
+          <% if can? :manage, :projects %>
+            <p class='pull-right'><%= link_to "Edit", edit_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %> - <%= link_to "Add Work Entries", work_entries_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %></p>
           <% end %>
         </h5>
       </div>

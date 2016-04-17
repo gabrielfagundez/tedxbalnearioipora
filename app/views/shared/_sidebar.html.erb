@@ -18,18 +18,23 @@
           <i class="fa fa-th"></i> <span>Projects</span>
         </a>
       </li>
-      <% if current_user.admin? %>
+      <% if can?(:manage, :admin) || can?(:manage, :team_members) %>
         <li class="header">ADMIN</li>
-        <li class="<%= controller_name == 'users' ? 'active' : '' %>">
-          <a href="<%= users_path %>">
-            <i class="fa fa-th"></i> <span>Users</span>
-          </a>
-        </li>
-        <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
-          <a href="<%= team_members_path %>">
-            <i class="fa fa-th"></i> <span>Team Members</span>
-          </a>
-        </li>
+
+        <% if can? :manage, :admin %>
+          <li class="<%= controller_name == 'users' ? 'active' : '' %>">
+            <a href="<%= users_path %>">
+              <i class="fa fa-th"></i> <span>Users</span>
+            </a>
+          </li>
+        <% end %>
+        <% if can? :manage, :team_members %>
+          <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
+            <a href="<%= team_members_path %>">
+              <i class="fa fa-th"></i> <span>Team Members</span>
+            </a>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </section>

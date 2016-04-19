@@ -10,8 +10,8 @@
         <div class="box box-widget">
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
-              <li><a href="#" data-billable-name="Billable" data-billable-id="billable" class="js-select-billable">Yes<span class="pull-right badge bg-aqua">Select</span></a></li>
-              <li><a href="#" data-billable-name="Not Billable" data-billable-id="not_billable" class="js-select-billable">No<span class="pull-right badge bg-aqua">Select</span></a></li>
+              <li><a href="#" data-billable-name="Billable" data-billable-id="billable" ng-click="selectEntity('billable', { name: 'Billable', id: 'billable' }, '#billable_modal')">Yes<span class="pull-right badge bg-aqua">Select</span></a></li>
+              <li><a href="#" data-billable-name="Not Billable" data-billable-id="not_billable" ng-click="selectEntity('billable', { name: 'Not Billable', id: 'not_billable' }, '#billable_modal')">No<span class="pull-right badge bg-aqua">Select</span></a></li>
             </ul>
           </div>
         </div>

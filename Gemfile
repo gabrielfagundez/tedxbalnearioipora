@@ -24,3 +24,6 @@ end
 # User management
 gem 'devise'
 gem 'cancancan', '~> 1.10'
+
+# Assets handling
+gem 'bower-rails'

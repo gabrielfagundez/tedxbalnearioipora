@@ -25,4 +25,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :time_entries, except: [:new, :edit] do
+      collection do
+        get :last
+      end
+      member do
+        put :close
+      end
+    end
+  end
+
 end

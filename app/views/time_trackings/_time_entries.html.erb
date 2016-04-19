@@ -7,29 +7,23 @@
     </div>
   </header>
 
-  <% [
-      { description: '#121', project: "YoYoBlox", tag: "2 - Development", duration: "09:03 min", from: "17:10", to: "17:19" },
-    ].each do |te| %>
-
-    <div class="c-time-entry">
-      <div class="c-time-entry__description">
-        <%= te[:description] %>
-        <span class="label label-info"><%= te[:project] %></span>
-      </div>
-
-      <div class="c-time-entry__timespan">
-        <%= "#{te[:from]} - #{te[:to]}" %>
-      </div>
-
-      <div class="c-time-entry__duration">
-        <%= te[:duration] %>
-      </div>
-
-      <div class="c-time-entry__tag">
-        <span class="c-time-entry__tag__label label"><%= te[:tag] %></span>
-      </div>
+  <div class="c-time-entry" ng-repeat="te in timeEntries">
+    <div class="c-time-entry__description">
+      {{ te.description }}
+      <span class="label label-info">{{ te.project }}</span>
     </div>
 
-  <% end %>
+    <div class="c-time-entry__timespan">
+      {{ formatFromTo(te.from, te.to) }}
+    </div>
+
+    <div class="c-time-entry__duration">
+      {{ te.duration }}
+    </div>
+
+    <div class="c-time-entry__tag">
+      <span class="c-time-entry__tag__label label">{{ te.tag }}</span>
+    </div>
+  </div>
 
 </section>

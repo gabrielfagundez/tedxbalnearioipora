@@ -13,7 +13,7 @@
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
                 <% client.projects.each do |project| %>
-                  <li><a href="#" data-project-name="<%= project.name %>" data-project-id="<%= project.id %>" class="js-select-project"><%= project.name %><span class="pull-right badge bg-aqua">Select</span></a></li>
+                  <li><a href="#" data-project-name="<%= project.name %>" data-project-id="<%= project.id %>" ng-click="selectEntity('project', { name: '<%= project.name %>', id: '<%= project.id %>' }, '#project_modal')"><%= project.name %><span class="pull-right badge bg-aqua">Select</span></a></li>
                 <% end %>
               </ul>
             </div>

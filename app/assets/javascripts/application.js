@@ -15,4 +15,14 @@
 //= require bootstrap/bootstrap
 //= require adminlte/adminlte
 //= require chart/chart
-//= require_tree .
+//= require angular/angular
+//= require angular-route/angular-route
+//= require angular-resource/angular-resource
+//= require angular-sanitize/angular-sanitize
+//= require angular-messages/angular-messages
+
+//= require app
+//= require routes
+//= require_tree ./charts
+//= require_tree ./components
+//= require_tree ./models

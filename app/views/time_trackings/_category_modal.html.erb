@@ -11,7 +11,7 @@
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
               <% @categories.each do |category| %>
-                  <li><a href="#" data-category-name="<%= category %>" data-category-id="<%= category %>" class="js-select-category"><%= category %><span class="pull-right badge bg-aqua">Select</span></a></li>
+                  <li><a href="#" data-category-name="<%= category.name %>" data-category-id="<%= category.id %>" class="js-select-category" ng-click="selectEntity('category', { name: '<%= category.name %>', id: '<%= category.id %>' }, '#category_modal')"><%= category.name %><span class="pull-right badge bg-aqua">Select</span></a></li>
               <% end %>
             </ul>
           </div>

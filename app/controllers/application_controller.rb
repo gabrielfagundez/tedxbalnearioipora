@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_beta
+    redirect_to root_path if cannot? :manage, :beta
+  end
+
 end

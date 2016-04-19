@@ -27,7 +27,7 @@
 
     <div class="form-group">
       <label>Role</label>
-      <%= select_tag 'user[role]', options_for_select([["Team Member", "team_member"], ["Client Manager", "client_manager"], ["Admin", "admin"]], @user.role || "team_member"), class: "form-control"  %>
+      <%= select_tag 'user[role]', options_for_select([["Team Member", "team_member"], ["Client Manager", "client_manager"], ["Admin", "admin"], ["Beta", "beta"]], @user.role || "team_member"), class: "form-control"  %>
     </div>
 
     <div class="form-group">

@@ -8,6 +8,13 @@
           <i class="fa fa-th"></i> <span>Dashboard</span>
         </a>
       </li>
+      <% if can? :manage, :beta %>
+        <li class="<%= controller_name == 'time_trackings' ? 'active' : '' %>">
+          <a href="<%= time_tracking_path %>">
+            <i class="fa fa-th"></i> <span>Time Tracking</span>
+          </a>
+        </li>
+      <% end %>
       <li class="<%= controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
           <i class="fa fa-th"></i> <span>Clients</span>

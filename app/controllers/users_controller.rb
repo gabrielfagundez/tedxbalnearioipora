@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       params[:clients].each do |client_id|
         @user.clients << Client.find(client_id)
-      end
+      end if params[:clients].present?
       redirect_to users_path
     else
       render :new

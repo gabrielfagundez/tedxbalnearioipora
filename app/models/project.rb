@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   before_save :nil_if_blank
 
   has_many :weekly_entries
+  has_many :time_entries
   has_many :points_completed_entries
   has_many :versions
   has_many :favourite_projects

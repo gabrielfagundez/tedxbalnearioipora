@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :validatable
 
   has_and_belongs_to_many :clients
+  belongs_to :account
   has_many :favourite_projects
   has_many :time_entries
 

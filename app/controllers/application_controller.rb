@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  def current_account
+    @current_account ||= current_user.account
+  end
+
   protected
 
   def layout_by_resource

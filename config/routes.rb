@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resource :time_tracking, only: [:show]
+  resource :time_tracking,  only: [:show]
+  resource :account,        only: [:show]
 
   resources :clients
   resources :team_members do

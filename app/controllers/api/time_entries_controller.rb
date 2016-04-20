@@ -3,7 +3,7 @@ class Api::TimeEntriesController < Api::ApiController
   before_filter :sanitize_time_entry_params
 
   def index
-    render json: current_user.time_entries.closed.order("started_at DESC").map{ |te| te.pretty_data }
+    render json: current_user.time_entries.closed.by_started_at.map{ |te| te.pretty_data }
   end
 
   def last

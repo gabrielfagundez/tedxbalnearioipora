@@ -4,16 +4,16 @@ class UsersController < ApplicationController
   before_filter :check_auth
 
   def index
-    @users = User.all
+    @users = current_account.users
   end
 
   def new
-    @user = User.new
+    @user = current_account.users.new
     @clients = Client.all
   end
 
   def create
-    @user = User.new(user_params.merge(password: params[:user][:password]))
+    @user = current_account.users.new(user_params.merge(password: params[:user][:password]))
     if @user.save
       params[:clients].each do |client_id|
         @user.clients << Client.find(client_id)
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @clients = Client.all
+    @clients = current_account.clients
   end
 
   def update
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_account.users.find(params[:id])
   end
 
   def check_auth

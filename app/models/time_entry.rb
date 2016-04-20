@@ -8,6 +8,10 @@ class TimeEntry < ActiveRecord::Base
     where.not(ended_at: nil)
   end
 
+  def self.by_started_at
+    order("started_at DESC")
+  end
+
   def pretty_data
     {
       project: self.project.name,

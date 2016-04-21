@@ -17,8 +17,20 @@
       </div>
       <div class="box-body">
         <div class="row">
-          <% client.projects.each do |project| %>
-            <%= render partial: 'projects/project_box', locals: { p: project, url: project_path(project), description: project.vision } %>
+          <% if client.projects.present? %>
+            <% client.projects.each do |project| %>
+              <%= render partial: 'projects/project_box', locals: { p: project, url: project_path(project), description: project.vision } %>
+            <% end %>
+          <% else %>
+            <div class="c-emtpy-client">
+              <%= image_tag 'project.svg', class: 'c-emtpy-client__image' %>
+              <div class="c-emtpy-client__title">
+                This client doesn't have any project.
+              </div>
+              <div class="c-emtpy-client__description">
+                See the list of the projects here.
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

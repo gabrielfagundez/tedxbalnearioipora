@@ -5,6 +5,10 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
   var currentDurations = {};
   var processedIds = {};
 
+  var keys = {
+    enter: 13
+  }
+
   $scope.entryData = {
     currentTimeEntryId: null,
     description: "",
@@ -67,6 +71,14 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
     $('.js-description').val($scope.entryData.description)
   }
 
+  $scope.keyPressed = function(event) {
+    if(event.keyCode == keys.enter) {
+      if(!$scope.inProgress()) {
+        $scope.startTimer();
+      }
+    }
+  }
+
   $scope.currentDuration = function(id, date, duration) {
     return formatTime(currentDurations[date]);
   }
@@ -105,12 +117,17 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
     $scope.entryData.currentTime = 0;
     setCurrentTime()
 
-    var timeEntryData = {
-      project_id: $scope.entryData.project.id,
-      time_category_id: $scope.entryData.category.id,
-      billable: $scope.entryData.billable.id,
-      description: $('.js-description').val()
+    var timeEntryData = {};
+    if($scope.entryData.project != null) {
+      timeEntryData.project_id = $scope.entryData.project.id;
     }
+    if($scope.entryData.category != null) {
+      timeEntryData.time_category_id = $scope.entryData.category.id;
+    }
+    if($scope.entryData.billable != null) {
+      timeEntryData.billable = $scope.entryData.billable.id;
+    }
+    timeEntryData.description = $('.js-description').val();
 
     TimeEntry.create(timeEntryData).success(function(data) {
       $scope.entryData.currentTimeEntryId = data.id;

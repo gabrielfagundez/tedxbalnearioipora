@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420011747) do
+ActiveRecord::Schema.define(version: 20160421205247) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160420011747) do
     t.integer "client_id"
   end
 
-  create_table "favourite_projects", force: :cascade do |t|
+  create_table "favorite_projects", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "project_id"
     t.datetime "created_at", null: false

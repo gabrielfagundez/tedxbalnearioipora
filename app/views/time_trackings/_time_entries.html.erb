@@ -11,7 +11,7 @@
 
     <div class="c-time-entry__description">
       {{ te.description }}
-      <span class="label label-info">{{ te.project }}</span>
+      <span class="label label-info">{{ te.project.name }}</span>
     </div>
 
     <div class="c-time-entry__timespan">
@@ -23,7 +23,7 @@
     </div>
 
     <div class="c-time-entry__tag">
-      <span class="c-time-entry__tag__label label">{{ te.tag }}</span>
+      <span class="c-time-entry__tag__label label">{{ te.tag.name }}</span>
     </div>
   </div>
 

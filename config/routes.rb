@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :time_entries, except: [:new, :edit] do
       collection do
-        get :last
+        get :last_open
       end
       member do
         put :close

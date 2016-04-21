@@ -23,12 +23,22 @@ class TimeEntry < ActiveRecord::Base
   def pretty_data
     {
       id: self.id,
-      project: self.project.name,
+      project: {
+        id: self.project.try(:id),
+        name: self.project.try(:name)
+      },
+      billable: {
+        id: 'billable',
+        name: 'Billable'
+      },
       description: self.description,
       from: self.started_at.try(:strftime, "%H:%M"),
-      to: self.ended_at.try(:strftime, "%H:%M") || "",
-      duration: self.duration  || 0,
-      tag: self.time_category.name,
+      to: self.ended_at.try(:strftime, "%H:%M"),
+      duration: self.ended_at.present? ? self.duration : (Time.now - self.started_at).round,
+      tag: {
+        id: self.time_category.try(:id),
+        name: self.time_category.try(:name)
+      },
       date: self.format_date
     }
   end

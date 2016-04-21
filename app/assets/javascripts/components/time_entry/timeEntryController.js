@@ -1,22 +1,36 @@
 app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', function($scope, $interval, TimeEntry) {
 
   var interval;
-  var currentTimeEntryId;
   var dateBlock = null;
   var currentDurations = {};
   var processedIds = {};
 
   $scope.entryData = {
-    'project': null,
-    'category': null,
-    'billable': null,
-    'currentTime': null
+    currentTimeEntryId: null,
+    description: "",
+    project: {},
+    category: {},
+    billable: {},
+    currentTime: {}
   }
 
   $scope.timeEntries = [];
   TimeEntry.getAll().success(function(data) {
     $scope.timeEntries = data;
-  })
+  });
+
+  TimeEntry.lastOpen().success(function(data) {
+    if(data != null) {
+      $scope.entryData.currentTime = data.duration;
+      $scope.entryData.currentTimeEntryId = data.id;
+      $scope.entryData.description = data.description;
+      setCurrentTime();
+      setDescription();
+      $scope.entryData.project = { id: data.project.id, name: data.project.name };
+      $scope.entryData.category = { id: data.tag.id, name: data.tag.name };
+      $scope.entryData.billable = { id: data.billable.id, name: data.billable.name };
+    }
+  });
 
   var formatTime = function(secs) {
     if(secs <= 60) {
@@ -39,6 +53,18 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
 
       return hs + ":" + mn + ":" + sc;
     }
+  }
+
+  var setCurrentTime = function() {
+    $('.js-time').val(formatTime($scope.entryData['currentTime']))
+    interval = $interval(function() {
+      $scope.entryData.currentTime += 1;
+      $('.js-time').val(formatTime($scope.entryData['currentTime']))
+    }, 1000)
+  }
+
+  var setDescription = function() {
+    $('.js-description').val($scope.entryData.description)
   }
 
   $scope.currentDuration = function(id, date, duration) {
@@ -77,15 +103,17 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
 
   $scope.startTimer = function() {
     $scope.entryData.currentTime = 0;
-    $('.js-time').val(formatTime($scope.entryData['currentTime']))
+    setCurrentTime()
 
-    interval = $interval(function() {
-      $scope.entryData.currentTime += 1;
-      $('.js-time').val(formatTime($scope.entryData['currentTime']))
-    }, 1000)
+    var timeEntryData = {
+      project_id: $scope.entryData.project.id,
+      time_category_id: $scope.entryData.category.id,
+      billable: $scope.entryData.billable.id,
+      description: $('.js-description').val()
+    }
 
-    TimeEntry.create().success(function(data) {
-      currentTimeEntryId = data.id;
+    TimeEntry.create(timeEntryData).success(function(data) {
+      $scope.entryData.currentTimeEntryId = data.id;
     });
   }
 
@@ -103,7 +131,7 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
 
     $('.js-description').val("")
 
-    TimeEntry.close(currentTimeEntryId, timeEntryData);
+    TimeEntry.close($scope.entryData.currentTimeEntryId, timeEntryData);
     TimeEntry.getAll().success(function(data) {
       $scope.timeEntries = data;
     })

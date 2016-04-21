@@ -6,14 +6,20 @@ class Api::TimeEntriesController < Api::ApiController
     render json: current_user.time_entries.last_7_days.closed.by_started_at.map{ |te| te.pretty_data }
   end
 
-  def last
+  def last_open
+    last_entry = current_user.time_entries.last
+    if last_entry.ended_at == nil
+      render json: last_entry.pretty_data
+    else
+      render json: nil
+    end
   end
 
   def show
   end
 
   def create
-    te = TimeEntry.create(user_id: current_user.id, started_at: DateTime.now.utc)
+    te = TimeEntry.create(time_entry_params.merge(user_id: current_user.id, started_at: DateTime.now.utc))
 
     render json: te.to_json
   end

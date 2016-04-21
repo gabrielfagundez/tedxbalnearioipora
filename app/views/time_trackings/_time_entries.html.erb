@@ -9,10 +9,11 @@
       </div>
     </div>
 
-    <div class="c-time-entry__description">
+    <div class="c-time-entry__description" contenteditable="true">
       {{ te.description }}
-      <span class="label label-info">{{ te.project.name }}</span>
     </div>
+
+    <span class="label label-info">{{ te.project.name }}</span>
 
     <div class="c-time-entry__timespan">
       {{ formatFromTo(te.from, te.to) }}

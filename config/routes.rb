@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resource :time_tracking,  only: [:show]
-  resource :account,        only: [:show]
+  resource :account,        only: [:show, :update]
 
   resources :clients
   resources :reports, only: :index

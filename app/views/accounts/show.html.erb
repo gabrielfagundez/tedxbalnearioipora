@@ -3,7 +3,37 @@
 <section id= "content" class="content" %>
   <div class="row">
     <div class="col-xs-7">
+      <div class="box box-widget widget-user-2">
+        <div class="widget-user-header bg-green">
+          <h3 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px">General Account Attributes</h3>
+          <h5 class="widget-user-desc" style="margin-left: 0">Change general attributes of your account</h5>
+        </div>
+        <div class="box-footer no-padding">
+          <%= form_tag(account_path, method: "patch") do %>
+            <div class="box-body">
+              <div class="form-group">
+                <label>Account name</label>
+                <%= text_field_tag 'account[name]', @account.name, class: "form-control" %>
+                <p class="help-block">
+                  Select the name of the account.
+                </p>
+              </div>
 
+              <div class="form-group">
+                <label>New projects are by default</label>
+                <%= select_tag 'account[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@account.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
+                <p class="help-block">
+                  By default, new projects has billable entries.
+                </p>
+              </div>
+            </div>
+
+            <div class="box-footer">
+              <%= submit_tag "Save", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col-xs-5">
       <div class="box box-widget widget-user-2">

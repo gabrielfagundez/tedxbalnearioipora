@@ -20,6 +20,7 @@
 //= require angular-resource/angular-resource
 //= require angular-sanitize/angular-sanitize
 //= require angular-messages/angular-messages
+//= require angular-ui-select/dist/select.min
 
 //= require app
 //= require routes

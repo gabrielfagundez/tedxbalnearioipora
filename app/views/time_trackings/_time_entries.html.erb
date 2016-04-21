@@ -1,13 +1,14 @@
 <section class="c-time-entries-day">
 
-  <header class="c-timer-entries-group-header">
-    <div class="c-timer-entries-group-header__date-container">
-      <span class="c-timer-entries-group-header__date-container__title">Today</span>
-      <span class="c-timer-entries-group-header__date-container__super">8 h 24 min</span>
-    </div>
-  </header>
-
   <div class="c-time-entry" ng-repeat="te in timeEntries">
+
+    <div class="c-timer-entries-group-header" ng-if="newDateBlock(te.date)">
+      <div class="c-timer-entries-group-header__date-container">
+        <span class="c-timer-entries-group-header__date-container__title">{{ te.date }}</span>
+        <span class="c-timer-entries-group-header__date-container__super">{{ currentDuration(te.id, te.date, te.duration) }}</span>
+      </div>
+    </div>
+
     <div class="c-time-entry__description">
       {{ te.description }}
       <span class="label label-info">{{ te.project }}</span>
@@ -18,7 +19,7 @@
     </div>
 
     <div class="c-time-entry__duration">
-      {{ te.duration }}
+      {{ formatDuration(te.id, te.date, te.duration) }}
     </div>
 
     <div class="c-time-entry__tag">

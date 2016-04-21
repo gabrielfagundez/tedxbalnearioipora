@@ -2,7 +2,7 @@
 
   <section class="sidebar">
     <ul class="sidebar-menu">
-      <li class="header">MAIN NAVIGATION</li>
+      <li class="header">GLOBAL</li>
       <li class="<%= controller_name == 'home' ? 'active' : '' %>">
         <a href="<%= root_path %>">
           <i class="fa fa-th"></i> <span>Dashboard</span>
@@ -14,7 +14,13 @@
             <i class="fa fa-th"></i> <span>Time Tracking</span>
           </a>
         </li>
+        <li class="<%= controller_name == 'reports' ? 'active' : '' %>">
+          <a href="<%= reports_path %>">
+            <i class="fa fa-th"></i> <span>Reports</span>
+          </a>
+        </li>
       <% end %>
+      <li class="header">ENTITIES</li>
       <li class="<%= controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
           <i class="fa fa-th"></i> <span>Clients</span>

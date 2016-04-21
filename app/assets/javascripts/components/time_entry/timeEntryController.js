@@ -2,6 +2,9 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
 
   var interval;
   var currentTimeEntryId;
+  var dateBlock = null;
+  var currentDurations = {};
+  var processedIds = {};
 
   $scope.entryData = {
     'project': null,
@@ -36,6 +39,32 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
 
       return hs + ":" + mn + ":" + sc;
     }
+  }
+
+  $scope.currentDuration = function(id, date, duration) {
+    return formatTime(currentDurations[date]);
+  }
+
+  $scope.formatDuration = function(id, date, duration) {
+    if(currentDurations[date] == null) {
+      if(processedIds[id] == null) {
+        processedIds[id] = true;
+        currentDurations[date] = duration;
+      }
+    } else {
+      if(processedIds[id] == null) {
+        processedIds[id] = true;
+        currentDurations[date] += duration;
+      }
+    }
+
+    return formatTime(duration);
+  }
+
+  $scope.newDateBlock = function(date) {
+    oldDateBlock = dateBlock;
+    dateBlock = date;
+    return oldDateBlock != dateBlock;
   }
 
   $scope.formatFromTo = function(from, to) {

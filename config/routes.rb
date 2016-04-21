@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :account,        only: [:show]
 
   resources :clients
+  resources :reports, only: :index
   resources :team_members do
     member do
       get :summary

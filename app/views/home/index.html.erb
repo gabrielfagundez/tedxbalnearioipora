@@ -3,7 +3,7 @@
 
 <section id= "content" class="content" %>
 
-  <% if @favourite_projects.empty? %>
+  <% if @favorite_projects.empty? %>
     <div class="c-emtpy-fav">
       <%= image_tag 'heart.svg', class: 'c-emtpy-fav__image' %>
       <div class="c-emtpy-fav__title">
@@ -14,7 +14,7 @@
       </div>
     </div>
   <% else %>
-    <% @favourite_projects.each do |project| %>
+    <% @favorite_projects.each do |project| %>
       <div class="row">
         <div class="col-md-6">
           <div class="box box-widget">

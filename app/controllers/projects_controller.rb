@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     @project = Project.find_by_id(params[:id])
     redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
 
-    @favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
+    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
   def new
@@ -42,12 +42,12 @@ class ProjectsController < ApplicationController
     redirect_to project_path(project)
   end
 
-  def favourite
-    favourite = FavouriteProject.where(project_id: params[:id], user_id: current_user.id).first
-    if favourite.present?
-      favourite.delete
+  def favorite
+    favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
+    if favorite.present?
+      favorite.delete
     else
-      FavouriteProject.create(project_id: params[:id], user_id: current_user.id)
+      FavoriteProject.create(project_id: params[:id], user_id: current_user.id)
     end
 
     redirect_to project_path(params[:id])

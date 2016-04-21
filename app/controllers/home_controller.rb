@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @favourite_projects = current_user.favourite_projects.collect(&:project)
+    @favorite_projects = current_user.favorite_projects.collect(&:project)
   end
 
 end

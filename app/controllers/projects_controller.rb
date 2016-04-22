@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find_by_id(params[:id])
+    @account = current_account
     redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
 
     @team_members = @project.team_members.all
@@ -38,6 +39,7 @@ class ProjectsController < ApplicationController
   def update
     project = Project.find(params[:id])
     project.update_attributes(project_params)
+    project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project][:billable].present?
 
     redirect_to project_path(project)
   end
@@ -121,7 +123,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     if params[:project].present?
-      params.require(:project).permit(:name, :mision, :vision, :team_leader_id, :code_review_model, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+      params.require(:project).permit(:name, :mision, :color, :vision, :team_leader_id, :code_review_model, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
     else
       {}
     end

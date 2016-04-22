@@ -21,9 +21,14 @@
 //= require angular-sanitize/angular-sanitize
 //= require angular-messages/angular-messages
 //= require angular-ui-select/dist/select.min
+//= require bootstrap-colorpicker/dist/js/bootstrap-colorpicker
 
 //= require app
 //= require routes
 //= require_tree ./charts
 //= require_tree ./components
 //= require_tree ./models
+
+$(function() {
+  $('.colorpicker-element').colorpicker()
+});

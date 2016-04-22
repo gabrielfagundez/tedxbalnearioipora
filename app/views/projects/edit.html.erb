@@ -6,6 +6,32 @@
     <div class="col-md-6">
       <div class="box box-info">
         <div class="box-header with-border">
+          <h3 class="box-title">Project General Details</h3>
+        </div>
+
+        <%= form_tag(project_path(@project), method: "patch") do %>
+          <div class="box-body">
+            <div class="form-group">
+              <label>Default Billable</label>
+              <%= select_tag 'project[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@project.billable.nil? ? (@account.billable ? 'billable' : 'non_billable') : @project.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
+              <p class="help-block">
+                By default, define if time entries of this project should be billable or not.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label>Color</label>
+              <%= text_field_tag 'project[color]', @project.color, type: 'text', class: "form-control colorpicker-element" %>
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <%= submit_tag "Save", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="box box-info">
+        <div class="box-header with-border">
           <h3 class="box-title">Project Management Details</h3>
         </div>
 

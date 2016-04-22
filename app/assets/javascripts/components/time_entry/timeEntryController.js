@@ -1,4 +1,4 @@
-app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', function($scope, $interval, TimeEntry) {
+app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Project', 'TimeCategory', function($scope, $interval, TimeEntry, Project, TimeCategory) {
 
   var interval;
   var dateBlock = null;
@@ -6,7 +6,9 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
   var processedIds = {};
 
   var keys = {
-    enter: 13
+    enter: 13,
+    at: 64,
+    exc: 33
   }
 
   $scope.entryData = {
@@ -22,6 +24,23 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
   TimeEntry.getAll().success(function(data) {
     $scope.timeEntries = data;
   });
+
+  $scope.projects = [];
+  Project.getAll().success(function(data) {
+    $.each(data, function(index, project) {
+      $scope.projects.push({ id: project.id, name: project.name, clientName: project.client_name });
+    });
+    $scope.selected = { value: $scope.projects[0] };
+  });
+
+  $scope.categories = [];
+  TimeCategory.getAll().success(function(data) {
+    $.each(data, function(index, cat) {
+      $scope.categories.push({ id: cat.id, name: cat.name });
+    });
+    $scope.selected = { value: $scope.categories[0] };
+  });
+
 
   TimeEntry.lastOpen().success(function(data) {
     if(data != null) {
@@ -76,6 +95,10 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', funct
       if(!$scope.inProgress()) {
         $scope.startTimer();
       }
+    } else if(event.keyCode == keys.at) {
+      $scope.selected = { value: $scope.itemArray[2] };
+    } else if(event.keyCode == keys.exc) {
+      console.log(event.keyCode)
     }
   }
 

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    resources :projects, except: [:new, :edit]
+    resources :time_categories, except: [:new, :edit]
     resources :time_entries, except: [:new, :edit] do
       collection do
         get :last_open

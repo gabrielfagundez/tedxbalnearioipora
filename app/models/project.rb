@@ -22,6 +22,14 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def pretty_data
+    {
+      id: self.id,
+      name: self.name,
+      client_name: self.client.name
+    }
+  end
+
   def used_hours
     self.weekly_entries.map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end

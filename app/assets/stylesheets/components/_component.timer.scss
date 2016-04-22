@@ -42,32 +42,68 @@
     }
 
   .c-timer__project {
-    padding-right: 12px;
-    padding-left: 12px;
-    padding-top: 2px;
-    -webkit-box-flex: 0;
-    -moz-box-flex: 0;
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
   }
 
     .c-timer__project__add {
-      display: inline-block;
-      position: static;
-      white-space: nowrap;
-      padding: 22px 0 21px;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
-      color: #595959;
       font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
       line-height: 1;
-      border: 0;
-      cursor: pointer;
-      background: #fff;
+
+      &:focus {
+        outline: none;
+      }
+
+      .ui-select-match {
+        outline: none !important;
+      }
+
+      .btn {
+        background-color: #ffffff;
+        border: none;
+        min-width: 100px;
+        padding: 22px 10px;
+        min-height: 60px;
+        outline: none !important;
+        &:hover, &:active, &:target {
+          background-color: #ffffff !important;
+          border: none !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+      }
+
+      ul {
+        width: auto !important;
+        border: 1px solid #d2d2d2;
+        border-radius: 0px;
+        background-color: #eee;
+      }
+
+      .btn-default-focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      i.caret {
+        display: none;
+      }
+
+      span {
+        min-width: 100px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 400;
+        &:focus {
+          outline: none !important;
+        }
+      }
+      input {
+        min-height: 60px;
+        background-color: #eee;
+        border: none;
+        font-size: 14px;
+        font-weight: 400;
+      }
     }
 
   .c-timer__submit {

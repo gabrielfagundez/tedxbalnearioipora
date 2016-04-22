@@ -2,23 +2,38 @@
 
   <div class="js-timer c-timer">
     <div class="c-timer__description">
-      <input type="text" placeholder="Hey, psst, what are you doing?" tabindex="1" class="js-description c-timer__description__input" ng-keypress="keyPressed($event)">
+      <input tabindex="1" type="text" placeholder="Hey, psst, what are you doing?" tabindex="1" class="js-description c-timer__description__input" ng-keypress="keyPressed($event)">
     </div>
 
     <div class="c-timer__project">
-      <a href="#" tabindex="2" class="c-timer__project__add" data-toggle="modal" data-target="#project_modal"></i>{{ entryData("project") }}</a>
+      <ui-select tabindex="2" ng-model="selected.value" class="c-timer__project__add">
+        <ui-select-match>
+          <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+        <ui-select-choices group-by="'clientName'" repeat="item in (projects | filter: $select.search) track by item.id">
+          <span ng-bind="item.name"></span>
+        </ui-select-choices>
+      </ui-select>
     </div>
 
     <div class="c-timer__project">
-      <a href="#" tabindex="2" class="c-timer__project__add" data-toggle="modal" data-target="#category_modal"></i>{{ entryData("category") }}</a>
+      <ui-select tabindex="3" ng-model="selected.value" class="c-timer__project__add">
+        <ui-select-match>
+          <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="item in (categories | filter: $select.search) track by item.id">
+          <span ng-bind="item.name"></span>
+        </ui-select-choices>
+      </ui-select>
+      <!-- <a href="#" tabindex="2" class="c-timer__project__add" data-toggle="modal" data-target="#category_modal"></i>{{ entryData("category") }}</a> -->
     </div>
 
     <div class="c-timer__project">
-      <a href="#" tabindex="2" class="c-timer__project__add" data-toggle="modal" data-target="#billable_modal"></i>{{ entryData("billable") }}</a>
+      <!-- <a href="#" tabindex="2" class="c-timer__project__add" data-toggle="modal" data-target="#billable_modal"></i>{{ entryData("billable") }}</a> -->
     </div>
 
     <div class="c-timer__time">
-      <input placeholder="0 sec" type="text" maxlength="10" tabindex="5" class="js-time c-timer__time__value" disabled="true">
+      <input tabindex="5" placeholder="0 sec" type="text" maxlength="10" tabindex="5" class="js-time c-timer__time__value" disabled="true">
     </div>
 
     <div class="c-timer__submit">

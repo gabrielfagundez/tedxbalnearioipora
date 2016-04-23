@@ -1457,7 +1457,6 @@ S2.define('select2/selection/single',[
     var $selection = SingleSelection.__super__.render.call(this);
 
     $selection.addClass('select2-selection--single');
-    console.debug($selection)
     $selection.html(
       '<span class="js-selected label select2-selection__rendered"></span>'
     );

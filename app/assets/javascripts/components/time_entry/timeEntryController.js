@@ -18,7 +18,7 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     project: {},
     category: {},
     billable: {},
-    currentTime: {}
+    currentTime: null
   }
 
   $scope.timeEntries = [];
@@ -49,10 +49,13 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     projectSelect = $('.js-proj-select2').select2();
     projectSelect.on("select2:select", onProjectSelect);
     onProjectSelect();
+
+    getLastTimeEntry();
   });
 
   var onProjectSelect = function (e) {
     attrs = projectSelect.val().split('-');
+    $scope.entryData.project = { id: attrs[0] };
     $('.js-project .js-selected').attr('style', 'background-color: ' + attrs[1] + ' !important');
   }
 
@@ -67,24 +70,33 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     $('.js-cat-select2').html(optHTML);
     catSelect = $('.js-cat-select2').select2();
     catSelect.on("select2:select", onCatSelect);
+    onCatSelect();
   });
 
   var onCatSelect = function (e) {
-
+    attrs = catSelect.val().split('-');
+    $scope.entryData.category = { id: attrs[0] };
   }
 
-  TimeEntry.lastOpen().success(function(data) {
-    if(data != null) {
-      $scope.entryData.currentTime = data.duration;
-      $scope.entryData.currentTimeEntryId = data.id;
-      $scope.entryData.description = data.description;
-      setCurrentTime();
-      setDescription();
-      $scope.entryData.project = { id: data.project.id, name: data.project.name };
-      $scope.entryData.category = { id: data.tag.id, name: data.tag.name };
-      $scope.entryData.billable = { id: data.billable.id, name: data.billable.name };
-    }
-  });
+  var getLastTimeEntry = function() {
+    TimeEntry.lastOpen().success(function(data) {
+      if(data != null) {
+        $scope.entryData.currentTime = data.duration;
+        $scope.entryData.currentTimeEntryId = data.id;
+        $scope.entryData.description = data.description;
+        setCurrentTime();
+        setDescription();
+
+        projectSelect.val(data.project.id + "-" + data.project.color).trigger("change");
+        onProjectSelect();
+
+        catSelect.val(data.tag.id).trigger("change");;
+        onCatSelect();
+
+        $scope.entryData.billable = { id: data.billable.id, name: data.billable.name };
+      }
+    });
+  }
 
   var formatTime = function(secs) {
     if(secs <= 60) {
@@ -133,6 +145,10 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
 
   $scope.currentDuration = function(id, date, duration) {
     return formatTime(currentDurations[date]);
+  }
+
+  $scope.empty = function(text) {
+    return text.length == 0;
   }
 
   $scope.formatDuration = function(id, date, duration) {
@@ -204,25 +220,6 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     TimeEntry.getAll().success(function(data) {
       $scope.timeEntries = data;
     })
-  }
-
-  $scope.entryData = function(entityCategory) {
-    if($scope.entryData[entityCategory] != null) {
-      return $scope.entryData[entityCategory].name
-    } else {
-      return entityCategory
-    }
-  }
-
-  $scope.selectEntity = function(entity, entityData, modalId) {
-    $scope.entryData[entity] = {
-      name: entityData.name,
-      id: entityData.id
-    }
-
-    if(modalId != null) {
-      $(modalId).modal('toggle');
-    }
   }
 
 }]);

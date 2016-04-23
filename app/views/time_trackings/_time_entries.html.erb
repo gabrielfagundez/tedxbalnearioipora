@@ -9,9 +9,7 @@
       </div>
     </div>
 
-    <div class="c-time-entry__description" contenteditable="true">
-      {{ te.description }}
-    </div>
+    <div class="c-time-entry__description" contenteditable="true"><i ng-if="empty(te.description)">(no description)</i>{{ te.description }}</div>
 
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :clients
   belongs_to :account
   has_many :favorite_projects
+  has_many :user_events
   has_many :time_entries
 
   def full_name

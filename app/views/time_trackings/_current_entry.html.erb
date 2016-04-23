@@ -18,7 +18,7 @@
     </div>
 
     <div class="c-timer__submit">
-      <a href="#" class="c-timer__submit__addmanually">Add manually</a>
+      <a href="#" class="c-timer__submit__addmanually" ng-click="addTimeEntry()">Add manually</a>
       <button tabindex="6" class="c-timer__submit__button" ng-click="startTimer()" ng-show="!inProgress()">Start</button>
       <button tabindex="6" class="c-timer__submit__button is-red" ng-click="stopTimer()" ng-show="inProgress()">Stop</button>
     </div>

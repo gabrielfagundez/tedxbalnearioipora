@@ -17,6 +17,7 @@
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 
     <div class="c-time-entry__actions">
+      <%= image_tag 'edit.svg', class: 'c-time-entry__actions__img', alt: 'Edit Entry', 'ng-click': "editEntry(te.id)" %>
       <%= image_tag 'delete.svg', class: 'c-time-entry__actions__img', alt: 'Delete Entry', 'ng-click': "deleteEntry(te.id)" %>
     </div>
 

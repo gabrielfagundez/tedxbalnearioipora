@@ -232,6 +232,14 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     })
   }
 
+  $scope.editEntry = function(id) {
+    $('#edit_modal').modal('toggle');
+  }
+
+  $scope.addTimeEntry = function() {
+    $('#edit_modal').modal('toggle');
+  }
+
   $scope.deleteEntry = function(id) {
     dialog = confirm("Are you sure you want to delete this entry?");
     if(dialog) {

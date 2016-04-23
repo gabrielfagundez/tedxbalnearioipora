@@ -26,5 +26,9 @@ app.factory('TimeEntry', ['$http', function($http) {
     return $http.put('/api/time_entries/' + id + '/close', { time_entry_data: timeEntryData })
   };
 
+  service.delete = function(id) {
+    return $http.delete('/api/time_entries/' + id)
+  };
+
   return service;
 }]);

@@ -232,4 +232,14 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     })
   }
 
+  $scope.deleteEntry = function(id) {
+    dialog = confirm("Are you sure you want to delete this entry?");
+    if(dialog) {
+      TimeEntry.delete(id);
+      TimeEntry.getAll().success(function(data) {
+        $scope.timeEntries = data;
+      });
+    }
+  }
+
 }]);

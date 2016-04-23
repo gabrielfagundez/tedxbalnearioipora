@@ -16,6 +16,10 @@
 
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 
+    <div class="c-time-entry__actions">
+      <%= image_tag 'delete.svg', class: 'c-time-entry__actions__img', alt: 'Delete Entry', 'ng-click': "deleteEntry(te.id)" %>
+    </div>
+
     <div class="c-time-entry__timespan">
       {{ formatFromTo(te.from, te.to) }}
     </div>

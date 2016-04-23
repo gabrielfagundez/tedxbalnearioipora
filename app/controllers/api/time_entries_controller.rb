@@ -28,6 +28,11 @@ class Api::TimeEntriesController < Api::ApiController
     render json: te.to_json
   end
 
+  def destroy
+    te = TimeEntry.find(params[:id]).delete
+    render json: {}
+  end
+
   def close
     te = TimeEntry.find(params[:id])
     te.update_attributes(time_entry_params.merge(ended_at: DateTime.now.utc))

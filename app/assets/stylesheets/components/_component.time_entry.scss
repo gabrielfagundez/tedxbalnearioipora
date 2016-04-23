@@ -38,3 +38,15 @@
     padding: 10px;
     color: #aaaaaa;
   }
+
+  .c-time-entry__actions {
+    display: inline-block;
+    float: right;
+  }
+
+    .c-time-entry__actions__img {
+      width: 15px;
+      height: 15px;
+      margin-top: 12px;
+      cursor: pointer;
+    }

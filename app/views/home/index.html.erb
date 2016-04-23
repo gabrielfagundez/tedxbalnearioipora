@@ -3,7 +3,9 @@
 
 <section id= "content" class="content" %>
 
-  <%= render partial: 'upcoming_events' %>
+  <% if can? :manage, :beta %>
+    <%= render partial: 'upcoming_events' %>
+  <% end %>
   <%= render partial: 'fav_projects_details' %>
 
 </section>

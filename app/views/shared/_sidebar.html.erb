@@ -20,7 +20,7 @@
           </a>
         </li> -->
       <% end %>
-      <li class="header">ENTITIES</li>
+      <li class="header">MODELS</li>
       <li class="<%= controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
           <i class="fa fa-th"></i> <span>Clients</span>
@@ -39,10 +39,10 @@
         </li>
       <% end %>
       <% if can?(:manage, :admin) %>
-        <li class="header">ADMIN</li>
+        <li class="header">ACCOUNT ADMIN</li>
           <li class="<%= controller_name == 'users' ? 'active' : '' %>">
             <a href="<%= users_path %>">
-              <i class="fa fa-th"></i> <span>Users</span>
+              <i class="fa fa-th"></i> <span>User Management</span>
             </a>
           </li>
           <li class="<%= controller_name == 'accounts' ? 'active' : '' %>">

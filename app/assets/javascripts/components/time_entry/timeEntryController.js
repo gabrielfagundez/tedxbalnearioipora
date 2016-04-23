@@ -48,15 +48,20 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     $('.js-proj-select2').html(optHTML);
     projectSelect = $('.js-proj-select2').select2();
     projectSelect.on("select2:select", onProjectSelect);
-    onProjectSelect();
+    onProjectSelect(false);
 
     getLastTimeEntry();
   });
 
-  var onProjectSelect = function (e) {
+  var onProjectSelect = function (trigger) {
     attrs = projectSelect.val().split('-');
     $scope.entryData.project = { id: attrs[0] };
     $('.js-project .js-selected').attr('style', 'background-color: ' + attrs[1] + ' !important');
+
+    if(trigger) {
+      var timeEntryData = { project_id: $scope.entryData.project.id };
+      TimeEntry.update($scope.entryData.currentTimeEntryId, timeEntryData);
+    }
   }
 
   $scope.categories = {};
@@ -70,12 +75,17 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     $('.js-cat-select2').html(optHTML);
     catSelect = $('.js-cat-select2').select2();
     catSelect.on("select2:select", onCatSelect);
-    onCatSelect();
+    onCatSelect(false);
   });
 
-  var onCatSelect = function (e) {
+  var onCatSelect = function (trigger) {
     attrs = catSelect.val().split('-');
     $scope.entryData.category = { id: attrs[0] };
+
+    if(trigger) {
+      var timeEntryData = { time_category_id: $scope.entryData.category.id };
+      TimeEntry.update($scope.entryData.currentTimeEntryId, timeEntryData);
+    }
   }
 
   var getLastTimeEntry = function() {
@@ -88,10 +98,10 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
         setDescription();
 
         projectSelect.val(data.project.id + "-" + data.project.color).trigger("change");
-        onProjectSelect();
+        onProjectSelect(true);
 
         catSelect.val(data.tag.id).trigger("change");;
-        onCatSelect();
+        onCatSelect(true);
 
         $scope.entryData.billable = { id: data.billable.id, name: data.billable.name };
       }

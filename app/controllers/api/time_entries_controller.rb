@@ -20,7 +20,11 @@ class Api::TimeEntriesController < Api::ApiController
 
   def create
     te = TimeEntry.create(time_entry_params.merge(user_id: current_user.id, started_at: DateTime.now.utc))
+    render json: te.to_json
+  end
 
+  def update
+    te = TimeEntry.find(params[:id]).update_attributes(time_entry_params)
     render json: te.to_json
   end
 

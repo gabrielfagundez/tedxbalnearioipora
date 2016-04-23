@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160423155032) do
   create_table "project_events", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "type"
+    t.string   "event_type"
     t.datetime "expected_date"
     t.integer  "project_id"
     t.datetime "created_at",    null: false

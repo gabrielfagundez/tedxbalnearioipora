@@ -1,0 +1,43 @@
+<% if @favorite_projects.empty? %>
+  <div class="c-emtpy-fav">
+    <%= image_tag 'heart.svg', class: 'c-emtpy-fav__image' %>
+    <div class="c-emtpy-fav__title">
+      You don't have any favorite project yet.
+    </div>
+    <div class="c-emtpy-fav__description">
+      See the summary of as many projects as you want, clicking on the "Add Favorite" link in the project detail.
+    </div>
+  </div>
+<% else %>
+  <% @favorite_projects.each do |project| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-widget">
+          <div class="box-header with-border">
+            <div class="user-block">
+              <span class="username" style="margin-left: 0"><%= "#{project.client.name} - #{project.name}" %></span>
+              <span class="description" style="margin-left: 0">Velocity report over the last 10 weeks</span>
+            </div>
+          </div>
+          <div class="box-body">
+            <canvas class="project_velocity" data-id=<%= project.id %> height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="box box-widget">
+          <div class="box-header with-border">
+            <div class="user-block">
+              <span class="username" style="margin-left: 0"><%= "#{project.client.name} - #{project.name}" %></span>
+              <span class="description" style="margin-left: 0">Time distribution over the last 10 weeks</span>
+            </div>
+          </div>
+          <div class="box-body">
+            <canvas class="project_summary" data-id=<%= project.id %> height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

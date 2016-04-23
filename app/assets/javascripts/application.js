@@ -22,6 +22,7 @@
 //= require angular-messages/angular-messages
 //= require angular-ui-select/dist/select.min
 //= require bootstrap-colorpicker/dist/js/bootstrap-colorpicker
+//= require select2/dist/js/select2.full
 
 //= require app
 //= require routes
@@ -30,5 +31,6 @@
 //= require_tree ./models
 
 $(function() {
-  $('.colorpicker-element').colorpicker()
+  $('.colorpicker-element').colorpicker();
+  $(".js-example-basic-single").select2();
 });

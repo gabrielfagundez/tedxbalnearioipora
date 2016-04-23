@@ -1,3 +1,3 @@
-var app = angular.module('MojitoApp', ['ui.select', 'ngSanitize']);
+var app = angular.module('MojitoApp', []);
 
 app.run(['$rootScope', function($rootScope){}]);

@@ -4,6 +4,7 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
   var dateBlock = null;
   var currentDurations = {};
   var processedIds = {};
+  var projectSelect, catSelect;
 
   var keys = {
     enter: 13,
@@ -25,22 +26,52 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     $scope.timeEntries = data;
   });
 
-  $scope.projects = [];
+  $scope.projects = {};
   Project.getAll().success(function(data) {
     $.each(data, function(index, project) {
-      $scope.projects.push({ id: project.id, name: project.name, clientName: project.client_name });
+      var clientName = project.client_name;
+
+      if($scope.projects[clientName] == null) {
+        $scope.projects[clientName] = { text: clientName, children: [] };
+      }
+      $scope.projects[clientName].children.push({ id: project.id, text: project.name, color: project.color })
     });
-    $scope.selected = { value: $scope.projects[0] };
+
+    var optHTML = "";
+    $.each($scope.projects, function(id, client) {
+      optHTML += "<optgroup label='" + client.text + "'>";
+      $.each(client.children, function(id, project) {
+        optHTML += "<option value='" + project.id + "-" + project.color + "'>" + project.text + " - " + client.text + "</option>";
+      });
+      optHTML += "</optgroup>"
+    })
+    $('.js-proj-select2').html(optHTML);
+    projectSelect = $('.js-proj-select2').select2();
+    projectSelect.on("select2:select", onProjectSelect);
+    onProjectSelect();
   });
 
-  $scope.categories = [];
+  var onProjectSelect = function (e) {
+    attrs = projectSelect.val().split('-');
+    $('.js-project .js-selected').attr('style', 'background-color: ' + attrs[1] + ' !important');
+  }
+
+  $scope.categories = {};
   TimeCategory.getAll().success(function(data) {
+    var optHTML = "<optgroup label='Time Tracking Categories'>";;
     $.each(data, function(index, cat) {
-      $scope.categories.push({ id: cat.id, name: cat.name });
+      optHTML += "<option value='" + cat.id + "'>" + cat.name + "</option>";
     });
-    $scope.selected = { value: $scope.categories[0] };
+    optHTML += "</optgroup>";
+
+    $('.js-cat-select2').html(optHTML);
+    catSelect = $('.js-cat-select2').select2();
+    catSelect.on("select2:select", onCatSelect);
   });
 
+  var onCatSelect = function (e) {
+
+  }
 
   TimeEntry.lastOpen().success(function(data) {
     if(data != null) {
@@ -96,7 +127,7 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
         $scope.startTimer();
       }
     } else if(event.keyCode == keys.at) {
-      $scope.selected = { value: $scope.itemArray[2] };
+      projectSelect.select2("open");
     } else if(event.keyCode == keys.exc) {
       console.log(event.keyCode)
     }

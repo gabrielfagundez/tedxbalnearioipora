@@ -26,7 +26,8 @@ class Project < ActiveRecord::Base
     {
       id: self.id,
       name: self.name,
-      client_name: self.client.name
+      client_name: self.client.name,
+      color: self.color
     }
   end
 

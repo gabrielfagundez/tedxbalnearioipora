@@ -1457,12 +1457,9 @@ S2.define('select2/selection/single',[
     var $selection = SingleSelection.__super__.render.call(this);
 
     $selection.addClass('select2-selection--single');
-
+    console.debug($selection)
     $selection.html(
-      '<span class="select2-selection__rendered"></span>' +
-      '<span class="select2-selection__arrow" role="presentation">' +
-        '<b role="presentation"></b>' +
-      '</span>'
+      '<span class="js-selected label select2-selection__rendered"></span>'
     );
 
     return $selection;
@@ -1805,7 +1802,7 @@ S2.define('select2/selection/search',[
   Search.prototype.render = function (decorated) {
     var $search = $(
       '<li class="select2-search select2-search--inline">' +
-        '<input class="select2-search__field" type="search" tabindex="-1"' +
+        '<input class="select2-search__field" type="search" tabindex="-1" placeholder="Type here to search.."' +
         ' autocomplete="off" autocorrect="off" autocapitalize="off"' +
         ' spellcheck="false" role="textbox" aria-autocomplete="list" />' +
       '</li>'
@@ -3827,7 +3824,7 @@ S2.define('select2/dropdown/search',[
 
     var $search = $(
       '<span class="select2-search select2-search--dropdown">' +
-        '<input class="select2-search__field" type="search" tabindex="-1"' +
+        '<input class="select2-search__field" type="search" tabindex="-1" placeholder="Type here to search.."' +
         ' autocomplete="off" autocorrect="off" autocapitalize="off"' +
         ' spellcheck="false" role="textbox" />' +
       '</span>'
@@ -4199,7 +4196,7 @@ S2.define('select2/dropdown/attachBody',[
     var enoughRoomBelow = viewport.bottom > (offset.bottom + dropdown.height);
 
     var css = {
-      left: offset.left,
+      left: 245,
       top: container.bottom
     };
 
@@ -5059,7 +5056,7 @@ S2.define('select2/core',[
     var width = this._resolveWidth(this.$element, this.options.get('width'));
 
     if (width != null) {
-      $container.css('width', width);
+      // $container.css('width', width);
     }
   };
 

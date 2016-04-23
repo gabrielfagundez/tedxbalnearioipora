@@ -25,7 +25,8 @@ class TimeEntry < ActiveRecord::Base
       id: self.id,
       project: {
         id: self.project.try(:id),
-        name: self.project.try(:name)
+        name: self.project.try(:name),
+        color: self.project.try(:color)
       },
       billable: {
         id: 'billable',

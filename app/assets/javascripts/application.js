@@ -32,5 +32,4 @@
 
 $(function() {
   $('.colorpicker-element').colorpicker();
-  $(".js-example-basic-single").select2();
 });

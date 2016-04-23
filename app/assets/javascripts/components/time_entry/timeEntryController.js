@@ -127,9 +127,7 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
         $scope.startTimer();
       }
     } else if(event.keyCode == keys.at) {
-      projectSelect.select2("open");
     } else if(event.keyCode == keys.exc) {
-      console.log(event.keyCode)
     }
   }
 

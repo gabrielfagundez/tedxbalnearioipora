@@ -39,7 +39,7 @@
       </div>
       <% if @upcoming_project_events.any? %>
         <div class="box-footer text-center">
-          <a href="#" class="uppercase">View All</a>
+          <%= link_to "View All Events", upcoming_events_path, class: "uppercase" %>
         </div>
       <% end %>
     </div>
@@ -81,7 +81,7 @@
         </ul>
       </div>
       <div class="box-footer text-center">
-        <a href="#" class="uppercase">View All</a>
+        <%= link_to "View All Events", upcoming_events_path, class: "uppercase" %>
       </div>
     </div>
   </div>

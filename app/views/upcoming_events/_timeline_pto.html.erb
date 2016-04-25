@@ -1,0 +1,10 @@
+<li>
+  <i class="fa fa-user bg-aqua"></i>
+  <div class="timeline-item">
+    <h3 class="timeline-header no-border">
+      <a><%= event.user.full_name %></a>
+      will be out between <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][event.start_date.strftime("%w").to_i] + event.start_date.strftime(", %d %b") %>
+      and <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][event.end_date.strftime("%w").to_i] + event.end_date.strftime(", %d %b") %>.
+    </h3>
+  </div>
+</li>

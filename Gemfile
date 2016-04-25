@@ -27,3 +27,4 @@ gem 'cancancan', '~> 1.10'
 
 # Assets handling
 gem 'bower-rails'
+gem 'font-awesome-rails'

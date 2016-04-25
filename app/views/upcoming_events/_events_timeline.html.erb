@@ -1,0 +1,20 @@
+<ul class="timeline">
+  <% current_date = nil %>
+  <% @upcoming_user_events.each do |ue| %>
+    <% if current_date != ue.start_date %>
+      <% current_date = ue.start_date %>
+      <li class="time-label">
+        <span class="bg-green">
+          <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][ue.start_date.strftime("%w").to_i] + ue.start_date.strftime(", %d %b") %>
+        </span>
+      </li>
+    <% end %>
+
+    <%= render partial: 'timeline_pto', locals: { event: ue } %>
+  <% end %>
+
+  <li>
+    <i class="fa fa-clock-o bg-gray"></i>
+  </li>
+
+</ul>

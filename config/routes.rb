@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resource :time_tracking,  only: [:show]
-  resource :account,        only: [:show, :update]
+  resource :time_tracking,      only: [:show]
+  resource :account,            only: [:show, :update]
 
   resources :clients
-  resources :reports, only: :index
+  resources :upcoming_events,   only: [:index]
+  resources :reports,           only: [:index]
   resources :team_members do
     member do
       get :summary

@@ -37,11 +37,9 @@
           <% end %>
         </ul>
       </div>
-      <% if @upcoming_project_events.any? %>
-        <div class="box-footer text-center">
-          <%= link_to "View All Events", upcoming_events_path, class: "uppercase" %>
-        </div>
-      <% end %>
+      <div class="box-footer text-center">
+        <%= link_to "View All Events", upcoming_events_path, class: "uppercase" %>
+      </div>
     </div>
   </div>
   <div class="col-md-6">

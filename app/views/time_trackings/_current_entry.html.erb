@@ -10,17 +10,17 @@
     </div>
 
     <div class="js-cat c-timer__project">
-      <select class="js-cat-select2" style="display: none"></select>
+      <select tabindex="3" class="js-cat-select2" style="display: none"></select>
     </div>
 
     <div class="c-timer__time">
-      <input tabindex="5" placeholder="0 sec" type="text" maxlength="10" tabindex="5" class="js-time c-timer__time__value" disabled="true">
+      <input tabindex="4" placeholder="0 sec" type="text" maxlength="10" tabindex="5" class="js-time c-timer__time__value" disabled="true">
     </div>
 
     <div class="c-timer__submit">
       <a href="#" class="c-timer__submit__addmanually" ng-click="addTimeEntry()">Add manually</a>
-      <button tabindex="6" class="c-timer__submit__button" ng-click="startTimer()" ng-show="!inProgress()">Start</button>
-      <button tabindex="6" class="c-timer__submit__button is-red" ng-click="stopTimer()" ng-show="inProgress()">Stop</button>
+      <button tabindex="5" class="c-timer__submit__button" ng-click="startTimer()" ng-show="!inProgress()">Start</button>
+      <button tabindex="5" class="c-timer__submit__button is-red" ng-click="stopTimer()" ng-show="inProgress()">Stop</button>
     </div>
   </div>
 </div>

@@ -32,4 +32,30 @@
 
 $(function() {
   $('.colorpicker-element').colorpicker();
+
+  $('.js-proj-select2').on('select2:open', function() {
+    $(this).data('open', true);
+  });
+
+  $('.js-proj-select2').on('select2:close', function() {
+    $(this).data('open', false);
+  });
+
+  $('.js-cat-select2').on('select2:open', function() {
+    $(this).data('open', true);
+  });
+
+  $('.js-cat-select2').on('select2:close', function() {
+    $(this).data('open', false);
+  });
 });
+
+$(document).on('keydown', function(e) {
+  var keyCode = e.keyCode || e.which;
+
+  if (keyCode == 9) {
+    if($('.js-description').is(':focus')) {
+      $('.js-proj-select2').select2('open');
+    } 
+  }
+})

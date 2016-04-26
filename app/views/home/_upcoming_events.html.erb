@@ -12,11 +12,11 @@
             <% @upcoming_project_events.each do |event| %>
               <li class="item">
                 <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title"><%= event.name %></a>
-                  <span class="label label-warning pull-right"><%= "#{event.project.name} - #{event.project.client.name}" %></span>
+                  <a href="javascript:void(0)" class="product-title"><%= "#{event.project.name} - #{event.project.client.name}" %></a>
+                  <span class="label label-warning pull-right"><%= event.name %></span>
                   <br>
                   <span class="product-title">
-                    <%= "#{event.expected_date.strftime("%Y-%m-%d")} (in #{distance_of_time_in_words(Time.now, event.expected_date)})" %>
+                    <%= "#{["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][event.expected_date.strftime("%w").to_i] + event.expected_date.strftime(", %d %b")} (in #{distance_of_time_in_words(Time.now, event.expected_date)})" %>
                   </span>
                   <span class="product-description">
                     <%= event.description || "-" %>
@@ -53,11 +53,11 @@
             <% @upcoming_user_events.each do |event| %>
               <li class="item">
                 <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title"><%= event.name %></a>
-                  <span class="label label-warning pull-right"><%= event.user.full_name %></span>
+                  <a href="javascript:void(0)" class="product-title"><%= event.user.full_name %></a>
+                  <span class="label label-warning pull-right"><%= event.name %></span>
                   <br>
                   <span class="product-title">
-                    <%= "#{event.start_date.strftime("%Y-%m-%d")} - #{event.start_date.strftime("%Y-%m-%d")} (in #{distance_of_time_in_words(Time.now, event.start_date)}, total #{((event.end_date - event.start_date) / (60*60*24)).round } days)" %>
+                    <%= "#{["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][event.start_date.strftime("%w").to_i] + event.start_date.strftime(", %d %b")} - #{["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][event.end_date.strftime("%w").to_i] + event.end_date.strftime(", %d %b")} (in #{distance_of_time_in_words(Time.now, event.start_date)}, total #{((event.end_date - event.start_date) / (60*60*24)).round } days)" %>
                   </span>
                   <span class="product-description">
                     <%= event.description || "-" %>

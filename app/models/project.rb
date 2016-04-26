@@ -36,6 +36,10 @@ class Project < ActiveRecord::Base
     self.weekly_entries.map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end
 
+  def client_name
+    self.client.name
+  end
+
   def average_four_weeks
     @average_four_weeks ||=
       (self.total_hours_for_week(Date.today.beginning_of_week(:monday) - 1.week) +

@@ -1,0 +1,87 @@
+<div class="box collapsed-box">
+  <div class="box-header with-border">
+    <h3 class="box-title">Add new event</h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div class="box-body">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab">Project Event</a></li>
+        <li><a href="#tab_2" data-toggle="tab">User Event</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+          <%= form_tag(upcoming_events_path, method: 'POST') do %>
+            <div class="form-group">
+              <label>Name</label>
+              <%= text_field_tag 'event[name]', '', type: 'text', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <%= text_field_tag 'event[description]', '', type: 'text', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>Expected Date</label>
+              <%= text_field_tag 'event[expected_date]', '', type: 'date', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>Project</label>
+              <%= select_tag 'event[project_id]', option_groups_from_collection_for_select(@clients, "projects", "name", "id", "name"), class: "form-control"  %>
+            </div>
+
+            <div class="form-group">
+              <label>Project event type</label>
+              <%= select_tag 'event[event_type]', options_for_select([["Milestone", "milestone"]]), class: "form-control", required: true  %>
+            </div>
+
+            <%= hidden_field_tag 'type', 'project_event' %>
+            <%= submit_tag "Save", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <div class="tab-pane" id="tab_2">
+          <%= form_tag(upcoming_events_path, method: 'POST') do %>
+            <div class="form-group">
+              <label>Name</label>
+              <%= text_field_tag 'event[name]', '', type: 'text', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <%= text_field_tag 'event[description]', '', type: 'text', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>Start Date</label>
+              <%= text_field_tag 'event[start_date]', '', type: 'date', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>End Date</label>
+              <%= text_field_tag 'event[end_date]', '', type: 'date', class: "form-control", required: true %>
+            </div>
+
+            <div class="form-group">
+              <label>End Date</label>
+              <%= select_tag 'event[user_id]', options_from_collection_for_select(@users, "id", "full_name"), class: "form-control"  %>
+            </div>
+
+            <div class="form-group">
+              <label>User event type</label>
+              <%= select_tag 'event[event_type]', options_for_select([["Normal PTO", "normal"], ["Sickness PTO", "sick"], ["Conference PTO", "conference"], ["Other", "other"]]), class: "form-control", required: true %>
+            </div>
+
+            <%= hidden_field_tag 'type', 'user_event' %>
+            <%= submit_tag "Save", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

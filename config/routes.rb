@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :account,            only: [:show, :update]
 
   resources :clients
-  resources :upcoming_events,   only: [:index]
+  resources :upcoming_events,   only: [:index, :create]
   resources :reports,           only: [:index]
   resources :team_members do
     member do

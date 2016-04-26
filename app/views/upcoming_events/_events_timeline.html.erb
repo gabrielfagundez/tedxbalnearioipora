@@ -1,20 +1,46 @@
-<ul class="timeline">
-  <% current_date = nil %>
-  <% @upcoming_user_events.each do |ue| %>
-    <% if current_date != ue.start_date %>
-      <% current_date = ue.start_date %>
-      <li class="time-label">
-        <span class="bg-green">
-          <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][ue.start_date.strftime("%w").to_i] + ue.start_date.strftime(", %d %b") %>
-        </span>
+<div class="row">
+  <div class="col-xs-6">
+    <ul class="timeline">
+      <% current_date = nil %>
+      <% @upcoming_user_events.each do |ue| %>
+        <% if current_date != ue.start_date %>
+          <% current_date = ue.start_date %>
+          <li class="time-label">
+            <span class="bg-green">
+              <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][ue.start_date.strftime("%w").to_i] + ue.start_date.strftime(", %d %b") %>
+            </span>
+          </li>
+        <% end %>
+
+        <%= render partial: 'timeline_pto', locals: { event: ue } %>
+      <% end %>
+
+      <li>
+        <i class="fa fa-clock-o bg-gray"></i>
       </li>
-    <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+    <ul class="timeline">
+      <% current_date = nil %>
+      <% @upcoming_project_events.each do |pe| %>
+        <% if current_date != pe.expected_date %>
+          <% current_date = pe.expected_date %>
+          <li class="time-label">
+            <span class="bg-green">
+              <%= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][pe.expected_date.strftime("%w").to_i] + pe.expected_date.strftime(", %d %b") %>
+            </span>
+          </li>
+        <% end %>
 
-    <%= render partial: 'timeline_pto', locals: { event: ue } %>
-  <% end %>
+        <%= render partial: 'timeline_milestone', locals: { event: pe } %>
+      <% end %>
 
-  <li>
-    <i class="fa fa-clock-o bg-gray"></i>
-  </li>
+      <li>
+        <i class="fa fa-clock-o bg-gray"></i>
+      </li>
 
-</ul>
+    </ul>
+
+  </div>
+</div>

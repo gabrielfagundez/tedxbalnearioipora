@@ -31,13 +31,6 @@
           <i class="fa fa-code"></i> <span>Projects</span>
         </a>
       </li>
-      <% if can? :manage, :team_members %>
-        <li class="<%= controller_name == 'team_members' ? 'active' : '' %>">
-          <a href="<%= team_members_path %>">
-            <i class="fa fa-user"></i> <span>Team Members</span>
-          </a>
-        </li>
-      <% end %>
       <% if can?(:manage, :admin) %>
         <li class="header">ACCOUNT ADMIN</li>
           <li class="<%= controller_name == 'users' ? 'active' : '' %>">

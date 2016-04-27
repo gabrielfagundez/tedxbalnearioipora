@@ -2,7 +2,7 @@ class MigrateTeamMembersToUsers < ActiveRecord::Migration
   def change
     add_column :weekly_entries, :user_id, :integer
 
-    WeeklyEntry.each do |we|
+    WeeklyEntry.all.each do |we|
       if we.team_member_id == 1
         we.user_id = 1
       elsif we.team_member_id == 2

@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   def update
     project = Project.find(params[:id])
     project.update_attributes(project_params)
-    project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project][:billable].present?
+    project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project].present? && params[:project][:billable].present?
 
     redirect_to project_path(project)
   end

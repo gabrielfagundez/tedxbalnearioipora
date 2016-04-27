@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
 
   def work_entries
     @project = Project.find(params[:id])
-    @team_members = @project.team_members.all
+    @users = @project.client.users.all
   end
 
   def enter_work_entries
@@ -85,7 +85,7 @@ class ProjectsController < ApplicationController
 
     sanitize_entries.keys.each do |user_id|
       WeeklyEntry.create(
-        team_member_id: user_id,
+        user_id: user_id,
         project_id: params[:id],
         week: params[:week],
         communication: sanitized_entries[user_id]["1"].present? ? sanitized_entries[user_id]["1"].to_f : 0,

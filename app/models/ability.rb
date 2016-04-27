@@ -8,25 +8,28 @@ class Ability
       can :manage, :beta
       can :manage, :admin
       can :manage, :projects
-      can :manage, :team_members
+      can :manage, :users
       can :manage, :project_sensitive_data
 
     elsif user.admin?
       can :manage, :admin
+
+      can :manage, :users
       can :manage, :projects
-      can :manage, :team_members
       can :manage, :project_sensitive_data
 
     elsif user.client_manager?
       cannot :manage, :admin
+
+      can :manage, :users
       can :manage, :projects
-      can :manage, :team_members
       can :manage, :project_sensitive_data
 
     elsif user.team_member?
       cannot :manage, :admin
+
+      cannot :manage, :users
       cannot :manage, :projects
-      cannot :manage, :team_members
       cannot :manage, :project_sensitive_data
     end
 

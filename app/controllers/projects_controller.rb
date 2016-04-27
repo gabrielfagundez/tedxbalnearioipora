@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @account = current_account
     redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
 
-    @team_members = @project.team_members.all
+    @users = @project.client.users.all
   end
 
   def update

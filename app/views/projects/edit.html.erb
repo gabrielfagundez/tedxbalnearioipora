@@ -40,7 +40,7 @@
 
             <div class="form-group">
               <label>Team Leader</label>
-              <%= select_tag 'project[team_leader_id]', options_from_collection_for_select(@team_members, "id", "name", @project.team_leader_id), class: "form-control"  %>
+              <%= select_tag 'project[team_leader_id]', options_from_collection_for_select(@users, "id", "full_name", @project.team_leader_id), class: "form-control"  %>
               <p class="help-block">
                 Select who is in charge of the project.
               </p>

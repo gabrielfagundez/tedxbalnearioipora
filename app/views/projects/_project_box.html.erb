@@ -12,13 +12,13 @@
           <div class="col-sm-4 border-right">
             <div class="description-block">
               <h5 class="description-header">Team Size</h5>
-              <span class="description-text"><%= "#{p.team_members.length} members" %></span>
+              <span class="description-text"></span>
             </div>
           </div>
           <div class="col-sm-4 border-right">
             <div class="description-block">
               <h5 class="description-header">Team Leader</h5>
-              <span class="description-text"><%= p.team_leader.try(:name)  || "-" %></span>
+              <span class="description-text"><%= p.team_leader.try(:full_name)  || "-" %></span>
             </div>
           </div>
           <div class="col-sm-4">

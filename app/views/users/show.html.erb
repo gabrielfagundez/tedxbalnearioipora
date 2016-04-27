@@ -1,4 +1,4 @@
-<%= render partial: 'shared/page_title', locals: { title: @team_member.name } %>
+<%= render partial: 'shared/page_title', locals: { title: @user.full_name } %>
 
 <section id= "content" class="content" %>
 
@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="box-body">
-          <canvas class="team_member_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+          <canvas class="user_summary" data-id=<%= params[:id] %> height="200" width="600"></canvas>
         </div>
       </div>
     </div>

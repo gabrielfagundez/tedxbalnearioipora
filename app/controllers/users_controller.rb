@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @users = current_account.users
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = current_account.users.new
     @clients = Client.all
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def check_auth
-    redirect_to root_path if cannot? :manage, :team_members
+    redirect_to root_path if cannot? :manage, :users
   end
 
 end

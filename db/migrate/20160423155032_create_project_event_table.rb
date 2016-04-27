@@ -3,7 +3,6 @@ class CreateProjectEventTable < ActiveRecord::Migration
     create_table :project_events do |t|
       t.string :name
       t.text :description
-      t.string :event_type
       t.datetime :expected_date
 
       t.integer :project_id

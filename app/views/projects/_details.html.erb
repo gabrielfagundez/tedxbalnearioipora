@@ -11,7 +11,7 @@
         </h3>
         <h5 class="widget-user-desc" style="margin-left: 0"><%= @project.client.name %>
           <% if can? :manage, :projects %>
-            <p class='pull-right'><%= link_to "Edit", edit_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %> - <%= link_to "Add Work Entries", work_entries_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %></p>
+            <p class='pull-right'><%= link_to "Edit", edit_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %> - <%= link_to "Add Velocity Entries", velocity_entries_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %> - <%= link_to "Add Work Entries", work_entries_project_path(@project), style: 'font-size: 15px; color: #acd0e5' %></p>
           <% end %>
         </h5>
       </div>

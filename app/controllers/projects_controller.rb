@@ -17,7 +17,8 @@ class ProjectsController < ApplicationController
     @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
-  def new
+  def velocity_entries
+    @project = Project.find_by_id(params[:id])
   end
 
   def create

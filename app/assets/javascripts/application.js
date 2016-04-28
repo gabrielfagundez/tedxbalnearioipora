@@ -23,6 +23,7 @@
 //= require angular-ui-select/dist/select.min
 //= require bootstrap-colorpicker/dist/js/bootstrap-colorpicker
 //= require select2/dist/js/select2.full
+//= require angular-tooltips/dist/angular-tooltips
 
 //= require app
 //= require routes
@@ -56,6 +57,6 @@ $(document).on('keydown', function(e) {
   if (keyCode == 9) {
     if($('.js-description').is(':focus')) {
       $('.js-proj-select2').select2('open');
-    } 
+    }
   }
 })

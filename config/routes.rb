@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   resources :clients
   resources :upcoming_events,   only: [:index, :create]
   resources :reports,           only: [:index]
-  resources :team_members do
+  resources :users do
     member do
       get :summary
     end
   end
-  resources :users
   resources :projects do
     member do
       get :work_entries, as: 'work_entries'

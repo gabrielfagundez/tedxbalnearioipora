@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def summary
+    render json: User.find(params[:id]).summary.to_json
+  end
+
   def new
     @user = current_account.users.new
     @clients = Client.all

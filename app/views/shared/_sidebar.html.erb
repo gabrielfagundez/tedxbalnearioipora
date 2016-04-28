@@ -20,14 +20,8 @@
           </a>
         </li> -->
       <% end %>
-      <li class="header">MODELS</li>
-      <li class="<%= controller_name == 'clients' ? 'active' : '' %>">
+      <li class="<%= controller_name == 'projects' || controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
-          <i class="fa fa-dot-circle-o"></i> <span>Clients</span>
-        </a>
-      </li>
-      <li class="<%= controller_name == 'projects' ? 'active' : '' %>">
-        <a href="<%= projects_path %>">
           <i class="fa fa-code"></i> <span>Projects</span>
         </a>
       </li>

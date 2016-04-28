@@ -20,10 +20,10 @@
 //= require angular-resource/angular-resource
 //= require angular-sanitize/angular-sanitize
 //= require angular-messages/angular-messages
-//= require angular-ui-select/dist/select.min
+//= require angular-ui-select/dist/select
 //= require bootstrap-colorpicker/dist/js/bootstrap-colorpicker
 //= require select2/dist/js/select2.full
-//= require angular-tooltips/dist/angular-tooltips
+//= require angular-tooltips/dist/angular-tooltips.min
 
 //= require app
 //= require routes

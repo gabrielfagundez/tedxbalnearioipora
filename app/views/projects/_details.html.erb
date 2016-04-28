@@ -4,9 +4,9 @@
       <div class="widget-user-header bg-green">
         <h3 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px"><%= @project.name %>
           <% if @favorite %>
-            <p class='pull-right'><%= link_to "Remove Favorite", favorite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
+            <p class='pull-right'><%= link_to "<i class='fa fa-star' style='color: yellow'></i>".html_safe, favorite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
           <% else %>
-            <p class='pull-right'><%= link_to "Mark as Favorite", favorite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
+            <p class='pull-right'><%= link_to "<i class='fa fa-star-o' style='color: yellow'></i>".html_safe, favorite_project_path(@project), style: 'font-size: 18px; color: #acd0e5' %></p>
           <% end %>
         </h3>
         <h5 class="widget-user-desc" style="margin-left: 0"><%= @project.client.name %>

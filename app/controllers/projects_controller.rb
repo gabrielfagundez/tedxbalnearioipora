@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
       params[:client_id].present? ?
         current_user.clients.includes(:projects).where(id: params[:client_id]) :
         current_user.clients.includes(:projects)
+
+    @favorites = FavoriteProject.where(user_id: current_user.id).collect(&:project_id)
   end
 
   def show

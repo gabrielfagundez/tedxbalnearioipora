@@ -177,10 +177,10 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     return formatTime(duration);
   }
 
-  $scope.newDateBlock = function(date) {
-    oldDateBlock = dateBlock;
+  $scope.newDateBlock = function(date, index) {
+    var oldDateBlock = dateBlock;
     dateBlock = date;
-    return oldDateBlock != dateBlock;
+    return oldDateBlock != dateBlock || index == 0;
   }
 
   $scope.formatFromTo = function(from, to) {

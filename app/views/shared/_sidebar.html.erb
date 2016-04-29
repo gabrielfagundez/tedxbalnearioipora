@@ -14,11 +14,11 @@
             <i class="fa fa-clock-o"></i> <span>Time Tracking</span>
           </a>
         </li>
-        <!-- <li class="<%= controller_name == 'reports' ? 'active' : '' %>">
+        <li class="<%= controller_name == 'reports' ? 'active' : '' %>">
           <a href="<%= reports_path %>">
-            <i class="fa fa-th"></i> <span>Reports</span>
+            <i class="fa fa-file-text"></i> <span>Reports</span>
           </a>
-        </li> -->
+        </li>
       <% end %>
       <li class="<%= controller_name == 'projects' || controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">

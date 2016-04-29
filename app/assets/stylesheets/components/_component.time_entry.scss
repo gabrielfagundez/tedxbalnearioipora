@@ -44,9 +44,19 @@
     float: right;
   }
 
-    .c-time-entry__actions__img {
+    .c-time-entry__actions__edit, .c-time-entry__actions__delete, .c-time-entry__actions__continue {
       width: 15px;
       height: 15px;
       margin: 12px 5px;
       cursor: pointer;
+    }
+
+    .c-time-entry__actions__edit:hover {
+      color: #005384;
+    }
+    .c-time-entry__actions__delete:hover {
+      color: #d73925;
+    }
+    .c-time-entry__actions__continue:hover {
+      color: #00a65a;
     }

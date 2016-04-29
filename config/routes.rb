@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       end
       member do
         put :close
+        post :continue
       end
     end
   end

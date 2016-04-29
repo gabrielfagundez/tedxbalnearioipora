@@ -33,6 +33,12 @@ class Api::TimeEntriesController < Api::ApiController
     render json: {}
   end
 
+  def continue
+    te = TimeEntry.find(params[:id])
+    new_te = TimeEntry.create(user_id: current_user.id, project_id: te.project_id, description: te.description, time_category_id: te.time_category_id, billable: te.billable, started_at: DateTime.now.utc)
+    render json: te.to_json
+  end
+
   def close
     te = TimeEntry.find(params[:id])
     te.update_attributes(time_entry_params.merge(ended_at: DateTime.now.utc))

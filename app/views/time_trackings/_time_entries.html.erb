@@ -17,7 +17,7 @@
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 
     <div class="c-time-entry__actions">
-      <i class="fa fa-play c-time-entry__actions__continue" alt='Continue Entry' ng-click=""></i>
+      <i class="fa fa-play c-time-entry__actions__continue" alt='Continue Entry' ng-click="continueEntry(te.id)"></i>
       <i class="fa fa-pencil c-time-entry__actions__edit" alt='Edit Entry' ng-click="editEntry(te.id)"></i>
       <i class="fa fa-trash c-time-entry__actions__delete" alt='Delete Entry' ng-click="deleteEntry(te.id)"></i>
     </div>

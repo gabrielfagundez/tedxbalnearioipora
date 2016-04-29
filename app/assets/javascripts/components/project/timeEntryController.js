@@ -240,6 +240,13 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
     $('#edit_modal').modal('toggle');
   }
 
+  $scope.continueEntry = function(id) {
+    TimeEntry.continue(id).success(function() {
+      getLastTimeEntry();
+    });
+
+  }
+
   $scope.deleteEntry = function(id) {
     dialog = confirm("Are you sure you want to delete this entry?");
     if(dialog) {

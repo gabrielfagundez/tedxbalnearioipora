@@ -30,5 +30,9 @@ app.factory('TimeEntry', ['$http', function($http) {
     return $http.delete('/api/time_entries/' + id)
   };
 
+  service.continue = function(id) {
+    return $http.post('/api/time_entries/' + id + '/continue')
+  };
+
   return service;
 }]);

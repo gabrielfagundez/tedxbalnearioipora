@@ -241,10 +241,13 @@ app.controller('TimeEntryController', ['$scope', '$interval', 'TimeEntry', 'Proj
   }
 
   $scope.continueEntry = function(id) {
+    if($scope.inProgress()) {
+      $scope.stopTimer();
+    }
+
     TimeEntry.continue(id).success(function() {
       getLastTimeEntry();
     });
-
   }
 
   $scope.deleteEntry = function(id) {

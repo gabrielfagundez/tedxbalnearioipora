@@ -4,6 +4,7 @@ class Api::TimeEntriesController < Api::ApiController
 
   def index
     time_entries = current_user.time_entries.closed.by_started_at
+    time_entries = time_entries.where("description LIKE ? ", "%#{params[:description]}%") if params[:description].present?
     time_entries = time_entries.where(project_id: params[:projects].split(',')) if params[:projects].present?
     time_entries = time_entries.where(time_category_id: params[:time_categories].split(',')) if params[:time_categories].present?
     time_entries = time_entries.where(user_id: params[:users].split(',')) if params[:users].present?

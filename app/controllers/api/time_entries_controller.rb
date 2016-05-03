@@ -3,7 +3,12 @@ class Api::TimeEntriesController < Api::ApiController
   before_filter :sanitize_time_entry_params
 
   def index
-    render json: current_user.time_entries.last_7_days.closed.by_started_at.map{ |te| te.pretty_data }
+    time_entries = current_user.time_entries.closed.by_started_at
+    time_entries = time_entries.where(project_id: params[:projects].split(',')) if params[:projects].present?
+    time_entries = time_entries.where(time_category_id: params[:time_categories].split(',')) if params[:time_categories].present?
+    time_entries = time_entries.where(user_id: params[:users].split(',')) if params[:users].present?
+
+    render json: time_entries.map{ |te| te.pretty_data }
   end
 
   def last_open

@@ -6,8 +6,9 @@ app.factory('TimeEntry', ['$http', function($http) {
     return $http.get('/api/time_entries/last');
   };
 
-  service.getAll = function() {
-    return $http.get('/api/time_entries/');
+  service.getAll = function(searchParameters) {
+    console.debug(searchParameters)
+    return $http.get('/api/time_entries/', { params: searchParameters });
   };
 
   service.lastOpen = function() {

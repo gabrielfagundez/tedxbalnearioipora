@@ -17,6 +17,10 @@
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 
     <div class="c-detailed_report__time_entry__timespan">
+      {{ te.user.full_name }}
+    </div>
+
+    <div class="c-detailed_report__time_entry__timespan">
       {{ formatFromTo(te.from, te.to) }}
     </div>
 

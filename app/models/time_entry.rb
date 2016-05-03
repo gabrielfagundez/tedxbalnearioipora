@@ -40,6 +40,9 @@ class TimeEntry < ActiveRecord::Base
         id: self.time_category.try(:id),
         name: self.time_category.try(:name)
       },
+      user: {
+        full_name: self.user.full_name
+      },
       date: self.format_date
     }
   end

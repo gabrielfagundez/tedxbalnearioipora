@@ -22,6 +22,10 @@ app.controller('ReportsController', ['$scope', 'TimeEntry', function($scope, Tim
     return oldDateBlock != dateBlock || index == 0;
   }
 
+  $scope.empty = function(text) {
+    return text.length == 0;
+  }
+
   $scope.search = function() {
     var searchParameters = {
       description: $(searchEntities.description).val()

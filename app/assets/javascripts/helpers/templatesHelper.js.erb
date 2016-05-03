@@ -1,0 +1,15 @@
+app.factory('TemplatesHelper', [function() {
+  var service = {
+    projectMultipleSelector: function() {
+      return <%= "'#{ asset_path('components/project_multiple_selector/projectMultipleSelector.html') }'" %>
+    },
+    userMultipleSelector: function() {
+      return <%= "'#{ asset_path('components/user_multiple_selector/userMultipleSelector.html') }'" %>
+    },
+    timeCategoryMultipleSelector: function() {
+      return <%= "'#{ asset_path('components/time_category_multiple_selector/timeCategoryMultipleSelector.html') }'" %>
+    }
+  };
+
+  return service;
+}]);

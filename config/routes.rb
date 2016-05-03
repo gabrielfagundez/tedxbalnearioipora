@@ -29,13 +29,14 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :projects, except: [:new, :edit] do
+    resources :users,           only: [:index]
+    resources :projects,        except: [:new, :edit] do
       member do
         post :toggle_fav
       end
     end
     resources :time_categories, except: [:new, :edit]
-    resources :time_entries, except: [:new, :edit] do
+    resources :time_entries,    except: [:new, :edit] do
       collection do
         get :last_open
       end

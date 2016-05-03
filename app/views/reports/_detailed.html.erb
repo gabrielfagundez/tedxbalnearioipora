@@ -1,6 +1,6 @@
-<section class="c-time-entries-day">
+<section class="c-detailed_report">
 
-  <div class="c-time-entry" ng-repeat="te in timeEntries">
+  <div class="c-detailed_report__time_entry" ng-repeat="te in timeEntries">
 
     <div class="c-timer-entries-group-header" ng-if="newDateBlock(te.date, $index)">
       <div class="c-timer-entries-group-header__date-container">
@@ -9,29 +9,23 @@
       </div>
     </div>
 
-    <div class="c-time-entry__description">
+    <div class="c-detailed_report__time_entry__description">
       <i ng-if="empty(te.description)">(no description)</i>
       {{ te.description }}
     </div>
 
     <span class="label label-info" style="background-color: {{ te.project.color }} !important">{{ te.project.name }}</span>
 
-    <div class="c-time-entry__actions">
-      <i class="fa fa-play c-time-entry__actions__continue" alt='Continue Entry' ng-click="continueEntry(te.id)"></i>
-      <i class="fa fa-pencil c-time-entry__actions__edit" alt='Edit Entry' ng-click="editEntry(te.id)"></i>
-      <i class="fa fa-trash c-time-entry__actions__delete" alt='Delete Entry' ng-click="deleteEntry(te.id)"></i>
-    </div>
-
-    <div class="c-time-entry__timespan">
+    <div class="c-detailed_report__time_entry__timespan">
       {{ formatFromTo(te.from, te.to) }}
     </div>
 
-    <div class="c-time-entry__duration">
+    <div class="c-detailed_report__time_entry__duration">
       {{ formatDuration(te.id, te.date, te.duration) }}
     </div>
 
-    <div class="c-time-entry__tag">
-      <span class="c-time-entry__tag__label label">{{ te.tag.name }}</span>
+    <div class="c-detailed_report__time_entry__tag">
+      <span class="c-detailed_report__time_entry__tag__label label">{{ te.tag.name }}</span>
     </div>
   </div>
 

@@ -32,6 +32,8 @@
       display: inline-block;
       float: right;
       padding: 10px;
+      min-width: 80px;
+      text-align: right;
     }
 
     .c-detailed_report__time_entry__timespan {
@@ -40,6 +42,13 @@
       margin-right: 10px;
       padding: 10px;
       color: #aaaaaa;
+    }
+
+    .c-detailed_report__user {
+      display: inline-block;
+      float: right;
+      margin-right: 10px;
+      padding: 10px;
     }
 
     .c-detailed_report__time_entry__actions {

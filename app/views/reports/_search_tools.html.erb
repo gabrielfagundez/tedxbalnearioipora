@@ -1,16 +1,17 @@
-
-<div class="js-timer c-timer">
-  <div class="c-timer__description">
-    <input tabindex="1" type="text" placeholder="Description" tabindex="1" class="js-description c-timer__description__input">
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Detailed Report</h3>
   </div>
 
-  <div class="c-timer__submit">
-    <button tabindex="5" class="c-timer__submit__button" ng-click="search()">Search</button>
+  <div class="box-body">
+
+    <input type="text" placeholder="Description" class="js-description">
+    <project-multiple-selector></project-multiple-selector>
+    <user-multiple-selector></user-multiple-selector>
+    <time-category-multiple-selector></time-category-multiple-selector>
+  </div>
+
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
   </div>
 </div>
-
-<project-multiple-selector></project-multiple-selector>
-
-<user-multiple-selector></user-multiple-selector>
-
-<time-category-multiple-selector></time-category-multiple-selector>

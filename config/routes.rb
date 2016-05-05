@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resource :time_tracking,      only: [:show]
   resource :account,            only: [:show, :update]
+  resource :profile,            only: [:show]
 
   resources :clients
   resources :upcoming_events,   only: [:index, :create]

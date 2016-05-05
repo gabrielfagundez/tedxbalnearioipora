@@ -17,14 +17,13 @@
               <%= image_tag current_user.gravatar_image_url, class: "img-circle", alt: "User Image" %>
               <p>
                 <b><%= current_user.full_name %></b>
-                <b><small><%= current_user.email %></small></b>
-                <small>Member since <%= current_user.created_at.to_s %></small>
+                <small><%= current_user.email %></small>
               </p>
             </li>
             <li class="user-body">
               <div class="row">
                 <div class="col-xs-6 text-center">
-                  <a href="#">Profile</a>
+                  <%= link_to "Profile", profile_path %>
                 </div>
                 <div class="col-xs-6 text-center">
                   <a href="#">Settings</a>

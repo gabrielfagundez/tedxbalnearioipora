@@ -475,6 +475,7 @@ a:focus {
   width: 100%;
   padding: 10px;
   overflow: hidden;
+  display: block;
 }
 .user-panel:before,
 .user-panel:after {

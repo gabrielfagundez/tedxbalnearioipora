@@ -262,6 +262,7 @@ a:focus {
 }
 .main-header .sidebar-toggle:hover {
   color: #fff;
+  background-color: #000 !important;
 }
 .main-header .sidebar-toggle:focus,
 .main-header .sidebar-toggle:active {
@@ -301,7 +302,6 @@ a:focus {
   overflow: hidden;
 }
 .main-header .logo .logo-lg {
-  display: block;
 }
 .main-header .logo .logo-mini {
   display: none;
@@ -647,8 +647,8 @@ a:focus {
   }
   .sidebar-mini.sidebar-collapse .main-header .logo > .logo-mini {
     display: block;
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -3px;
+    margin-top: 5px;
     font-size: 18px;
   }
   .sidebar-mini.sidebar-collapse .main-header .logo > .logo-lg {

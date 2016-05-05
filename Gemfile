@@ -21,9 +21,10 @@ group :production do
   gem 'pg'
 end
 
-# User management
+# User management and attributes
 gem 'devise'
 gem 'cancancan', '~> 1.10'
+gem 'gravatar-ultimate'
 
 # Assets handling
 gem 'bower-rails'

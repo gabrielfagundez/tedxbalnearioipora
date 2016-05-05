@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.role == 'team_member'
   end
 
+  def gravatar_image_url
+    Gravatar.new(self.email).image_url
+  end
+
   def summary
     weeks = [
       (Date.today.beginning_of_week(:monday) - 10.week).to_s,

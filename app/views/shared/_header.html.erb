@@ -14,7 +14,7 @@
           </a>
           <ul class="dropdown-menu">
             <li class="user-header" style="height: auto">
-              <i class="fa fa-user" class="img-circle" alt="User Image" style="color: white; font-size: 40px;"></i>
+              <%= image_tag current_user.gravatar_image_url, class: "img-circle", alt: "User Image" %>
               <p>
                 <b><%= current_user.full_name %></b>
                 <b><small><%= current_user.email %></small></b>

@@ -42,17 +42,26 @@
       </li>
       <% if can?(:manage, :admin) %>
         <li class="header">ACCOUNT ADMIN</li>
-          <li class="<%= controller_name == 'users' ? 'active' : '' %>">
-            <a href="<%= users_path %>">
-              <i class="fa fa-users"></i> <span>User Management</span>
-            </a>
-          </li>
-          <li class="<%= controller_name == 'accounts' ? 'active' : '' %>">
-            <a href="<%= account_path %>">
-              <i class="fa fa-cogs"></i> <span>Account Settings</span>
-            </a>
-          </li>
+        <li class="<%= controller_name == 'users' ? 'active' : '' %>">
+          <a href="<%= users_path %>">
+            <i class="fa fa-users"></i> <span>User Management</span>
+          </a>
         </li>
+        <li class="<%= controller_name == 'accounts' ? 'active' : '' %>">
+          <a href="<%= account_path %>">
+            <i class="fa fa-cogs"></i> <span>Account Settings</span>
+          </a>
+        </li>
+      <% end %>
+      <% if @favorite_projects.any? %>
+        <li class="header">FAVORITE PROJECTS</li>
+        <% @favorite_projects.each do |p| %>
+          <li>
+            <a href="<%= project_path(p) %>">
+              <i class="fa fa-circle-o text-aqua"></i><span><%= p.name %> - <%= p.client.name %></span>
+            </a>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </section>

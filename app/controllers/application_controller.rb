@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  before_action :set_favorite_projects
 
   layout :layout_by_resource
 
   def current_account
     @current_account ||= current_user.account
+  end
+
+  def set_favorite_projects
+    @favorite_projects = current_user.favorite_projects.collect(&:project)
   end
 
   protected

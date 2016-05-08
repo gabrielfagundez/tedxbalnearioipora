@@ -5,6 +5,9 @@ $(function(){
 
     $.ajax("/projects/" + project_id + "/time_usage").success(function(data) {
       var options = {
+        legend: {
+          display: false
+        },
         scales: {
           yAxes: [{
             stacked: true

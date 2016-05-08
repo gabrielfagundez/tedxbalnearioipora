@@ -4,7 +4,11 @@ $(function(){
     var project_id = $(item).data().id;
 
     $.ajax("/projects/" + project_id + "/historical").success(function(data) {
-      var options = {};
+      var options = {
+        legend: {
+          display: false
+        }
+      };
 
       new Chart(ctx, {
         data: data,

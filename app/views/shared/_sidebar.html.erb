@@ -58,7 +58,7 @@
         <% @favorite_projects.each do |p| %>
           <li>
             <a href="<%= project_path(p) %>">
-              <i class="fa fa-circle-o text-aqua"></i><span><%= p.name %> - <%= p.client.name %></span>
+              <i class="fa fa-star text-aqua"></i><span><%= p.name %> - <%= p.client.name %></span>
             </a>
           </li>
         <% end %>

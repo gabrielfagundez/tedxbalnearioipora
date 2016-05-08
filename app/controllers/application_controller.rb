@@ -15,7 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_favorite_projects
-    @favorite_projects = current_user.favorite_projects.collect(&:project)
+    if current_user.present?
+      @favorite_projects = current_user.favorite_projects.collect(&:project)
+    end
   end
 
   protected

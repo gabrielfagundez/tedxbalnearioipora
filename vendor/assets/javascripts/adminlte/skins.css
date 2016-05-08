@@ -73,6 +73,10 @@
 }
 .skin-green .sidebar-menu > li > a {
   border-left: 3px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 15px;
 }
 .skin-green .sidebar-menu > li:hover > a,
 .skin-green .sidebar-menu > li.active > a {

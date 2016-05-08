@@ -4,8 +4,20 @@ $(function(){
     var user_id = $(item).data().id;
 
     $.ajax("/users/" + user_id + "/summary").success(function(data) {
-      new Chart(ctx).Line(data, {
-        responsive: true
+      var options = {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            stacked: true
+          }]
+        }
+      }
+
+      Chart.Line(ctx, {
+        data: data,
+        options: options
       });
     })
   })

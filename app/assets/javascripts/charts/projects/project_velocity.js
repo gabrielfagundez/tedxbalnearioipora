@@ -5,6 +5,9 @@ $(function(){
 
     $.ajax("/projects/" + project_id + "/velocity").success(function(data) {
       var options = {
+        legend: {
+          display: false
+        },
         scales: {
           yAxes: [{
             ticks: {

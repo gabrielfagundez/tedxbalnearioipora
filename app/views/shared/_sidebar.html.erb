@@ -16,7 +16,7 @@
         </a>
       </li>
       <% if can? :manage, :beta %>
-        <li class="<%= controller_name == 'time_trackings' ? 'active' : '' %>">
+        <!-- <li class="<%= controller_name == 'time_trackings' ? 'active' : '' %>">
           <a href="<%= time_tracking_path %>">
             <i class="fa fa-clock-o"></i> <span>Time Tracking</span>
           </a>
@@ -32,7 +32,7 @@
             <li class="<%= action_name == 'detailed' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Detailed Report</a></li>
             <li class="<%= action_name == 'weekly' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Weekly Report</a></li>
           </ul>
-        </li>
+        </li> -->
 
       <% end %>
       <li class="<%= controller_name == 'projects' || controller_name == 'clients' ? 'active' : '' %>">

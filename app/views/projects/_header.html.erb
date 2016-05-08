@@ -12,9 +12,9 @@
       <div class="c-project-header__name">
         <%= @project.name %>
         <% if @favorite %>
-          <p tooltip-template="Remove favorite" style="display: inline;"><%= link_to "<i class='fa fa-star' style='color: #ffbf00; font-size: 30px;'></i>".html_safe, favorite_project_path(@project) %></p>
+          <p tooltip-template="Remove favorite" style="display: inline;"><%= link_to "<i class='fa fa-star' style='color: #ffbf00; font-size: 25px;'></i>".html_safe, favorite_project_path(@project) %></p>
         <% else %>
-          <p tooltip-template="Add favorite" style="display: inline;"><%= link_to "<i class='fa fa-star-o' style='color: #ffbf00; font-size: 30px;'></i>".html_safe, favorite_project_path(@project) %></p>
+          <p tooltip-template="Add favorite" style="display: inline;"><%= link_to "<i class='fa fa-star-o' style='color: #ffbf00; font-size: 25px;'></i>".html_safe, favorite_project_path(@project) %></p>
         <% end %>
       </div>
       <div class="c-project-header__client-name">

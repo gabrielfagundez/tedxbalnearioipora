@@ -41,9 +41,9 @@ class UserTimeUsageChart
         {
           label: "Communication",
           backgroundColor: "rgba(127,127,255,0.2)",
-          strokeColor: "rgba(127,127,255,1)",
+          borderColor: "rgba(127,127,255,1)",
           pointColor: "rgba(127,127,255,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,127,255,1)",
           data: [
@@ -62,9 +62,9 @@ class UserTimeUsageChart
         {
           label: "Development",
           backgroundColor: "rgba(127,255,127,0.2)",
-          strokeColor: "rgba(127,255,127,1)",
+          borderColor: "rgba(127,255,127,1)",
           pointColor: "rgba(127,255,127,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,255,127,1)",
           data: [
@@ -83,9 +83,9 @@ class UserTimeUsageChart
         {
           label: "Bugs",
           backgroundColor: "rgba(255,127,127,0.2)",
-          strokeColor: "rgba(255,127,127,1)",
+          borderColor: "rgba(255,127,127,1)",
           pointColor: "rgba(255,127,127,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,127,127,1)",
           data: [
@@ -104,9 +104,9 @@ class UserTimeUsageChart
         {
           label: "Code Review",
           backgroundColor: "rgba(127,127,127,0.2)",
-          strokeColor: "rgba(127,127,127,1)",
+          borderColor: "rgba(127,127,127,1)",
           pointColor: "rgba(127,127,127,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(127,127,127,1)",
           data: [
@@ -125,9 +125,9 @@ class UserTimeUsageChart
         {
           label: "QA",
           backgroundColor: "rgba(255,255,127,0.2)",
-          strokeColor: "rgba(255,255,127,1)",
+          borderColor: "rgba(255,255,127,1)",
           pointColor: "rgba(255,255,127,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,255,127,1)",
           data: [
@@ -146,9 +146,9 @@ class UserTimeUsageChart
         {
           label: "Infrastructure",
           backgroundColor: "rgba(255,191,127,0.2)",
-          strokeColor: "rgba(255,191,127,1)",
+          borderColor: "rgba(255,191,127,1)",
           pointColor: "rgba(255,191,127,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(255,191,127,1)",
           data: [
@@ -167,9 +167,9 @@ class UserTimeUsageChart
         {
           label: "UI/UX",
           backgroundColor: "rgba(191,127,255,0.2)",
-          strokeColor: "rgba(191,127,255,1)",
+          borderColor: "rgba(191,127,255,1)",
           pointColor: "rgba(191,127,255,1)",
-          pointStrokeColor: "#fff",
+          pointborderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(191,127,255,1)",
           data: [

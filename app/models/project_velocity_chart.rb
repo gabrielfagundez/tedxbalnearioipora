@@ -16,22 +16,38 @@ class ProjectVelocityChart
   def chart_data
     weeks = @project.points_completed_entries.order(created_at: 'desc').limit(10).collect(&:period).reverse
     values = @project.points_completed_entries.order(created_at: 'desc').limit(10).collect(&:points_completed).reverse
+    avg = values.inject(:+) / values.length
 
-    @velocity ||= {
-    labels: weeks,
-    datasets: [
-        {
-            label:            "Points Completed",
-            backgroundColor:  CHART_OPTIONS[:background_color],
-            borderColor:      CHART_OPTIONS[:border_color],
-            borderWidth:      CHART_OPTIONS[:border_width],
-            pointRadius:      CHART_OPTIONS[:point_radius],
-            pointHoverRadius: CHART_OPTIONS[:point_hover_radius],
-            pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
-            data:             values
-        }
-      ]
-    }
+    {
+      metadata: {
+        max: "#{values.max} points",
+        avg: "#{avg} points",
+        min: "#{values.min} points"
+      },
+      labels: weeks,
+      datasets: [
+          {
+              label:            "Points Completed",
+              backgroundColor:  CHART_OPTIONS[:background_color],
+              borderColor:      CHART_OPTIONS[:border_color],
+              borderWidth:      CHART_OPTIONS[:border_width],
+              pointRadius:      CHART_OPTIONS[:point_radius],
+              pointHoverRadius: CHART_OPTIONS[:point_hover_radius],
+              pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
+              data:             values
+          },
+          {
+              label:            "Average",
+              backgroundColor:  "rgba(0, 0, 0, 0)",
+              borderColor:      "rgba(255, 0, 0, 0.8)",
+              borderWidth:      1,
+              pointRadius:      0,
+              pointHoverRadius: 0,
+              pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
+              data:             [avg, avg, avg, avg, avg, avg, avg, avg, avg, avg]
+          }
+        ]
+      }
   end
 
 end

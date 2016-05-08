@@ -17,6 +17,10 @@ $(function(){
         }
       };
 
+      $(item).closest('.box').find('.js-min').html(data.metadata.min);
+      $(item).closest('.box').find('.js-avg').html(data.metadata.avg);
+      $(item).closest('.box').find('.js-max').html(data.metadata.max);
+
       Chart.Line(ctx, {
         data: data,
         options: options

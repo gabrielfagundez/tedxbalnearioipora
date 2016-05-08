@@ -2,23 +2,14 @@
 
 <section id= "content" class="content" %>
 
-  <%= render partial: 'projects/details' %>
   <% if can? :manage, :project_sensitive_data %>
     <%= render partial: 'projects/summary' %>
   <% end %>
+  <%= render partial: 'projects/details' %>
 
   <div class="row">
     <div class="col-xs-12">
-      <div class="box box-widget">
-        <div class="box-header with-border">
-          <div class="user-block">
-            <span class="username" style="margin-left: 0">Velocity report over the last 10 weeks</span>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas class="project_velocity" data-id=<%= params[:id] %> height="200" width="600"></canvas>
-        </div>
-      </div>
+      <%= render partial: "velocity_report" %>
     </div>
 
     <div class="col-xs-12">

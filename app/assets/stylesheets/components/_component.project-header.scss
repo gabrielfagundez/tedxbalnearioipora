@@ -31,10 +31,15 @@
     margin: 20px 0;
 
     a {
-      color: #ffbf00;
+      color: #00a65a;
 
       &:hover {
-        color: #ffbf00;
+        color: #00a65a;
+      }
+
+      i {
+        font-size: 12px;
+        margin-right: 5px;
       }
 
       p {

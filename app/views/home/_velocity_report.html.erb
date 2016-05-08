@@ -1,0 +1,29 @@
+<div class="col-md-6">
+  <div class="box box-solid">
+    <div class="box-header">
+      <i class="fa fa-code"></i>
+      <h3 class="box-title">
+        <%= "#{project.client.name} - #{project.name}" %>
+      </h3>
+    </div>
+    <div class="box-body">
+      <canvas class="project_velocity" data-id=<%= project.id %> height="200" width="600"></canvas>
+    </div>
+    <div class="box-footer no-border">
+      <div class="row">
+        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+          <span class="js-min"></span>
+          <div class="knob-label">Min velocity</div>
+        </div>
+        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+          <span class="js-avg" style="font-size: 20px"></span>
+          <div class="knob-label">Average velocity</div>
+        </div>
+        <div class="col-xs-4 text-center">
+          <span class="js-max"></span>
+          <div class="knob-label">Max velocity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

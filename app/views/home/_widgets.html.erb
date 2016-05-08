@@ -1,0 +1,16 @@
+<% if @widgets.empty? %>
+  <div class="c-emtpy-fav">
+    <%= image_tag 'heart.svg', class: 'c-emtpy-fav__image' %>
+    <div class="c-emtpy-fav__title">
+      You don't have any widgets yet.
+    </div>
+    <div class="c-emtpy-fav__description">
+      See the summary of as many projects as you want, clicking on the "Add Widget" link in the project detail.
+    </div>
+  </div>
+<% else %>
+  <h3 style="width: 100%; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 20px; color: #555">Project Details</h3>
+  <% @widgets.each do |widget| %>
+    <%= render partial: widget.widget_type, locals: { project: widget.project } %>
+  <% end %>
+<% end %>

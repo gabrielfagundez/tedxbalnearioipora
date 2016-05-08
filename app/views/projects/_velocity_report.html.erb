@@ -1,5 +1,12 @@
 <div class="box box-widget widget-user-2">
   <div class="widget-user-header bg-green">
+    <% if @widgets[:velocity_report].blank? %>
+      <span class="pull-right c-right-option">
+        <i class="fa fa-th" style="margin-right: 5px; font-size: 12px"></i>
+          <%= link_to "Add this widget to dashboard", toggl_user_widget_project_path(@project, { widget_type: "velocity_report" }), style: 'color: #ffffff;' %>
+      </span>
+    <% end %>
+
     <h5 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px; font-size: 20px;">Velocity report over the last 10 periods</h5>
     <h5 class="widget-user-desc" style="margin-left: 0">This report displays the velocity reached by the project in the last 10 periods. Values are expresed in points, and each period has an unique identifier manually entered in the app. This identifier can be the name of the Sprint, or a particular week.</h5>
   </div>

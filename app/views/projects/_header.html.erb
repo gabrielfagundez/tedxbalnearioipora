@@ -12,13 +12,13 @@
       <div class="pull-right c-project-header__fav">
         <% if @favorite %>
           <a href="<%= favorite_project_path(@project) %>">
-            <i class='fa fa-star'></i>
-            <p>Remove Favorite</p>
+            <i class='fa fa-minus-circle'></i>
+            <p>Remove from sidebar</p>
           </a>
         <% else %>
           <a href="<%= favorite_project_path(@project) %>">
-            <i class='fa fa-star-o'></i>
-            <p>Mark As Favorite</p>
+            <i class='fa fa-plus-circle'></i>
+            <p>Add to sidebar</p>
           </a>
         <% end %>
       </div>

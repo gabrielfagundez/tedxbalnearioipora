@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   before_filter :sanitize_params, only: :update
   before_filter :process_points_completed_entries
+  before_filter :setup_widgets, only: [:show, :team_performance, :time_distribution]
 
   def index
     @clients =
@@ -14,21 +15,21 @@ class ProjectsController < ApplicationController
 
   def team_performance
     @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
 
     @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
   def time_distribution
     @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
 
     @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
   def show
     @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
 
     @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
@@ -48,7 +49,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find_by_id(params[:id])
     @account = current_account
-    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
 
     @users = @project.client.users.all
   end
@@ -70,6 +71,17 @@ class ProjectsController < ApplicationController
     end
 
     redirect_to project_path(params[:id])
+  end
+
+  def toggl_user_widget
+    widget = Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: params[:widget_type]).first
+    if widget.present?
+      widget.delete
+    else
+      Widget.create(project_id: params[:id], user_id: current_user.id, widget_type: params[:widget_type])
+    end
+
+    redirect_to root_path
   end
 
   def time_usage
@@ -136,6 +148,12 @@ class ProjectsController < ApplicationController
     end
 
     sanitized_entries
+  end
+
+  def setup_widgets
+    @widgets = {
+      velocity_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "velocity_report").first
+    }
   end
 
   def project_params

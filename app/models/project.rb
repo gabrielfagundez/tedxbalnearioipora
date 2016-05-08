@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   has_many :points_completed_entries
   has_many :versions
   has_many :favorite_projects
+  has_many :widgets
   has_many :project_events
   belongs_to :team_leader, class_name: 'User'
   belongs_to :client

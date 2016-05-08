@@ -1,6 +1,10 @@
 class ProjectTimeUsageChart
 
   CHART_OPTIONS = {
+    border_width:       2,
+    point_radius:       2,
+    point_hover_radius: 2,
+    point_hit_radius:   20,
     dev: {
       background_color:   "rgba(127, 255, 127, 0.2)",
       border_color:       "rgba(127, 255, 127, 1)",
@@ -39,6 +43,10 @@ class ProjectTimeUsageChart
           fill: true,
           backgroundColor:      "rgba(127,127,255,0.2)",
           borderColor:          "rgba(127,127,255,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_communication_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_communication_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -56,6 +64,10 @@ class ProjectTimeUsageChart
           label: "Development",
           backgroundColor: "rgba(127,255,127,0.2)",
           borderColor: "rgba(127,255,127,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_development_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_development_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -73,6 +85,10 @@ class ProjectTimeUsageChart
           label: "Bugs",
           backgroundColor: "rgba(255,127,127,0.2)",
           borderColor: "rgba(255,127,127,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_bugs_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_bugs_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -90,6 +106,10 @@ class ProjectTimeUsageChart
           label: "Code Review",
           backgroundColor: "rgba(127,127,127,0.2)",
           borderColor: "rgba(127,127,127,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_code_review_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_code_review_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -107,6 +127,10 @@ class ProjectTimeUsageChart
           label: "QA",
           backgroundColor: "rgba(255,255,127,0.2)",
           borderColor: "rgba(255,255,127,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_qa_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_qa_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -124,6 +148,10 @@ class ProjectTimeUsageChart
           label: "Infrastructure",
           backgroundColor: "rgba(255,191,127,0.2)",
           borderColor: "rgba(255,191,127,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_infraestructure_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_infraestructure_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
@@ -141,6 +169,10 @@ class ProjectTimeUsageChart
           label: "UI/UX",
           backgroundColor: "rgba(191,127,255,0.2)",
           borderColor: "rgba(191,127,255,1)",
+          borderWidth:          CHART_OPTIONS[:border_width],
+          pointRadius:          CHART_OPTIONS[:point_radius],
+          pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
+          pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
             average(@project.total_uxui_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
             average(@project.total_uxui_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),

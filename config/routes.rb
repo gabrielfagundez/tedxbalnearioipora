@@ -17,13 +17,15 @@ Rails.application.routes.draw do
   end
   resources :projects do
     member do
+      get :team_performance
+      get :time_distribution
+
       get :work_entries, as: 'work_entries'
       get :time_usage
       get :total_time
       get :radar
       get :historical
       get :velocity
-      get :velocity_entries
       get :favorite
       post :enter_work_entries, as: 'enter_work_entries'
     end

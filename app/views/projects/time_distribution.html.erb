@@ -1,0 +1,22 @@
+<%= render partial: 'header', locals: { from: "time_distribution" } %>
+
+<section id= "content" class="content" %>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render partial: "time_usage_report" %>
+    </div>
+
+    <div class="col-xs-12">
+      <%= render partial: "total_time" %>
+    </div>
+
+    <div class="col-xs-6">
+      <%= render partial: "radar" %>
+    </div>
+    <div class="col-xs-6">
+      <%= render partial: "historical" %>
+    </div>
+  </div>
+
+</section>

@@ -12,6 +12,20 @@ class ProjectsController < ApplicationController
     @favorites = FavoriteProject.where(user_id: current_user.id).collect(&:project_id)
   end
 
+  def team_performance
+    @project = Project.find_by_id(params[:id])
+    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+
+    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
+  end
+
+  def time_distribution
+    @project = Project.find_by_id(params[:id])
+    redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))
+
+    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
+  end
+
   def show
     @project = Project.find_by_id(params[:id])
     redirect_to projects_path if @project.blank? || !(@project.client.users.collect(&:id).include?(current_user.id))

@@ -1,11 +1,5 @@
 <div class="box box-widget widget-user-2">
   <div class="widget-user-header bg-green">
-    <% if can? :manage, :projects %>
-      <span class="pull-right" style="padding: 2px 10px; border: 1px solid; border-radius: 3px;">
-        <i class="fa fa-line-chart"></i>
-        <%= link_to "Add New Entry", velocity_entries_project_path(@project), style: "color: #ffffff;" %>
-      </span>
-    <% end %>
     <h5 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px; font-size: 20px;">Velocity report over the last 10 periods</h5>
     <h5 class="widget-user-desc" style="margin-left: 0">This report displays the velocity reached by the project in the last 10 periods. Values are expresed in points, and each period has an unique identifier manually entered in the app. This identifier can be the name of the Sprint, or a particular week.</h5>
   </div>
@@ -31,4 +25,35 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="box box-info">
+  <div class="box-header with-border">
+    <h3 class="box-title">Add Velocity Entry</h3>
+  </div>
+
+  <%= form_tag(project_path(@project), method: "patch") do %>
+    <div class="box-body">
+      <div class="form-group">
+        <label>Period</label>
+        <%= text_field_tag 'points_completed_entries[period]', nil, class: "form-control", placeholder: "03-21 - 03-28" %>
+        <p class="help-block">
+          This text will identify the velocity entry timespan.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label>Points Completed</label>
+        <%= text_field_tag 'points_completed_entries[points_completed]', nil, type: 'integer', class: "form-control", placeholder: 12 %>
+        <p class="help-block">
+          This value will be added as the last velocity entry of the project. If you have more than one entry,
+          you should enter each value in order.
+        </p>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <%= submit_tag "Add", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>

@@ -1,4 +1,4 @@
-<%= render partial: 'shared/page_title', locals: { title: @project.name } %>
+<%= render partial: 'header', locals: { from: "show" } %>
 
 <section id= "content" class="content" %>
 
@@ -6,53 +6,5 @@
     <%= render partial: 'projects/summary' %>
   <% end %>
   <%= render partial: 'projects/details' %>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <%= render partial: "velocity_report" %>
-    </div>
-
-    <div class="col-xs-12">
-      <%= render partial: "time_usage_report" %>
-    </div>
-
-    <div class="col-xs-12">
-      <div class="box box-widget">
-        <div class="box-header with-border">
-          <div class="user-block">
-            <span class="username" style="margin-left: 0">Weekly rate over the last 10 weeks</span>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas class="project_total_time" data-id=<%= params[:id] %> height="200" width="600"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6">
-      <div class="box box-widget">
-        <div class="box-header with-border">
-          <div class="user-block">
-            <span class="username" style="margin-left: 0">Development vs Bugs radar over the last 4 weeks</span>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas class="project_radar" data-id=<%= params[:id] %> height="200" width="600"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="box box-widget">
-        <div class="box-header with-border">
-          <div class="user-block">
-            <span class="username" style="margin-left: 0">Historical time distribution</span>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas class="project_historical" data-id=<%= params[:id] %> height="200" width="600"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </section>

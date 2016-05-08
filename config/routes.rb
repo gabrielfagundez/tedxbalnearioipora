@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources :projects do
     member do
       get :work_entries, as: 'work_entries'
-      get :summary
-      get :overview
+      get :time_usage
+      get :total_time
       get :radar
       get :historical
       get :velocity

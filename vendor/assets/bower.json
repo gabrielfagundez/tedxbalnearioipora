@@ -9,6 +9,7 @@
     "angular-ui-select": "latest",
     "angular-tooltips": "latest",
     "bootstrap-colorpicker": "latest",
-    "select2": "latest"
+    "select2": "latest",
+    "Chart.js": "latest"
   }
 }

@@ -4,8 +4,12 @@ $(function(){
     var project_id = $(item).data().id;
 
     $.ajax("/projects/" + project_id + "/radar").success(function(data) {
-      new Chart(ctx).Radar(data, {
-        responsive: true
+      var options = {};
+
+      new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: options
       });
     })
   })

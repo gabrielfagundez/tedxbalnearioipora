@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap/bootstrap
 //= require adminlte/adminlte
-//= require chart/chart
+//= require Chart.js/dist/Chart.js
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource

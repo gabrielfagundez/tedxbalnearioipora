@@ -58,8 +58,8 @@ class ProjectsController < ApplicationController
     redirect_to project_path(params[:id])
   end
 
-  def summary
-    render json: Project.find(params[:id]).summary.to_json
+  def time_usage
+    render json: Project.find(params[:id]).time_usage.to_json
   end
 
   def radar
@@ -70,8 +70,8 @@ class ProjectsController < ApplicationController
     render json: Project.find(params[:id]).historical.to_json
   end
 
-  def overview
-    render json: Project.find(params[:id]).overview.to_json
+  def total_time
+    render json: Project.find(params[:id]).total_time.to_json
   end
 
   def velocity

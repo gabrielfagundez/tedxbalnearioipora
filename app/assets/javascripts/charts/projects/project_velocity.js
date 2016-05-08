@@ -4,8 +4,15 @@ $(function(){
     var project_id = $(item).data().id;
 
     $.ajax("/projects/" + project_id + "/velocity").success(function(data) {
-      new Chart(ctx).Line(data, {
-        responsive: true
+      var options = {
+        legend: [{
+          display: false
+        }]
+      };
+
+      Chart.Line(ctx, {
+        data: data,
+        options: options
       });
     })
   })

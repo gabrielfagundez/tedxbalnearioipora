@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.role == 'admin'
+    self.role == 'admin' || self.role == 'beta'
   end
 
   def client_manager?

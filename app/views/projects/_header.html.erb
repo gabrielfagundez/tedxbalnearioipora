@@ -9,13 +9,21 @@
           </a>
         <% end %>
       </div>
+      <div class="pull-right c-project-header__fav">
+        <% if @favorite %>
+          <a href="<%= favorite_project_path(@project) %>">
+            <i class='fa fa-star'></i>
+            <p>Remove Favorite</p>
+          </a>
+        <% else %>
+          <a href="<%= favorite_project_path(@project) %>">
+            <i class='fa fa-star-o'></i>
+            <p>Mark As Favorite</p>
+          </a>
+        <% end %>
+      </div>
       <div class="c-project-header__name">
         <%= @project.name %>
-        <% if @favorite %>
-          <p tooltip-template="Remove favorite" style="display: inline;"><%= link_to "<i class='fa fa-star' style='color: #ffbf00; font-size: 25px;'></i>".html_safe, favorite_project_path(@project) %></p>
-        <% else %>
-          <p tooltip-template="Add favorite" style="display: inline;"><%= link_to "<i class='fa fa-star-o' style='color: #ffbf00; font-size: 25px;'></i>".html_safe, favorite_project_path(@project) %></p>
-        <% end %>
       </div>
       <div class="c-project-header__client-name">
         <%= @project.client.name %>

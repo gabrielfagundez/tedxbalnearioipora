@@ -6,10 +6,10 @@
 }
 
   .c-project-header__action {
-    margin: 20px;
+    margin: 13px 20px;
     color: #fff;
     border: 1px solid #00a65a;
-    padding: 0 15px;
+    padding: 6px 15px;
     border-radius: 3px;
     background: #00a65a;
 
@@ -23,6 +23,22 @@
       i {
         font-size: 12px;
         margin-right: 5px;
+      }
+    }
+  }
+
+  .c-project-header__fav {
+    margin: 20px 0;
+
+    a {
+      color: #ffbf00;
+
+      &:hover {
+        color: #ffbf00;
+      }
+
+      p {
+        display: inline;
       }
     }
   }

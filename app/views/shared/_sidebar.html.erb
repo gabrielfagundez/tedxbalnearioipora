@@ -15,26 +15,25 @@
           <i class="fa fa-th"></i> <span>Dashboard</span>
         </a>
       </li>
-      <% if can? :manage, :beta %>
-        <!-- <li class="<%= controller_name == 'time_trackings' ? 'active' : '' %>">
-          <a href="<%= time_tracking_path %>">
-            <i class="fa fa-clock-o"></i> <span>Time Tracking</span>
-          </a>
-        </li>
-        <li class="treeview <%= controller_name == 'reports' ? 'active' : '' %>">
-          <a href="#">
-            <i class="fa fa-file-text"></i>
-            <span>Time Reports</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="<%= action_name == 'index' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Summary Report</a></li>
-            <li class="<%= action_name == 'detailed' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Detailed Report</a></li>
-            <li class="<%= action_name == 'weekly' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Weekly Report</a></li>
-          </ul>
-        </li> -->
 
-      <% end %>
+      <!-- <li class="<%= controller_name == 'time_trackings' ? 'active' : '' %>">
+        <a href="<%= time_tracking_path %>">
+          <i class="fa fa-clock-o"></i> <span>Time Tracking</span>
+        </a>
+      </li>
+      <li class="treeview <%= controller_name == 'reports' ? 'active' : '' %>">
+        <a href="#">
+          <i class="fa fa-file-text"></i>
+          <span>Time Reports</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<%= action_name == 'index' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Summary Report</a></li>
+          <li class="<%= action_name == 'detailed' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Detailed Report</a></li>
+          <li class="<%= action_name == 'weekly' ? 'active' : '' %>"><a href="<%= reports_path %>"><i class="fa fa-circle-o"></i> Weekly Report</a></li>
+        </ul>
+      </li> -->
+
       <li class="<%= controller_name == 'projects' || controller_name == 'clients' ? 'active' : '' %>">
         <a href="<%= clients_path %>">
           <i class="fa fa-code"></i> <span>Projects</span>

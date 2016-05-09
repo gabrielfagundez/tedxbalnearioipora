@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def beta?
-    self.role == 'beta'
-  end
-
   def admin?
     self.role == 'admin' || self.role == 'beta'
   end

@@ -4,14 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.beta?
-      can :manage, :beta
-      can :manage, :admin
-      can :manage, :projects
-      can :manage, :users
-      can :manage, :project_sensitive_data
-
-    elsif user.admin?
+    if user.admin?
       can :manage, :admin
 
       can :manage, :users

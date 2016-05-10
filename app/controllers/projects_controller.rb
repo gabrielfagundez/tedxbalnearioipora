@@ -152,7 +152,8 @@ class ProjectsController < ApplicationController
 
   def setup_widgets
     @widgets = {
-      velocity_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "velocity_report").first
+      velocity_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "velocity_report").first,
+      time_usage_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "time_usage_report").first,
     }
   end
 

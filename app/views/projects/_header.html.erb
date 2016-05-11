@@ -13,12 +13,12 @@
         <% if @favorite %>
           <a href="<%= favorite_project_path(@project) %>">
             <i class='fa fa-minus-circle'></i>
-            <p>Remove from sidebar</p>
+            <p>Remove shortcut from sidebar</p>
           </a>
         <% else %>
           <a href="<%= favorite_project_path(@project) %>">
             <i class='fa fa-plus-circle'></i>
-            <p>Add to sidebar</p>
+            <p>Add shortcut to sidebar</p>
           </a>
         <% end %>
       </div>

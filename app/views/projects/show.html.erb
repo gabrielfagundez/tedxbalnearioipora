@@ -2,6 +2,13 @@
 
 <section id= "content" class="content" %>
 
+  <div class="c-header-exp text-center">
+    <div class="c-header-exp__line"></div>
+    <div class="c-header-exp__title">
+      Summary
+    </div>
+  </div>
+
   <% if can? :manage, :project_sensitive_data %>
     <%= render partial: 'projects/summary' %>
   <% end %>

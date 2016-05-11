@@ -1,0 +1,27 @@
+.c-header-exp {
+  margin: 0 20%;
+  width: 60%;
+  height: 40px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+  .c-header-exp__title {
+    background-color: #ecf0f5;
+    z-index: 2;
+    color: #ccc;
+    font-size: 25px;
+    position: absolute;
+    padding: 0 20px;
+    transform: translate(-50%, 0);
+    left: 50%;
+  }
+
+  .c-header-exp__line {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 18px 0 0 0;
+    position: absolute;
+    z-index: 1;
+  }

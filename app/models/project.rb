@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   has_many :favorite_projects
   has_many :widgets
   has_many :project_events
+  has_many :story_points
   belongs_to :team_leader, class_name: 'User'
   belongs_to :client
   has_and_belongs_to_many :team_members

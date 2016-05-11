@@ -5,6 +5,11 @@
       <h3 class="box-title">
         <%= "#{project.client.name} - #{project.name}" %>
       </h3>
+      <div class="box-tools pull-right">
+        <button tooltips tooltip-template="Remove this widget" type="button" class="btn btn-box-tool" data-widget="remove" ng-click="removeWidget(<%= widget.id %>)">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
     </div>
     <div class="box-body">
       <canvas class="project_velocity" data-id=<%= project.id %> height="200" width="600"></canvas>

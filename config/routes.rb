@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         post :toggle_fav
       end
     end
+    resources :widgets,         only: [:destroy]
     resources :time_categories, except: [:new, :edit]
     resources :time_entries,    except: [:new, :edit] do
       collection do

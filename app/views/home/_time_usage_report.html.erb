@@ -1,6 +1,11 @@
 <div class="col-md-6">
   <div class="box box-widget" style="min-height: 320px;">
     <div class="box-header with-border">
+      <div class="box-tools pull-right">
+        <button tooltips tooltip-template="Remove this widget" type="button" class="btn btn-box-tool" data-widget="remove" ng-click="removeWidget(<%= widget.id %>)">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
       <div class="user-block">
         <span class="username" style="margin-left: 0"><%= "#{project.client.name} - #{project.name}" %></span>
         <span class="description" style="margin-left: 0">Time distribution over the last 10 weeks</span>

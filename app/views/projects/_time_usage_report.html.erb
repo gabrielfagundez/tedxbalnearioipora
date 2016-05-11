@@ -1,6 +1,6 @@
 <div class="box box-widget widget-user-2">
   <div class="widget-user-header bg-green">
-    <% if @widgets[:velocity_report].blank? %>
+    <% if @widgets[:time_usage_report].blank? %>
       <span class="pull-right c-right-option">
         <i class="fa fa-th" style="margin-right: 5px; font-size: 12px"></i>
           <%= link_to "Add to dashboard", toggl_user_widget_project_path(@project, { widget_type: "time_usage_report" }), style: 'color: #ffffff;' %>

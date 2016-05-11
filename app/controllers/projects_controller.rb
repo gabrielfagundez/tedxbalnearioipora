@@ -5,11 +5,17 @@ class ProjectsController < ApplicationController
   before_filter :setup_widgets, only: [:show, :team_performance, :time_distribution]
 
   def index
-    @clients =
-      params[:client_id].present? ?
-        current_user.clients.includes(:projects).where(id: params[:client_id]) :
-        current_user.clients.includes(:projects)
-
+    if current_user.admin?
+      @clients =
+        params[:client_id].present? ?
+          current_account.clients.includes(:projects).where(id: params[:client_id]) :
+          current_account.clients.includes(:projects)
+    else
+      @clients =
+        params[:client_id].present? ?
+          current_user.clients.includes(:projects).where(id: params[:client_id]) :
+          current_user.clients.includes(:projects)
+    end
     @favorites = FavoriteProject.where(user_id: current_user.id).collect(&:project_id)
   end
 

@@ -9,7 +9,6 @@
     </div>
   </div>
 <% else %>
-  <h3 style="width: 100%; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 20px; color: #555">Project Details</h3>
   <% @widgets.each do |widget| %>
     <%= render partial: widget.widget_type, locals: { project: widget.project, widget: widget } %>
   <% end %>

@@ -61,8 +61,8 @@ class Project < ActiveRecord::Base
     ProjectRadarChart.new(self).chart_data
   end
 
-  def time_usage
-    ProjectTimeUsageChart.new(self).chart_data
+  def time_usage(categories)
+    ProjectTimeUsageChart.new(self, categories).chart_data
   end
 
   def historical

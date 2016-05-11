@@ -17,12 +17,10 @@ class ProjectTimeUsageChart
     }
   }
 
-  def initialize(project)
+  def initialize(project, categories)
+    @categories = categories
     @project = project
-  end
-
-  def chart_data
-    weeks = [
+    @weeks = [
       (Date.today.beginning_of_week(:monday) - 10.week).to_s,
       (Date.today.beginning_of_week(:monday) - 9.week).to_s,
       (Date.today.beginning_of_week(:monday) - 8.week).to_s,
@@ -34,9 +32,12 @@ class ProjectTimeUsageChart
       (Date.today.beginning_of_week(:monday) - 2.week).to_s,
       (Date.today.beginning_of_week(:monday) - 1.week).to_s
     ]
+  end
 
+  def chart_data
     {
-      labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7], weeks[8], weeks[9]],
+      metadata: max_values,
+      labels: [@weeks[0], @weeks[1], @weeks[2], @weeks[3], @weeks[4], @weeks[5], @weeks[6], @weeks[7], @weeks[8], @weeks[9]],
       datasets: [
         {
           label: "Communication",
@@ -48,16 +49,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_communication_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_communication_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_communication_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_communication_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_communication_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_communication_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_communication_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_communication_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_communication_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_communication_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_communication_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_communication_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_communication_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_communication_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_communication_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_communication_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_communication_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_communication_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_communication_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_communication_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -69,16 +70,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_development_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_development_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_development_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_development_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_development_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_development_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_development_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_development_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_development_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_development_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_development_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_development_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_development_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_development_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_development_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_development_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_development_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_development_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_development_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_development_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -90,16 +91,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_bugs_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_bugs_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_bugs_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_bugs_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_bugs_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_bugs_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_bugs_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_bugs_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_bugs_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_bugs_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_bugs_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_bugs_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_bugs_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_bugs_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_bugs_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_bugs_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_bugs_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_bugs_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_bugs_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_bugs_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -111,16 +112,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_code_review_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_code_review_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_code_review_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_code_review_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_code_review_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_code_review_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_code_review_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_code_review_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_code_review_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_code_review_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_code_review_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_code_review_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_code_review_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_code_review_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_code_review_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_code_review_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_code_review_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_code_review_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_code_review_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_code_review_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -132,16 +133,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_qa_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_qa_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_qa_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_qa_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_qa_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_qa_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_qa_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_qa_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_qa_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_qa_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_qa_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_qa_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_qa_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_qa_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_qa_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_qa_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_qa_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_qa_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_qa_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_qa_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -153,16 +154,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_infraestructure_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_infraestructure_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_infraestructure_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_infraestructure_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_infraestructure_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_infraestructure_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_infraestructure_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_infraestructure_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_infraestructure_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_infraestructure_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_infraestructure_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_infraestructure_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_infraestructure_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_infraestructure_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_infraestructure_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_infraestructure_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_infraestructure_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_infraestructure_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_infraestructure_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_infraestructure_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         },
         {
@@ -174,16 +175,16 @@ class ProjectTimeUsageChart
           pointHoverRadius:     CHART_OPTIONS[:point_hover_radius],
           pointHitRadius:       CHART_OPTIONS[:point_hit_radius],
           data: [
-            average(@project.total_uxui_for_week(weeks[0]), @project.total_hours_for_week(weeks[0])),
-            average(@project.total_uxui_for_week(weeks[1]), @project.total_hours_for_week(weeks[1])),
-            average(@project.total_uxui_for_week(weeks[2]), @project.total_hours_for_week(weeks[2])),
-            average(@project.total_uxui_for_week(weeks[3]), @project.total_hours_for_week(weeks[3])),
-            average(@project.total_uxui_for_week(weeks[4]), @project.total_hours_for_week(weeks[4])),
-            average(@project.total_uxui_for_week(weeks[5]), @project.total_hours_for_week(weeks[5])),
-            average(@project.total_uxui_for_week(weeks[6]), @project.total_hours_for_week(weeks[6])),
-            average(@project.total_uxui_for_week(weeks[7]), @project.total_hours_for_week(weeks[7])),
-            average(@project.total_uxui_for_week(weeks[8]), @project.total_hours_for_week(weeks[8])),
-            average(@project.total_uxui_for_week(weeks[9]), @project.total_hours_for_week(weeks[9]))
+            average(@project.total_uxui_for_week(@weeks[0]), @project.total_hours_for_week(@weeks[0])),
+            average(@project.total_uxui_for_week(@weeks[1]), @project.total_hours_for_week(@weeks[1])),
+            average(@project.total_uxui_for_week(@weeks[2]), @project.total_hours_for_week(@weeks[2])),
+            average(@project.total_uxui_for_week(@weeks[3]), @project.total_hours_for_week(@weeks[3])),
+            average(@project.total_uxui_for_week(@weeks[4]), @project.total_hours_for_week(@weeks[4])),
+            average(@project.total_uxui_for_week(@weeks[5]), @project.total_hours_for_week(@weeks[5])),
+            average(@project.total_uxui_for_week(@weeks[6]), @project.total_hours_for_week(@weeks[6])),
+            average(@project.total_uxui_for_week(@weeks[7]), @project.total_hours_for_week(@weeks[7])),
+            average(@project.total_uxui_for_week(@weeks[8]), @project.total_hours_for_week(@weeks[8])),
+            average(@project.total_uxui_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
           ]
         }
       ]
@@ -198,6 +199,33 @@ class ProjectTimeUsageChart
     else
       (value * 100 / total).round(1)
     end
+  end
+
+  def max_values
+    @values ||= [
+      average(@project.total_communication_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_development_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_bugs_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_code_review_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_qa_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_infraestructure_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9])),
+      average(@project.total_uxui_for_week(@weeks[9]), @project.total_hours_for_week(@weeks[9]))
+    ]
+
+    {
+      max1: {
+        value: "#{@values.each_with_index.sort.reverse[0][0]} %",
+        label: @categories[@values.each_with_index.sort.reverse[0][1]]
+      },
+      max2: {
+        value: "#{@values.each_with_index.sort.reverse[1][0]} %",
+        label: @categories[@values.each_with_index.sort.reverse[1][1]]
+      },
+      max3: {
+        value: "#{@values.each_with_index.sort.reverse[2][0]} %",
+        label: @categories[@values.each_with_index.sort.reverse[2][1]]
+      }
+    }
   end
 
 end

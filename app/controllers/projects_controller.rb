@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
   end
 
   def time_usage
-    render json: Project.find(params[:id]).time_usage.to_json
+    render json: Project.find(params[:id]).time_usage(current_account.time_categories.collect(&:name)).to_json
   end
 
   def radar

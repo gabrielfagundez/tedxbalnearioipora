@@ -15,6 +15,13 @@ $(function(){
         }
       }
 
+      $(item).closest('.box').find('.js-max-val-1').html(data.metadata.max1.value);
+      $(item).closest('.box').find('.js-max-label-1').html(data.metadata.max1.label);
+      $(item).closest('.box').find('.js-max-val-2').html(data.metadata.max2.value);
+      $(item).closest('.box').find('.js-max-label-2').html(data.metadata.max2.label);
+      $(item).closest('.box').find('.js-max-val-3').html(data.metadata.max3.value);
+      $(item).closest('.box').find('.js-max-label-3').html(data.metadata.max3.label);
+
       Chart.Line(ctx, {
         data: data,
         options: options

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
   resources :projects do
+    resources :story_points,    only: [:create, :destroy]
+
     member do
       get :team_performance
       get :time_distribution

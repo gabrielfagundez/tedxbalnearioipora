@@ -1,0 +1,36 @@
+<div id="story-point-modal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag(project_story_points_path(@project), method: "post") do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+          <h4 class="modal-title">Add new story point definition</h4>
+        </div>
+        <div class="modal-body">
+          <div class="box-body">
+            <div class="form-group">
+              <label>Value of the Story Point</label>
+              <%= text_field_tag 'story_point[value]', nil, class: "form-control", placeholder: "2" %>
+              <p class="help-block">
+                Select the value of the Story Point you want to define. In Scrum, it's usual to use Fibonacci.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label>Definition of the Story Point</label>
+              <%= text_area_tag 'story_point[definition]', nil, class: "form-control", placeholder: "A task with an estimate of 2, considers.." %>
+              <p class="help-block">
+                This is the definition of the value above. This will be shared by the whole team, and it's important for sizing new tasks in the project.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <%= submit_tag "Save", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

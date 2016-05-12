@@ -1,0 +1,38 @@
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Story Point References</h3>
+    <div class="box-tools pull-right">
+      <button data-toggle="modal" data-target="#story-point-modal" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i> Add new Story Point definition</button>
+    </div>
+  </div>
+  <div class="box-body">
+    <% if story_points.blank? %>
+      <div class="c-emtpy-fav">
+        <i class="fa fa-tachometer c-emtpy-fav__image"></i>
+        <div class="c-emtpy-fav__title">
+          Your story points are not defined yet
+        </div>
+        <div class="c-emtpy-fav__description">
+          A story point is a metric used in agile project management and development to estimate the complexity of implementing a given story.
+          It's important to define and identify one or multiple reference examples, which the team would do relative sizing of the backlog.
+        </div>
+      </div>
+    <% else %>
+      <% story_points.each do |sp| %>
+        <div class="col-md-3">
+          <div class="box direct-chat direct-chat-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Story Point: <%= sp.value %></h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool"><%= link_to '<i class="fa fa-times"></i>'.html_safe, project_story_point_path(project_id: @project.id, id: sp.id), :method => :delete %></button>
+              </div>
+            </div>
+            <div class="box-body" style="padding: 10px;">
+              <%= sp.definition %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

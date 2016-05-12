@@ -1,4 +1,4 @@
-class ProjectEvent < ActiveRecord::Base
+class StoryPoint < ActiveRecord::Base
 
   belongs_to :project
 

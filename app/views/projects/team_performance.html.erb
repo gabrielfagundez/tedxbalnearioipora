@@ -11,8 +11,11 @@
         </div>
       </div>
 
+      <%= render partial: "story_points_definition", locals: { story_points: @project.story_points } %>
       <%= render partial: "velocity_report" %>
     </div>
   </div>
 
 </section>
+
+<%= render partial: "story_point_modal" %>

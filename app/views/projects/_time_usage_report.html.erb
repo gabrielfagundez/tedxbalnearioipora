@@ -15,9 +15,26 @@
     <h5 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px; font-size: 20px;">Time distribution (%) over the last 10 weeks</h5>
     <h5 class="widget-user-desc" style="margin-left: 0">This report displays how the team invested the time in the last 10 weeks.</h5>
   </div>
-  <div class="box-footer no-padding">
-    <div class="box-body">
-      <canvas class="project_time_usage" style="margin-top: 40px;" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+  <div class="box-body">
+    <canvas class="project_time_usage" style="margin-top: 40px;" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+  </div>
+  <div class="box-footer no-border">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h5>Last week most tracked time categories</h5>
+      </div>
+      <div class="col-xs-4 text-center">
+        <span class="js-max-val-2"></span>
+        <div class="knob-label js-max-label-2"></div>
+      </div>
+      <div class="col-xs-4 text-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4">
+        <span class="js-max-val-1" style="font-size: 20px"></span>
+        <div class="knob-label js-max-label-1"></div>
+      </div>
+      <div class="col-xs-4 text-center">
+        <span class="js-max-val-3"></span>
+        <div class="knob-label js-max-label-3"></div>
+      </div>
     </div>
   </div>
 </div>

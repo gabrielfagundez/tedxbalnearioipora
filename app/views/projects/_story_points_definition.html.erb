@@ -18,22 +18,20 @@
         </div>
       </div>
     <% else %>
-      <% story_points.each do |sp| %>
-        <div class="col-md-4">
-          <div class="box collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Story Point: <%= sp.value %></h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                <button type="button" class="btn btn-box-tool"><%= link_to '<i class="fa fa-times"></i>'.html_safe, project_story_point_path(project_id: @project.id, id: sp.id), :method => :delete %></button>
-              </div>
-            </div>
-            <div class="box-body" style="padding: 10px;">
-              <%= sp.definition %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th style="width: 90px">Story Point</th>
+            <th>Definition</th>
+          </tr>
+          <% story_points.each do |sp| %>
+            <tr>
+              <td class="text-center"><%= sp.value %></td>
+              <td><%= sp.definition %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>

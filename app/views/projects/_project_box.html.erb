@@ -2,9 +2,6 @@
   <div class="box box-widget widget-user">
     <a class="img-circle" href="<%= url %>">
       <div class="widget-user-header bg-green" style="text-align: center">
-        <p class='pull-right' style='font-size: 18px; color: #acd0e5'>
-          <i tooltips tooltip-template="Add/Remove this project as favorite" class='fa <%= @favorites.include?(p.id) ? "fa-star" : "fa-star-o" %>' ng-click="toggleFavorite($event, <%= p.id %>)" style='color: yellow'></i>
-        </p>
         <h3 class="widget-user-username" style="padding-left: 18px"><%= p.name %></h3>
       </div>
       <div class="widget-user-image">

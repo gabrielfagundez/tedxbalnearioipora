@@ -1,0 +1,110 @@
+<%= render partial: 'shared/page_title', locals: { title: 'Projects' } %>
+
+<section class="content">
+  <div class="c-white-box">
+    <div class="row">
+      <div class="col-lg-6 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">Hours Last Week</div>
+          <div class="c-list__item__value">1892h</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="c-list__item">
+          <div class="c-list__item__key">People Who Contributed Last Week</div>
+          <div class="c-list__item__value">28 people</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-white-box">
+    <div class="c-white-box__title">
+      History
+    </div>
+
+    <div class="c-white-box__desc">
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+      <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+      <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+    </div>
+
+    <div class="c-white-box__action">
+      <a href="#" class="o-button">
+        Edit
+      </a>
+    </div>
+  </div>
+
+  <div class="c-white-box">
+    <div class="c-white-box__upper-desc">
+      Client Summary
+    </div>
+
+    <div class="c-white-box__title">
+      Client Summary
+    </div>
+
+    <div class="c-white-box__desc">
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+      <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+      <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+    </div>
+
+    <div class="c-list">
+      <% @client.projects.each_slice(3).to_a.each do |group| %>
+        <div class="o-separator"></div>
+        <div class="row">
+          <% group.each_with_index do |project, proj_index| %>
+              <% if group.length == 1 %>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 o-separator-left o-separator-right">
+                  <div class="c-list__item border-left">
+                    <div class="c-list__item__title">
+                      <%= project.name %>
+                    </div>
+                    <div class="c-list__item__action">
+                      <div class="o-button">
+                        View Project
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3"></div>
+              <% end %>
+              <% if group.length == 2 %>
+                <div class="col-lg-6 <%= proj_index == 0 ? 'o-separator-right' : '' %>">
+                  <div class="c-list__item">
+                    <div class="c-list__item__title">
+                      <%= project.name %>
+                    </div>
+                    <div class="c-list__item__action">
+                      <a href="<%= project_path(project) %>" class="o-button">
+                        View Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <% if group.length == 3 %>
+                <div class="col-lg-4 <%= proj_index == 1 ? 'o-separator-left o-separator-right' : '' %>">
+                  <div class="c-list__item">
+                    <div class="c-list__item__title">
+                      <%= project.name %>
+                    </div>
+                    <div class="c-list__item__action">
+                      <a href="<%= project_path(project) %>" class="o-button">
+                        View Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="o-separator"></div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,21 @@
+.c-list {}
+
+  .c-list__item {
+    text-align: center;
+    padding: 30px 0;
+  }
+
+    .c-list__item__title {
+      font-size: 20px;
+      color: #4A4A4A;
+      padding: 0 0 10px 0;
+    }
+    .c-list__item__action {}
+    .c-list__item__key {
+      font-size: 10px;
+      font-weight: bold;
+    }
+    .c-list__item__value {
+      font-size: 25px;
+      font-weight: bold;
+    }

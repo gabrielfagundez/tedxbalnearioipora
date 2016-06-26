@@ -1,0 +1,27 @@
+.c-white-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 3px;
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+  .c-white-box__upper-desc {
+    text-align: center;
+    font-size: 12px;
+  }
+  .c-white-box__title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+  .c-white-box__desc {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px;
+  }
+  .c-white-box__action {
+    text-align: center;
+    margin: 30px;
+  }

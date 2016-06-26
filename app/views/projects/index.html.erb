@@ -1,38 +1,98 @@
 <%= render partial: 'shared/page_title', locals: { title: 'Projects' } %>
 
 <section class="content">
-
-  <% @clients.each do |client| %>
-    <div class="box box-widget">
-      <div class="box-header with-border">
-        <div class="user-block">
-          <span class="username" style="margin-left: 0"><%= client.name %></span>
-          <span class="description" style="margin-left: 0"><%= "#{client.projects.length} projects" %></span>
+  <div class="c-white-box">
+    <div class="row">
+      <div class="col-lg-6 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">Hours Last Week</div>
+          <div class="c-list__item__value">1892h</div>
         </div>
-        <% if can? :manage, :projects %>
-          <div class="box-tools pull-right">
-            <a href="<%= new_project_path({ client_id: client.id }) %>"><span class="label label-info">Add New Project</span></a>
+      </div>
+      <div class="col-lg-6">
+        <div class="c-list__item">
+          <div class="c-list__item__key">Active People</div>
+          <div class="c-list__item__value">28 people</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% @clients.each_with_index do |client, index| %>
+    <div class="c-white-box">
+      <div class="c-white-box__upper-desc">
+        Client #<%= index + 1 %>
+      </div>
+
+      <div class="c-white-box__title">
+        <%= client.name %>
+      </div>
+
+      <div class="c-white-box__desc">
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+        <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+      </div>
+
+      <div class="c-white-box__action">
+        <a href="<%= client_path(client) %>" class="o-button">
+          View Client
+        </a>
+      </div>
+
+      <div class="c-list">
+        <% client.projects.each_slice(3).to_a.each do |group| %>
+          <div class="o-separator"></div>
+          <div class="row">
+            <% group.each_with_index do |project, proj_index| %>
+                <% if group.length == 1 %>
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-6 o-separator-left o-separator-right">
+                    <div class="c-list__item border-left">
+                      <div class="c-list__item__title">
+                        <%= project.name %>
+                      </div>
+                      <div class="c-list__item__action">
+                        <div class="o-button">
+                          View Project
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3"></div>
+                <% end %>
+                <% if group.length == 2 %>
+                  <div class="col-lg-6 <%= proj_index == 0 ? 'o-separator-right' : '' %>">
+                    <div class="c-list__item">
+                      <div class="c-list__item__title">
+                        <%= project.name %>
+                      </div>
+                      <div class="c-list__item__action">
+                        <a href="<%= project_path(project) %>" class="o-button">
+                          View Project
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if group.length == 3 %>
+                  <div class="col-lg-4 <%= proj_index == 1 ? 'o-separator-left o-separator-right' : '' %>">
+                    <div class="c-list__item">
+                      <div class="c-list__item__title">
+                        <%= project.name %>
+                      </div>
+                      <div class="c-list__item__action">
+                        <a href="<%= project_path(project) %>" class="o-button">
+                          View Project
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+            <% end %>
           </div>
         <% end %>
-      </div>
-      <div class="box-body">
-        <div class="row">
-          <% if client.projects.present? %>
-            <% client.projects.each do |project| %>
-              <%= render partial: 'projects/project_box', locals: { p: project, url: project_path(project), description: project.vision } %>
-            <% end %>
-          <% else %>
-            <div class="c-emtpy-client">
-              <%= image_tag 'project.svg', class: 'c-emtpy-client__image' %>
-              <div class="c-emtpy-client__title">
-                This client doesn't have any project.
-              </div>
-              <div class="c-emtpy-client__description">
-                See the list of the projects here.
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <div class="o-separator"></div>
       </div>
     </div>
   <% end %>

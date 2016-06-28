@@ -1,42 +1,92 @@
-<div class="row">
-  <div class="col-xs-5">
-    <div class="box box-widget widget-user-2">
-      <div class="widget-user-header bg-green">
-        <h3 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px"><%= @project.name %></h3>
-        <h5 class="widget-user-desc" style="margin-left: 0"><%= @project.client.name %></h5>
+<div class="c-white-box">
+  <div class="c-white-box__upper-desc">
+    Project Summary
+  </div>
+
+  <div class="c-white-box__title">
+    General Attributes of the Project
+  </div>
+
+  <div class="c-white-box__desc">
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+    <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+    <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+  </div>
+
+  <div class="c-list">
+    <div class="o-separator"></div>
+    <div class="row">
+      <div class="col-xs-4 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">
+            Daily Meetings
+          </div>
+          <div class="c-list__item__value">
+            <%= @project.daily_meeting || "-" %>
+          </div>
+        </div>
       </div>
-      <div class="box-footer no-padding">
+      <div class="col-xs-4 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">
+            Retrospectives
+          </div>
+          <div class="c-list__item__value">
+            <%= @project.retrospectives || "-" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">
+            Iteration Planning
+          </div>
+          <div class="c-list__item__value">
+            <%= @project.iteration_planning || "-" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="o-separator"></div>
+
+    <div class="row">
+      <div class="col-xs-6 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">
+            Code Review
+          </div>
+          <div class="c-list__item__value">
+            <%= @project.code_review_model || "-" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 o-separator-right">
+        <div class="c-list__item">
+          <div class="c-list__item__key">
+            Issue Tracker
+          </div>
+          <div class="c-list__item__value">
+            <%= @project.issue_tracker || "-" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="o-separator"></div>
+  </div>
+</div>
+
+<!-- <div class="row">
         <ul class="nav nav-stacked">
           <li><a href="#">Team Leader <span class="pull-right badge bg-green"><%= @project.team_leader.try(:full_name) || "-" %></span></a></li>
-          <li><a href="#">Daily Meetings <span class="pull-right badge bg-green"><%= @project.daily_meeting || "No data about daily meetings" %></span></a></li>
-          <li><a href="#">Retrospectives <span class="pull-right badge bg-green"><%= @project.retrospectives || "No data about retrospectives" %></span></a></li>
-          <li><a href="#">Iteration Plannings <span class="pull-right badge bg-green"><%= @project.iteration_planning || "No data about iteration planning" %></span></a></li>
+          <li><a href="#">Daily Meetings <span class="pull-right badge bg-green"></span></a></li>
+          <li><a href="#">Retrospectives <span class="pull-right badge bg-green"></span></a></li>
+          <li><a href="#">Iteration Plannings <span class="pull-right badge bg-green"></span></a></li>
           <li><a href="#">Estimates Model <span class="pull-right badge bg-green"><%= @project.estimates_model || "No data about estimates model" %></span></a></li>
-          <li><a href="#">Issue Tracker <span class="pull-right badge bg-green"><%= @project.issue_tracker || "No data about issue tracker" %></span></a></li>
-          <li><a href="#">Code Review Model <span class="pull-right badge bg-green"><%= @project.code_review_model || "No data about code review model" %></span></a></li>
+          <li><a href="#">Issue Tracker <span class="pull-right badge bg-green"></span></a></li>
+          <li><a href="#">Code Review Model <span class="pull-right badge bg-green"></span></a></li>
         </ul>
       </div>
     </div>
   </div>
-
-  <div class="col-xs-7">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="info-box">
-          <div class="info-box-content" style="margin-left: 0; border-left: 4px solid #00a65a;">
-            <span class="info-box-text" style="margin-bottom: 10px"><b>Mision</b></span>
-            <span class="info-box-text"><%= @project.mision %></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12">
-        <div class="info-box">
-          <div class="info-box-content" style="margin-left: 0; border-left: 4px solid #00a65a;">
-            <span class="info-box-text" style="margin-bottom: 10px"><b>Vision</b></span>
-            <span class="info-box-text"><%= @project.vision %></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</div> -->

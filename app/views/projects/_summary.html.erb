@@ -1,53 +1,61 @@
-<div class="row">
-  <div class="col-lg-3 col-xs-6">
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3><%= @project.stats[:avg_four_weeks] %><sup style="font-size: 15px"> hours/week</sup></h3>
-        <p>Avg weekly hours (last 4 weeks)</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-3 col-xs-6">
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3><%= @project.stats[:expected_hours] %><sup style="font-size: 15px"> hours</sup></h3>
-        <p>Expected weekly hours</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-3 col-xs-6">
-    <div class="small-box bg-green">
-      <div class="inner">
-        <% if @project.stats[:remaining_weeks] %>
-          <h3><%= @project.stats[:remaining_weeks] %><sup style="font-size: 15px"> weeks</sup></h3>
-          <p>Remaining weeks</p>
-        <% else %>
-          <h3><%= @project.stats[:contract_end_date] %></sup></h3>
-          <p>Contract End Date</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-3 col-xs-6">
-    <% if @project.stats[:this_week][:hours].to_i > 0 %>
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h3><%= @project.stats[:this_week][:hours] %><sup style="font-size: 15px"> hours</sup></h3>
-          <p><%= @project.stats[:this_week][:week] %></p>
+<div class="c-white-box">
+  <div class="row">
+    <div class="col-xs-4 o-separator-right">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Average Weekly Hours</div>
+        <div class="c-list__item__value"><%= @project.stats[:avg_four_weeks] %> h/we</div>
+        <div class="c-list__item__action">
+          <a href="<%= time_distribution_project_path(@project) %>" class="o-button">Explore Distribution</a>
         </div>
       </div>
-    <% else %>
-      <a href="<%= work_entries_project_path %>">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <h3>-</h3>
-            <p>Add data for last week</p>
-          </div>
+    </div>
+    <div class="col-xs-4 o-separator-right">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Average Velocity</div>
+        <div class="c-list__item__value">1892h</div>
+        <div class="c-list__item__action">
+          <a href="<%= team_performance_project_path(@project) %>" class="o-button">Explore Velocity</a>
         </div>
-      </a>
-    <% end %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Contract End</div>
+        <div class="c-list__item__value"><%= @project.stats[:contract_end_date] %></div>
+        <div class="c-list__item__action">
+          <a href="<%= project_path(@project) %>" class="o-button">Edit Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="c-white-box">
+  <div class="row">
+    <div class="col-xs-6 o-separator-right">
+      <div class="c-white-box__title">
+        Mision
+      </div>
+
+      <div class="c-white-box__desc">
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+        <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="c-white-box__title">
+        Vision
+      </div>
+
+      <div class="c-white-box__action">
+        <a href="#" class="o-button">
+          Edit
+        </a>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,14 +1,16 @@
-<% add_link ||= nil %>
+<section class="content-header c-page-header">
 
-<section class="content-header">
-  <h1>
-    <%= title %>
-    <% if add_link.present? %>
-      <%= link_to "Add", add_link, class: "label label-info" %>
-    <% end %>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><%= title %></li>
-  </ol>
+  <div class="c-page-header__title"><%= title %></div>
+  <div class="c-page-header__description"><%= description %></div>
+
+  <% if menu.present? %>
+    <div class="c-page-header__menu">
+      <% menu.each do |m| %>
+        <a href="<%= m[:url] %>" class="c-page-menu__item <%= m[:active] ? 'is-active' : '' %>">
+          <i class="fa fa-<%= m[:icon] %>"></i>
+          <%= m[:key] %>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
 </section>

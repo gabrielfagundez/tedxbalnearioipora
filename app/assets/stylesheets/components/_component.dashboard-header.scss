@@ -1,0 +1,20 @@
+.c-dashboard-header {
+  text-align: center;
+  margin: 20px 0;
+}
+  .c-dashboard-header__title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #4A4A4A;
+  }
+
+  .c-dashboard-header__separator {
+    margin: 20px auto;
+    height: 1px;
+    background: #979797;
+    max-width: 60px;
+  }
+
+  .c-dashboard-header__subtitle {
+    font-size: 20px;
+  }

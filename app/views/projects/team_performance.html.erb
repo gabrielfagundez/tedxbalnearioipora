@@ -4,7 +4,7 @@
       title: @project.name,
       description: @project.client.name,
       menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: false }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: true }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }],
-      right_action: { link: '#', angular_method: 'triggerModal()' }
+      right_action: { text: 'Velocity Entries', link: '#', angular_method: 'triggerModal()' }
     }
   %>
 

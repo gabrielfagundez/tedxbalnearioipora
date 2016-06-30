@@ -1,4 +1,15 @@
-<%= render partial: 'shared/page_title', locals: { title: @project.name, description: @project.client.name, menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: true }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: false }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }] } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: @project.name,
+    description: @project.client.name,
+    menu: [
+      { icon: 'home', key: 'Summary', url: project_path(@project), active: true },
+      { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: false },
+      { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }
+    ],
+    right_action: { text: (@favorite.present? ? 'Remove Favorite' : 'Mark as Favorite'), link: favorite_project_path(@project), angular_method: '' }
+  }
+%>
 
 <section id= "content" class="content" ng-controller="ProjectShowController">
 

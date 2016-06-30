@@ -8,7 +8,7 @@
   <% if right_action.present? %>
     <div class="c-page-header__action">
       <a href="<%= right_action[:link] %>" class="o-button" ng-click="<%= right_action[:angular_method] %>">
-        Velocity Entries
+        <%= right_action[:text] %>
       </a>
     </div>
   <% end %>

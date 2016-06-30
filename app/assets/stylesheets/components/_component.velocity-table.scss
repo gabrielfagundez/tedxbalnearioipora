@@ -1,0 +1,35 @@
+.c-velocity-table {
+  width: 100%;
+}
+
+  .c-velocity-table__row {
+    border: 1px solid #ccc;
+    border-bottom: none;
+
+    &:last-child {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  .c-velocity-table__date {
+    display: inline-block;
+    width: 150px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .c-velocity-table__description {
+    display: inline-block;
+    width: calc(100% - 250px);
+    border-right: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .c-velocity-table__points {
+    display: inline-block;
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }

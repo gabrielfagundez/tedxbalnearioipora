@@ -1,66 +1,41 @@
-<div class="box box-widget widget-user-2">
-  <div class="widget-user-header bg-green">
-    <% if @widgets[:velocity_report].blank? %>
-      <span class="pull-right c-right-option">
-        <i class="fa fa-th" style="margin-right: 5px; font-size: 12px"></i>
-          <%= link_to "Add to dashboard", toggl_user_widget_project_path(@project, { widget_type: "velocity_report" }), style: 'color: #ffffff;' %>
-      </span>
-    <% end %>
-
-    <h5 class="widget-user-username" style="margin-left: 0; margin-bottom: 10px; font-size: 20px;">Velocity report over the last 10 periods</h5>
-    <h5 class="widget-user-desc" style="margin-left: 0">This report displays the velocity reached by the project in the last 10 periods. Values are expresed in points, and each period has an unique identifier manually entered in the app. This identifier can be the name of the Sprint, or a particular week.</h5>
-  </div>
-  <div class="box-footer no-padding">
-    <div class="box-body">
-      <canvas class="project_velocity" style="margin-top: 40px;" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+<div class="c-white-box">
+  <div class="row">
+    <div class="col-xs-4 o-separator-right">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Min Velocity</div>
+        <div class="c-list__item__value">18 points</div>
+      </div>
     </div>
-
-    <div class="box-footer no-border">
-      <div class="row">
-        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-          <span class="js-min"></span>
-          <div class="knob-label">Min velocity</div>
-        </div>
-        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-          <span class="js-avg" style="font-size: 20px"></span>
-          <div class="knob-label">Average velocity</div>
-        </div>
-        <div class="col-xs-4 text-center">
-          <span class="js-max"></span>
-          <div class="knob-label">Max velocity</div>
-        </div>
+    <div class="col-xs-4 o-separator-right">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Average Velocity</div>
+        <div class="c-list__item__value">20 points</div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="c-list__item">
+        <div class="c-list__item__key">Max Velocity</div>
+        <div class="c-list__item__value">22 points</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="box box-info">
-  <div class="box-header with-border">
-    <h3 class="box-title">Add Velocity Entry</h3>
+<div class="c-white-box">
+  <div class="c-white-box__upper-desc">
+    Team Velocity
   </div>
 
-  <%= form_tag(project_path(@project), method: "patch") do %>
-    <div class="box-body">
-      <div class="form-group">
-        <label>Period</label>
-        <%= text_field_tag 'points_completed_entries[period]', nil, class: "form-control", placeholder: "03-21 - 03-28" %>
-        <p class="help-block">
-          This text will identify the velocity entry timespan.
-        </p>
-      </div>
+  <div class="c-white-box__title">
+    Instant Velocity Over Time
+  </div>
 
-      <div class="form-group">
-        <label>Points Completed</label>
-        <%= text_field_tag 'points_completed_entries[points_completed]', nil, type: 'integer', class: "form-control", placeholder: 12 %>
-        <p class="help-block">
-          This value will be added as the last velocity entry of the project. If you have more than one entry,
-          you should enter each value in order.
-        </p>
-      </div>
-    </div>
+  <div class="c-white-box__desc">
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+    <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+    <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+  </div>
 
-    <div class="box-footer">
-      <%= submit_tag "Add", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  <canvas class="project_velocity" style="margin-top: 40px;" data-id=<%= params[:id] %> height="200" width="600"></canvas>
+
 </div>

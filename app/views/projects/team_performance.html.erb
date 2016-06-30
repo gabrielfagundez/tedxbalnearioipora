@@ -1,21 +1,19 @@
-<%= render partial: 'shared/page_title', locals: { title: @project.name, description: @project.client.name, menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: false }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: true }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }] } %>
+<div ng-controller="TeamPerformanceController">
+  <%= render partial: 'shared/page_title',
+    locals: {
+      title: @project.name,
+      description: @project.client.name,
+      menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: false }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: true }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }],
+      right_action: { link: '#', angular_method: 'triggerModal()' }
+    }
+  %>
 
-<section id= "content" class="content" %>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="c-header-exp text-center">
-        <div class="c-header-exp__line"></div>
-        <div class="c-header-exp__title">
-          Team Performance
-        </div>
-      </div>
+  <section id= "content" class="content" %>
 
       <%= render partial: "velocity_report" %>
-      <%= render partial: "story_points_definition", locals: { story_points: @project.story_points } %>
-    </div>
-  </div>
+      <%#= render partial: "story_points_definition", locals: { story_points: @project.story_points } %>
 
-</section>
+  </section>
 
-<%= render partial: "story_point_modal" %>
+  <%= render partial: "velocity_periods_modal" %>
+</div>

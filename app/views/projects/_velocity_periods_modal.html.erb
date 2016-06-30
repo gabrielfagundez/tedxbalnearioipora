@@ -1,0 +1,73 @@
+<div id="velocity-periods-modal" class="modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="c-white-box">
+          <div class="c-white-box__upper-desc">
+            Expected vs Real Hour Usage
+          </div>
+
+          <div class="c-white-box__title">
+            See Expected vs Real Hours in this Project
+          </div>
+
+          <div class="c-white-box__desc">
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+            <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
+            <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+          </div>
+
+          <div class="o-notice-green">You are measuring velocity in a weekly basis. Change this setting in the project configuraiton page</div>
+
+          <div class="c-white-box__content">
+            <div class="c-velocity-table">
+              <% @project.points_completed_entries.each do |pce| %>
+                <div class="c-velocity-table__row">
+                  <div class="c-velocity-table__date">
+                    <%= pce.created_at.strftime('%m-%d') %> - <%= pce.created_at.strftime('%m-%d') %>
+                  </div><div class="c-velocity-table__description">
+                    <%= pce.period %>
+                  </div><div class="c-velocity-table__points">
+                    <%= pce.points_completed %> points
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="u-top-padding"></div>
+
+            <div class="c-white-box__title">
+              Add new velocity entry
+            </div>
+
+            <div class="o-form">
+              <div class="o-form__label">Start Date</div>
+              <input type="date" class="o-form__input"></input>
+              <div class="o-form__description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+              </div>
+
+              <div class="o-form__label">Description</div>
+              <input class="o-form__input" placeholder="Sprint #23"></input>
+              <div class="o-form__description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+              </div>
+            </div>
+
+            <div class="o-form__label">Points</div>
+            <input type="number" class="o-form__input" placeholder="7"></input>
+            <div class="o-form__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+            </div>
+
+            <div class="c-white-box__action">
+              <a href="#" class="o-button">
+                Add Velocity Entry
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

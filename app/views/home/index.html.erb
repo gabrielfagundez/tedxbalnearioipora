@@ -1,4 +1,4 @@
-<%= render partial: 'shared/page_title', locals: { title: 'Dashboard', description: 'X active projects', menu: [] } %>
+<%= render partial: 'shared/page_title', locals: { title: 'Home Page', description: 'X active projects', menu: [] } %>
 
 <section id= "content" class="content" ng-controller="WidgetsController">
   <div class="c-dashboard-header">
@@ -16,13 +16,13 @@
       <div class="col-xs-6 o-separator-right">
         <div class="c-list__item">
           <div class="c-list__item__key">Hours Last Week</div>
-          <div class="c-list__item__value">1892h</div>
+          <div class="c-list__item__value"><%= @last_week_hours %>hs</div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="c-list__item">
-          <div class="c-list__item__key">Active People</div>
-          <div class="c-list__item__value">28 people</div>
+          <div class="c-list__item__key">People in the Account</div>
+          <div class="c-list__item__value"><%= @people_in_this_acct %> people</div>
         </div>
       </div>
     </div>
@@ -46,11 +46,7 @@
           <%= p.name %>
         </div>
 
-        <div class="c-white-box__desc">
-          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
-          <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
-          <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-        </div>
+        <div class="c-white-box__desc"><%= p.summary_text %></div>
 
         <div class="c-white-box__action">
           <a href="<%= project_path(p.id) %>" class="o-button">Explore Project</a>

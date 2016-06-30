@@ -1,11 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-    projects = Project.where(client_id: current_user.clients.collect(&:id))
-    @upcoming_project_events = ProjectEvent.order('expected_date').where(project_id: projects.collect(&:id)).where("expected_date > ?", Time.now.utc).limit(3)
-    @upcoming_user_events = UserEvent.where(user_id: current_account.users.collect(&:id)).order('start_date').all
-
-    @widgets = current_user.widgets
+    @last_week_hours = 0
+    @people_in_this_acct = current_account.users.length
   end
 
 end

@@ -34,6 +34,10 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def summary_text
+    self.summary || "<i>The project hasn't a summary yet.</i>".html_safe
+  end
+
   def used_hours
     self.weekly_entries.map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
   end

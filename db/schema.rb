@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514030556) do
+ActiveRecord::Schema.define(version: 20160630234617) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160514030556) do
     t.string   "code_review_model"
     t.boolean  "billable"
     t.string   "color"
+    t.text     "summary"
   end
 
   create_table "projects_team_members", force: :cascade do |t|

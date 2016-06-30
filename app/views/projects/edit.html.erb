@@ -1,4 +1,15 @@
-<%= render partial: 'shared/page_title', locals: { title: @project.name } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: @project.name,
+    description: @project.client.name,
+    menu: [
+      { icon: 'home', key: 'Summary', url: project_path(@project), active: false },
+      { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: false },
+      { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }
+    ],
+    right_action: { text: (@favorite.present? ? 'Remove Favorite' : 'Mark as Favorite'), link: favorite_project_path(@project), angular_method: '' }
+  }
+%>
 
 <section id= "content" class="content" %>
 
@@ -81,36 +92,6 @@
     </div>
 
     <div class="col-md-6">
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">Mision & Vision</h3>
-        </div>
-
-        <%= form_tag(project_path(@project), method: "patch") do %>
-          <div class="box-body">
-            <div class="form-group">
-              <label>Mision</label>
-              <%= text_area_tag 'project[mision]', @project.mision, class: "form-control", placeholder: "Mision" %>
-              <p class="help-block">
-
-              </p>
-            </div>
-
-            <div class="form-group">
-              <label>Vision</label>
-              <%= text_area_tag 'project[vision]', @project.vision, class: "form-control", placeholder: "Vision" %>
-              <p class="help-block">
-
-              </p>
-            </div>
-          </div>
-
-          <div class="box-footer">
-            <%= submit_tag "Save", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
-
       <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">Project Process Details</h3>

@@ -1,7 +1,11 @@
-app.controller('TeamPerformanceController', ['$scope', function($scope) {
+app.controller('ProjectShowController', ['$scope', function($scope) {
 
-  $scope.triggerModal = function() {
-    $('#velocity-periods-modal').modal('toggle');
+  $scope.triggerMisionModal = function() {
+    $('#project-mision-modal').modal('toggle');
+  }
+
+  $scope.triggerVisionModal = function() {
+    $('#project-vision-modal').modal('toggle');
   }
 
 }]);

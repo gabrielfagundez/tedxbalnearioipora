@@ -1,9 +1,12 @@
 <%= render partial: 'shared/page_title', locals: { title: @project.name, description: @project.client.name, menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: true }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: false }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: false }] } %>
 
-<section id= "content" class="content" %>
+<section id= "content" class="content" ng-controller="ProjectShowController">
 
   <%= render partial: 'projects/summary' %>
   <%= render partial: 'projects/details' %>
   <%= render partial: 'projects/total_hours' %>
 
 </section>
+
+<%= render partial: "project_mision_modal" %>
+<%= render partial: "project_vision_modal" %>

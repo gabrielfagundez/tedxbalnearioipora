@@ -7,11 +7,7 @@
     General Attributes of the Project
   </div>
 
-  <div class="c-white-box__desc">
-    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
-    <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
-    <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-  </div>
+  <div class="c-white-box__desc"><%= @project.summary_text %></div>
 
   <div class="c-white-box__action">
     <a href="<%= edit_project_path(@project.id) %>" class="o-button">Edit</a>

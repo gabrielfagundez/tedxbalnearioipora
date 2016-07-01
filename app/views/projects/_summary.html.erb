@@ -36,12 +36,7 @@
       <div class="c-white-box__title">Mision</div>
 
       <div class="c-white-box__desc">
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
-        <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
-        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-        <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        <%= @project.mision || "<i>This project has no mision</i>".html_safe %>
       </div>
 
       <div class="c-white-box__action">
@@ -49,8 +44,10 @@
       </div>
     </div>
     <div class="col-xs-6">
-      <div class="c-white-box__title">
-        Vision
+      <div class="c-white-box__title">Vision</div>
+
+      <div class="c-white-box__desc">
+        <%= @project.vision || "<i>This project has no vision</i>".html_safe %>
       </div>
 
       <div class="c-white-box__action">

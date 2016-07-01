@@ -65,7 +65,16 @@
                 Points Completed Over Time
               </div>
 
-              <canvas class="project_velocity" data-id=<%= p.id %> height="200" width="600"></canvas>
+              <% if p.points_completed_entries.present? %>
+                <canvas class="project_velocity" data-id=<%= p.id %> height="200" width="600"></canvas>
+              <% else %>
+                <div class="c-empty-state">
+                  <div class="c-empty-state__icon">
+                    <i class="fa fa-line-chart"></i>
+                  </div>
+                  <div class="c-empty-state__text">Oops, looks like we don't have velocity reports for this project yet</div>
+                </div>
+              <% end %>
 
               <div class="c-white-box__action">
                 <a href="<%= team_performance_project_path(p.id) %>" class="o-button">

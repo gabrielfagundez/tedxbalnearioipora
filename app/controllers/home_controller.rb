@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    @last_week_hours = 0
-    @people_in_this_acct = current_account.users.length
+    @account_info = {
+      last_week_hours: current_account.last_week_hours,
+      users_count: current_account.users_count
+    }
   end
 
 end

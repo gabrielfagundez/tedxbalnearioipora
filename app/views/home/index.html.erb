@@ -13,14 +13,14 @@
     <div class="row">
       <div class="col-xs-6 o-separator-right">
         <div class="c-list__item">
-          <div class="c-list__item__key">Hours Last Week</div>
-          <div class="c-list__item__value"><%= @last_week_hours %>hs</div>
+          <div class="c-list__item__key">Total Hours Tracked Last Week</div>
+          <div class="c-list__item__value"><%= @account_info[:last_week_hours] %>hs</div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="c-list__item">
-          <div class="c-list__item__key">People in the Account</div>
-          <div class="c-list__item__value"><%= @people_in_this_acct %> people</div>
+          <div class="c-list__item__key">Total Users in this Account</div>
+          <div class="c-list__item__value"><%= @account_info[:users_count] %> users</div>
         </div>
       </div>
     </div>

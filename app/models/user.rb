@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def gravatar_image_url
+    Gravatar.new(self.email).image_url
+  end
+
   def admin?
     self.role == 'admin' || self.role == 'beta'
   end
@@ -25,52 +29,12 @@ class User < ActiveRecord::Base
     self.role == 'team_member'
   end
 
-  def gravatar_image_url
-    Gravatar.new(self.email).image_url
-  end
-
-  def summary
-    UserTimeUsageChart.new(self).chart_data
-  end
-
-  def average(value, total)
-    if total == 0.0
-      0
+  def visible_clients
+    if self.admin?
+      self.account.clients.includes(:projects)
     else
-      (value * 100 / total).round(1)
+      self.clients.includes(:projects)
     end
-  end
-
-  def total_hours_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.communication + we.development + we.bugs + we.code_review + we.qa + we.infraestructure + we.uxui }.sum().to_f
-  end
-
-  def total_communication_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.communication }.sum().to_f
-  end
-
-  def total_development_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.development }.sum().to_f
-  end
-
-  def total_bugs_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.bugs }.sum().to_f
-  end
-
-  def total_code_review_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.code_review }.sum().to_f
-  end
-
-  def total_qa_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.qa }.sum().to_f
-  end
-
-  def total_infraestructure_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.infraestructure }.sum().to_f
-  end
-
-  def total_uxui_for_week(week)
-    self.weekly_entries.where(week: week).map{ |we| we.uxui }.sum().to_f
   end
 
 end

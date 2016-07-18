@@ -8,7 +8,7 @@ class VelocityRegister < ActiveRecord::Base
   private
 
   def set_end_date
-    self.end_date = self.start_date + self.project.velocity_frequency_in_days.days
+    self.end_date = self.start_date + 7#self.project.velocity_frequency_in_days.days
   end
 
 end

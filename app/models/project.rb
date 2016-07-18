@@ -39,6 +39,19 @@ class Project < ActiveRecord::Base
     self.velocity_registers.last.end_date.strftime('%m-%d-%Y')
   end
 
+  def avg_velocity_over_10_periods
+    values = self.velocity_registers.limit(10).collect(&:points)
+    values.inject(:+) / values.length
+  end
+
+  def min_velocity_over_10_periods
+    self.velocity_registers.limit(10).collect(&:points).min
+  end
+
+  def max_velocity_over_10_periods
+    self.velocity_registers.limit(10).collect(&:points).max
+  end
+
   def pretty_data
     {
       id: self.id,

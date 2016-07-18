@@ -2,20 +2,20 @@
   <div class="row">
     <div class="col-xs-4 o-separator-right">
       <div class="c-list__item">
-        <div class="c-list__item__key">Min Velocity</div>
-        <div class="c-list__item__value">18 points</div>
+        <div class="c-list__item__key">Min Velocity Over Last 10 Periods</div>
+        <div class="c-list__item__value"><%= @project.min_velocity_over_10_periods %></div>
       </div>
     </div>
     <div class="col-xs-4 o-separator-right">
       <div class="c-list__item">
-        <div class="c-list__item__key">Average Velocity</div>
-        <div class="c-list__item__value">20 points</div>
+        <div class="c-list__item__key">Average Velocity Over Last 10 Periods</div>
+        <div class="c-list__item__value"><%= @project.avg_velocity_over_10_periods %></div>
       </div>
     </div>
     <div class="col-xs-4">
       <div class="c-list__item">
-        <div class="c-list__item__key">Max Velocity</div>
-        <div class="c-list__item__value">22 points</div>
+        <div class="c-list__item__key">Max Velocity Over Last 10 Periods</div>
+        <div class="c-list__item__value"><%= @project.max_velocity_over_10_periods %></div>
       </div>
     </div>
   </div>

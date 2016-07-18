@@ -36,20 +36,39 @@ class Project < ActiveRecord::Base
   end
 
   def next_velocity_register_date
-    self.velocity_registers.last.end_date.strftime('%m-%d-%Y')
+    last_velocity_register = self.velocity_registers.last
+    if last_velocity_register.present?
+      last_velocity_register.end_date.strftime('%m-%d-%Y')
+    else
+      ""
+    end
   end
 
   def avg_velocity_over_10_periods
     values = self.velocity_registers.limit(10).collect(&:points)
-    values.inject(:+) / values.length
+    if values.any?
+      values.inject(:+) / values.length
+    else
+      "-"
+    end
   end
 
   def min_velocity_over_10_periods
-    self.velocity_registers.limit(10).collect(&:points).min
+    values = self.velocity_registers.limit(10).collect(&:points)
+    if values.any?
+      values.min
+    else
+      "-"
+    end
   end
 
   def max_velocity_over_10_periods
-    self.velocity_registers.limit(10).collect(&:points).max
+    values = self.velocity_registers.limit(10).collect(&:points)
+    if values.any?
+      values.max
+    else
+      "-"
+    end
   end
 
   def pretty_data

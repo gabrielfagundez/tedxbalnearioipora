@@ -1,4 +1,10 @@
-<%= render partial: 'shared/page_title', locals: { title: @client.name, description: @client.projects.length.to_s + ' active projects', menu: [{ icon: 'home', key: 'Summary', url: client_path(@client), active: true }] } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: @client.name,
+    description: @client.projects.length.to_s + ' active projects',
+    menu: []
+  }
+%>
 
 <section class="content">
   <div class="c-white-box">
@@ -6,33 +12,15 @@
       <div class="col-xs-6 o-separator-right">
         <div class="c-list__item">
           <div class="c-list__item__key">Hours Last Week</div>
-          <div class="c-list__item__value">1892h</div>
+          <div class="c-list__item__value"><%= @client.hours_last_week %></div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="c-list__item">
           <div class="c-list__item__key">People Who Contributed Last Week</div>
-          <div class="c-list__item__value">28 people</div>
+          <div class="c-list__item__value"><%= @client.people_involved_last_week %></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="c-white-box">
-    <div class="c-white-box__title">
-      History
-    </div>
-
-    <div class="c-white-box__desc">
-      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
-      <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
-      <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-    </div>
-
-    <div class="c-white-box__action">
-      <a href="#" class="o-button">
-        Edit
-      </a>
     </div>
   </div>
 
@@ -42,13 +30,15 @@
     </div>
 
     <div class="c-white-box__title">
-      Client Summary
+      General Attributes of the Client
     </div>
 
     <div class="c-white-box__desc">
-      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
-      <div>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</div>
-      <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+      <%= @client.description || "<i>The client hasn't a description yet</i>".html_safe %>
+    </div>
+
+    <div class="c-white-box__action">
+      <%= link_to "Edit", edit_client_path(@client), class: "o-button" %>
     </div>
 
     <div class="c-list">

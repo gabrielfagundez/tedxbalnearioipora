@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :account,            only: [:show, :update]
   resource :profile,            only: [:show]
 
-  resources :clients
+  resources :clients,           only: [:show, :edit, :update]
   resources :upcoming_events,   only: [:index, :create]
   resources :reports,           only: [:index]
   resources :users do

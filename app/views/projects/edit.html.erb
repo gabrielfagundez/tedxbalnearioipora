@@ -28,6 +28,12 @@
             </div>
 
             <div class="form-group">
+              <label>Velocity Frequency</label>
+              <%= select_tag 'project[velocity_frequency_in_days]', options_for_select([["Weekly", "7"], ["Every 2 weeks", "14"]], @project.velocity_frequency_in_days), class: "form-control" %>
+              <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
               <label>Default Billable</label>
               <%= select_tag 'project[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@project.billable.nil? ? (@account.billable ? 'billable' : 'non_billable') : @project.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
               <p class="help-block">

@@ -25,6 +25,16 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def velocity_frequency
+    if self.velocity_frequency_in_days == 7
+      "weekly"
+    elsif self.velocity_frequency_in_days == 14
+      "every 2 weeks"
+    else
+      "every #{ self.velocity_frequency_in_days } days"
+    end
+  end
+
   def pretty_data
     {
       id: self.id,

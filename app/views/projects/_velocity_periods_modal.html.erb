@@ -17,7 +17,7 @@
             <div>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
           </div>
 
-          <div class="o-notice-green">You are measuring velocity in a weekly basis. Change this setting in the project configuraiton page</div>
+          <div class="o-notice-green">You are measuring velocity in a <%= @project.velocity_frequency %> basis. Change this setting <a href="<%= edit_project_path(@project) %>">here</a>.</div>
 
           <div class="c-white-box__content">
             <div class="c-velocity-table">

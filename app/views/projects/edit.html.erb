@@ -23,6 +23,11 @@
         <%= form_tag(project_path(@project), method: "patch") do %>
           <div class="box-body">
             <div class="form-group">
+              <label>Project Summary</label>
+              <%= text_area_tag 'project[summary]', @project.summary, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
               <label>Default Billable</label>
               <%= select_tag 'project[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@project.billable.nil? ? (@account.billable ? 'billable' : 'non_billable') : @project.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
               <p class="help-block">

@@ -165,7 +165,24 @@ class ProjectsController < ApplicationController
 
   def project_params
     if params[:project].present?
-      params.require(:project).permit(:name, :mision, :color, :vision, :team_leader_id, :code_review_model, :hired_hours, :expected_hours, :contract_end_date ,:daily_meeting, :retrospectives, :iteration_planning, :estimates_model, :issue_tracker)
+      params.require(:project)
+        .permit(
+          :name,
+          :mision,
+          :color,
+          :vision,
+          :team_leader_id,
+          :code_review_model,
+          :hired_hours,
+          :expected_hours,
+          :contract_end_date,
+          :daily_meeting,
+          :retrospectives,
+          :iteration_planning,
+          :estimates_model,
+          :issue_tracker,
+          :summary
+        )
     else
       {}
     end

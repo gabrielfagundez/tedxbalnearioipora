@@ -1,7 +1,13 @@
-<%= render partial: 'shared/page_title', locals: { title: 'List of Projects', description: '5 active projects', menu: [] } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: 'List of Projects',
+    description: '', 
+    menu: []
+  }
+%>
 
 <section class="content">
-  <div class="c-white-box">
+  <!-- <div class="c-white-box">
     <div class="row">
       <div class="col-xs-6 o-separator-right">
         <div class="c-list__item">
@@ -16,7 +22,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <% @clients.each_with_index do |client, index| %>
     <div class="c-white-box">

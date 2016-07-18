@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 
   has_many :weekly_entries
   has_many :time_entries
-  has_many :points_completed_entries
+  has_many :velocity_registers
   has_many :versions
   has_many :favorite_projects
   has_many :widgets

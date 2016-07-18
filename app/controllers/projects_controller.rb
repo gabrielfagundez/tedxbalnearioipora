@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :sanitize_params, only: :update
-  before_filter :process_points_completed_entries
+  before_filter :process_velocity_registers
   before_filter :setup_widgets, only: [:show, :team_performance, :time_distribution]
 
   def index
@@ -186,11 +186,11 @@ class ProjectsController < ApplicationController
     params[:project][:team_leader_id] = params[:project][:team_leader_id].to_i if params[:project][:team_leader_id].present?
   end
 
-  def process_points_completed_entries
-    if params[:points_completed_entries].present?
+  def process_velocity_registers
+    if params[:velocity_registers].present?
       PointsCompletedEntry.create(
-        period: params[:points_completed_entries][:period],
-        points_completed: params[:points_completed_entries][:points_completed].to_i,
+        period: params[:velocity_registers][:period],
+        points: params[:velocity_registers][:points].to_i,
         project_id: params[:id]
       )
     end

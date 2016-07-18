@@ -14,8 +14,8 @@ class ProjectVelocityChart
   end
 
   def chart_data
-    weeks = @project.points_completed_entries.order(created_at: 'desc').limit(10).collect(&:period).reverse
-    values = @project.points_completed_entries.order(created_at: 'desc').limit(10).collect(&:points_completed).reverse
+    weeks = @project.velocity_registers.order(created_at: 'desc').limit(10).collect(&:period).reverse
+    values = @project.velocity_registers.order(created_at: 'desc').limit(10).collect(&:points).reverse
     avg = values.inject(:+) / values.length
 
     {

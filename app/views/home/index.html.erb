@@ -63,7 +63,7 @@
                 Points Completed Over Time
               </div>
 
-              <% if p.points_completed_entries.present? %>
+              <% if p.velocity_registers.present? %>
                 <canvas class="project_velocity" data-id=<%= p.id %> height="200" width="600"></canvas>
               <% else %>
                 <div class="c-empty-state">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718193820) do
+ActiveRecord::Schema.define(version: 20160718195031) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -37,15 +37,6 @@ ActiveRecord::Schema.define(version: 20160718193820) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "points_completed_entries", force: :cascade do |t|
-    t.string   "period"
-    t.integer  "points_completed"
-    t.integer  "project_id"
-    t.integer  "version_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
   end
 
   create_table "project_events", force: :cascade do |t|
@@ -152,6 +143,16 @@ ActiveRecord::Schema.define(version: 20160718193820) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "velocity_registers", force: :cascade do |t|
+    t.string   "period"
+    t.integer  "points"
+    t.integer  "project_id"
+    t.integer  "version_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_date"
+  end
 
   create_table "versions", force: :cascade do |t|
     t.string   "name"

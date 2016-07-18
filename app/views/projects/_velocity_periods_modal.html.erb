@@ -21,14 +21,14 @@
 
           <div class="c-white-box__content">
             <div class="c-velocity-table">
-              <% @project.points_completed_entries.each do |pce| %>
+              <% @project.velocity_registers.each do |pce| %>
                 <div class="c-velocity-table__row">
                   <div class="c-velocity-table__date">
                     <%= pce.created_at.strftime('%m-%d') %> - <%= pce.created_at.strftime('%m-%d') %>
                   </div><div class="c-velocity-table__description">
                     <%= pce.period %>
                   </div><div class="c-velocity-table__points">
-                    <%= pce.points_completed %> points
+                    <%= pce.points %> points
                   </div>
                 </div>
               <% end %>

@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 
   has_many :weekly_entries
   has_many :time_entries
-  has_many :velocity_registers
+  has_many :velocity_registers, -> { order("start_date DESC") }
   has_many :versions
   has_many :favorite_projects
   has_many :widgets
@@ -33,6 +33,10 @@ class Project < ActiveRecord::Base
     else
       "every #{ self.velocity_frequency_in_days } days"
     end
+  end
+
+  def next_velocity_register_date
+    self.velocity_registers.last.end_date.strftime('%m-%d-%Y')
   end
 
   def pretty_data

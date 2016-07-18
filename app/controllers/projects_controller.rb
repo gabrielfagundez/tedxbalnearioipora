@@ -188,7 +188,8 @@ class ProjectsController < ApplicationController
 
   def process_velocity_registers
     if params[:velocity_registers].present?
-      PointsCompletedEntry.create(
+      VelocityRegister.create(
+        start_date: params[:velocity_registers][:start_date],
         period: params[:velocity_registers][:period],
         points: params[:velocity_registers][:points].to_i,
         project_id: params[:id]

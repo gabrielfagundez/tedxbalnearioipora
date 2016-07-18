@@ -24,7 +24,7 @@
               <% @project.velocity_registers.each do |pce| %>
                 <div class="c-velocity-table__row">
                   <div class="c-velocity-table__date">
-                    <%= pce.created_at.strftime('%m-%d') %> - <%= pce.created_at.strftime('%m-%d') %>
+                    <%= pce.start_date.strftime('%m-%d') %> - <%= pce.end_date.strftime('%m-%d') %>
                   </div><div class="c-velocity-table__description">
                     <%= pce.period %>
                   </div><div class="c-velocity-table__points">
@@ -40,30 +40,30 @@
               Add new velocity entry
             </div>
 
-            <div class="o-form">
-              <div class="o-form__label">Start Date</div>
-              <input type="date" class="o-form__input"></input>
-              <div class="o-form__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-              </div>
+            <%= form_tag(project_path(@project), method: "patch") do %>
+              <div class="o-form">
+                <div class="o-form__label">Start Date</div>
+                <%= text_field_tag 'velocity_registers[start_date]', nil, type: 'date', class: "o-form__input", placeholder: @project.next_velocity_register_date %>
+                <div class="o-form__description">
+                  <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. -->
+                </div>
 
-              <div class="o-form__label">Description</div>
-              <input class="o-form__input" placeholder="Sprint #23"></input>
-              <div class="o-form__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-              </div>
-            </div>
+                <div class="o-form__label">Description</div>
+                <%= text_field_tag 'velocity_registers[period]', nil, class: "o-form__input", placeholder: "Sprint #23" %>
+                <div class="o-form__description">
+                  <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. -->
+                </div>
 
-            <div class="o-form__label">Points</div>
-            <input type="number" class="o-form__input" placeholder="7"></input>
-            <div class="o-form__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-            </div>
+                <div class="o-form__label">Points</div>
+                <%= text_field_tag 'velocity_registers[points]', nil, type: 'integer', class: "o-form__input", placeholder: 7 %>
+                <div class="o-form__description">
+                  <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. -->
+                </div>
 
-            <div class="c-white-box__action">
-              <a href="#" class="o-button">
-                Add Velocity Entry
-              </a>
+                <div class="c-white-box__action">
+                  <%= submit_tag "Add Velocity Entry", class: "o-button" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

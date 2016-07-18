@@ -1,4 +1,10 @@
-<%= render partial: 'shared/page_title', locals: { title: @user.full_name } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: "#{@user.full_name}",
+    description: '',
+    menu: []
+  }
+%>
 
 <section id= "content" class="content" %>
 

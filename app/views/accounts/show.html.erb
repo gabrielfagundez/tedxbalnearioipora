@@ -1,4 +1,10 @@
-<%= render partial: 'shared/page_title', locals: { title: "Settings for #{@account.name} account" } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: "Settings for #{@account.name} account",
+    description: '',
+    menu: []
+  }
+%>
 
 <section id= "content" class="content" %>
   <div class="row">

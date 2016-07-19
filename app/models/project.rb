@@ -8,7 +8,6 @@ class Project < ActiveRecord::Base
   has_many :velocity_registers, -> { order("start_date DESC") }
   has_many :versions
   has_many :favorite_projects
-  has_many :widgets
   has_many :project_events
   has_many :story_points
   belongs_to :team_leader, class_name: 'User'

@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :clients
   belongs_to :account
   has_many :favorite_projects
-  has_many :widgets
   has_many :user_events
   has_many :time_entries
   has_many :weekly_entries

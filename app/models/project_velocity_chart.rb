@@ -19,11 +19,6 @@ class ProjectVelocityChart
     avg = values.inject(:+) / values.length
 
     {
-      metadata: {
-        max: "#{values.max} points",
-        avg: "#{avg} points",
-        min: "#{values.min} points"
-      },
       labels: weeks,
       datasets: [
           {

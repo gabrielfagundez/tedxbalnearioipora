@@ -3,7 +3,7 @@ $(function(){
     var ctx = item.getContext("2d");
     var project_id = $(item).data().id;
 
-    $.ajax("/projects/" + project_id + "/total_time").success(function(data) {
+    $.ajax("/api/projects/" + project_id + "/total_time").success(function(data) {
       var options = {
         legend: {
           display: false

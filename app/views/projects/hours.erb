@@ -1,4 +1,4 @@
-<%= render partial: 'shared/page_title', locals: { title: @project.name, description: @project.client.name, menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: false }, { icon: 'line-chart', key: 'Team Performance', url: team_performance_project_path(@project), active: false }, { icon: 'pie-chart', key: 'Time Distribution', url: time_distribution_project_path(@project), active: true }] } %>
+<%= render partial: 'shared/page_title', locals: { title: @project.name, description: @project.client.name, menu: [{ icon: 'home', key: 'Summary', url: project_path(@project), active: false }, { icon: 'line-chart', key: 'Team Performance', url: velocity_project_path(@project), active: false }, { icon: 'pie-chart', key: 'Time Distribution', url: hours_project_path(@project), active: true }] } %>
 
 <section id= "content" class="content" %>
 

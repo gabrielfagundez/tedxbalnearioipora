@@ -1,105 +1,45 @@
 class ProjectsController < ApplicationController
 
-  before_filter :sanitize_params, only: :update
-  before_filter :process_velocity_registers
-  before_filter :setup_widgets, only: [:show, :team_performance, :time_distribution]
+  before_filter :set_project,                 only: [:show, :velocity, :hours, :edit, :update]
+  before_filter :set_favorite_project,        only: [:show, :velocity, :hours]
+  before_filter :sanitize_params,             only: [:update]
+  before_filter :process_velocity_registers,  only: [:update]
 
   def index
     @clients = current_user.visible_clients
     @favorites = FavoriteProject.where(user_id: current_user.id).collect(&:project_id)
   end
 
-  def team_performance
-    @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
-
-    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
-  end
-
-  def time_distribution
-    @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
-
-    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
-  end
-
   def show
-    @project = Project.find_by_id(params[:id])
-    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
-
-    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
   end
 
-  def velocity_entries
-    @project = Project.find_by_id(params[:id])
+  def velocity
   end
 
-  def create
-    project = Project.create(project_params)
-    project.client_id = params[:client_id]
-    project.save
-
-    redirect_to projects_path
+  def hours
   end
 
   def edit
-    @project = Project.find_by_id(params[:id])
-    @account = current_account
-    redirect_to projects_path if @project.blank? || (!current_user.admin? && !(@project.client.users.collect(&:id).include?(current_user.id)))
-
     @users = @project.client.users.all
   end
 
   def update
-    project = Project.find(params[:id])
-    project.update_attributes(project_params)
-    project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project].present? && params[:project][:billable].present?
+    @project.update_attributes(project_params)
+    @project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project].present? && params[:project][:billable].present?
 
     redirect_to project_path(project)
   end
 
   def favorite
     favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
-    if favorite.present?
-      favorite.delete
-    else
-      FavoriteProject.create(project_id: params[:id], user_id: current_user.id)
-    end
+    favorite.delete if favorite.present?
+    FavoriteProject.create(project_id: params[:id], user_id: current_user.id) if favorite.blank?
 
     redirect_to project_path(params[:id])
   end
 
-  def toggl_user_widget
-    widget = Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: params[:widget_type]).first
-    if widget.present?
-      widget.delete
-    else
-      Widget.create(project_id: params[:id], user_id: current_user.id, widget_type: params[:widget_type])
-    end
-
-    redirect_to root_path
-  end
-
-  def time_usage
-    render json: Project.find(params[:id]).time_usage(current_account.time_categories.collect(&:name)).to_json
-  end
-
-  def radar
-    render json: Project.find(params[:id]).radar.to_json
-  end
-
-  def historical
-    render json: Project.find(params[:id]).historical.to_json
-  end
-
-  def total_time
-    render json: Project.find(params[:id]).total_time.to_json
-  end
-
-  def velocity
-    render json: Project.find(params[:id]).velocity.to_json
-  end
-
+  # =========== =========== =========== ===========
+  # TODO: Logic TBR when time tracking is ready
   def work_entries
     @project = Project.find(params[:id])
     @users = @project.client.users.all
@@ -124,8 +64,17 @@ class ProjectsController < ApplicationController
 
     redirect_to project_path(params[:id])
   end
+  # =========== =========== =========== ===========
 
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def set_favorite_project
+    @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
+  end
 
   def sanitize_entries
     entries = params[:entries]
@@ -146,33 +95,13 @@ class ProjectsController < ApplicationController
     sanitized_entries
   end
 
-  def setup_widgets
-    @widgets = {
-      velocity_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "velocity_report").first,
-      time_usage_report: Widget.where(project_id: params[:id], user_id: current_user.id, widget_type: "time_usage_report").first,
-    }
-  end
-
   def project_params
     if params[:project].present?
-      params.require(:project)
-        .permit(
-          :name,
-          :mision,
-          :color,
-          :vision,
-          :team_leader_id,
-          :code_review_model,
-          :hired_hours,
-          :expected_hours,
-          :contract_end_date,
-          :daily_meeting,
-          :retrospectives,
-          :iteration_planning,
-          :estimates_model,
-          :issue_tracker,
-          :summary
-        )
+      params.require(:project).permit(
+        :name, :mision, :color, :vision, :team_leader_id, :code_review_model, :hired_hours,
+        :expected_hours, :contract_end_date, :daily_meeting, :retrospectives, :iteration_planning,
+        :estimates_model, :issue_tracker, :summary
+      )
     else
       {}
     end

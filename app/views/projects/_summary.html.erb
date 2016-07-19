@@ -5,7 +5,7 @@
         <div class="c-list__item__key">Average Weekly Hours</div>
         <div class="c-list__item__value"><%= @project.stats[:avg_four_weeks] %> h/we</div>
         <div class="c-list__item__action">
-          <a href="<%= time_distribution_project_path(@project) %>" class="o-button">Explore Distribution</a>
+          <a href="<%= hours_project_path(@project) %>" class="o-button">Explore Distribution</a>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="c-list__item__key">Average Velocity</div>
         <div class="c-list__item__value">1892h</div>
         <div class="c-list__item__action">
-          <a href="<%= team_performance_project_path(@project) %>" class="o-button">Explore Velocity</a>
+          <a href="<%= velocity_project_path(@project) %>" class="o-button">Explore Velocity</a>
         </div>
       </div>
     </div>

@@ -52,12 +52,12 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :role)
-  end
-
   def set_user
     @user = current_account.users.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :role)
   end
 
   def check_auth

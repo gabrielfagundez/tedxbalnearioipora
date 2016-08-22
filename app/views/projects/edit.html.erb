@@ -35,7 +35,7 @@
 
             <div class="form-group">
               <label>Default Billable</label>
-              <%= select_tag 'project[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@project.billable.nil? ? (current_account.billable ? 'billable' : 'non_billable') : @project.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
+              <%= select_tag 'project[billable]', options_for_select([["Billable", "billable"], ["Non Billable", "non_billable"]], (@project.billable.nil? ? (@project.client.account.billable ? 'billable' : 'non_billable') : @project.billable ? 'billable' : 'non_billable')), class: "form-control"  %>
               <p class="help-block">
                 By default, define if time entries of this project should be billable or not.
               </p>
@@ -68,7 +68,7 @@
                 Select who is in charge of the project.
               </p>
             </div>
-            
+
             <div class="form-group">
               <label>Expected Weekly Hours</label>
               <%= text_field_tag 'project[expected_hours]', @project.expected_hours, type: 'number', class: "form-control", placeholder: "160" %>

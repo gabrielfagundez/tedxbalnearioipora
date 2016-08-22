@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-4 o-separator-right">
       <div class="c-list__item">
-        <div class="c-list__item__key">Average Velocity last 5 Periods</div>
+        <div class="c-list__item__key">Average Velocity last 10 Periods</div>
         <div class="c-list__item__value"><%= @project.stats[:avg_velocity] %></div>
         <div class="c-list__item__action">
           <a href="<%= velocity_project_path(@project) %>" class="o-button">Explore Velocity</a>

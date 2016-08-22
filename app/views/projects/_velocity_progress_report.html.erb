@@ -1,4 +1,4 @@
-<div class="c-white-box">
+<div class="js-parent c-white-box">
   <div class="c-white-box__upper-desc">
     Soften Velocity Chart
   </div>
@@ -9,6 +9,12 @@
 
   <div class="c-white-box__desc">
     <div>See the instant velocity of the project in each period.</div>
+  </div>
+
+  <div class="c-option_group">
+    <div class="js-1-months c-option_group__button">1 month</div>
+    <div class="js-3-months c-option_group__button is-active">3 months</div>
+    <div class="js-6-months c-option_group__button">6 months</div>
   </div>
 
   <canvas class="project_progress_velocity" style="margin-top: 40px;" data-id=<%= params[:id] %> height="200" width="600"></canvas>

@@ -49,7 +49,7 @@ class ProjectVelocityProgressChart
             label:            "Overall Progress",
             backgroundColor:  "rgba(0, 0, 0, 0)",
             borderColor:      soften_values[0] <= soften_values[-1] ? CHART_OPTIONS[:green] : CHART_OPTIONS[:red],
-            borderWidth:      4,
+            borderWidth:      2,
             pointRadius:      0,
             pointHoverRadius: 0,
             pointHitRadius:   CHART_OPTIONS[:point_hit_radius],

@@ -67,8 +67,8 @@ class Project < ActiveRecord::Base
     ProjectVelocityChart.new(self).chart_data
   end
 
-  def velocity_progress
-    ProjectVelocityProgressChart.new(self).chart_data
+  def velocity_progress(months)
+    ProjectVelocityProgressChart.new(self).chart_data(months)
   end
 
   def total_time

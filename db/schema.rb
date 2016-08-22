@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821195924) do
+ActiveRecord::Schema.define(version: 20160821210852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20160821195924) do
   create_table "time_categories", force: :cascade do |t|
     t.integer  "account_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "hex_color",  default: "#7f7fff"
   end
 
   create_table "time_entries", force: :cascade do |t|
@@ -115,22 +116,6 @@ ActiveRecord::Schema.define(version: 20160821195924) do
     t.datetime "updated_at", null: false
     t.datetime "start_date"
     t.datetime "end_date"
-  end
-
-  create_table "weekly_entries", force: :cascade do |t|
-    t.integer  "team_member_id"
-    t.integer  "project_id"
-    t.string   "week"
-    t.decimal  "communication"
-    t.decimal  "development"
-    t.decimal  "bugs"
-    t.decimal  "code_review"
-    t.decimal  "qa"
-    t.decimal  "infraestructure"
-    t.decimal  "uxui"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "user_id"
   end
 
 end

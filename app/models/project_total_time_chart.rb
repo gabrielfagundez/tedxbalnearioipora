@@ -6,49 +6,42 @@ class ProjectTotalTimeChart
     border_width:       2
   }
 
-  def initialize(project)
+  def initialize(project, weeks = 10)
     @project = project
+    @categories = @project.client.account.time_categories
+    @weeks = weeks.times.map do |weeks_ago| (Date.today.beginning_of_week(:monday) - (weeks_ago + 1).weeks) end.reverse
   end
 
   def chart_data
-    weeks = [
-      (Date.today.beginning_of_week(:monday) - 10.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 9.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 8.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 7.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 6.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 5.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 4.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 3.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 2.week).to_s,
-      (Date.today.beginning_of_week(:monday) - 1.week).to_s
-    ]
-
     {
-    labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6], weeks[7], weeks[8], weeks[9]],
-    datasets: [
-        {
-            label: "Hours",
-            backgroundColor:  CHART_OPTIONS[:background_color],
-            borderColor:      CHART_OPTIONS[:border_color],
-            borderWidth:      CHART_OPTIONS[:border_width],
-            highlightFill:    "rgba(151,187,205,0.75)",
-            highlightStroke:  "rgba(151,187,205,1)",
-            data: [
-              @project.total_hours_for_week(weeks[0]),
-              @project.total_hours_for_week(weeks[1]),
-              @project.total_hours_for_week(weeks[2]),
-              @project.total_hours_for_week(weeks[3]),
-              @project.total_hours_for_week(weeks[4]),
-              @project.total_hours_for_week(weeks[5]),
-              @project.total_hours_for_week(weeks[6]),
-              @project.total_hours_for_week(weeks[7]),
-              @project.total_hours_for_week(weeks[8]),
-              @project.total_hours_for_week(weeks[9])
-            ]
-        }
-      ]
+      labels: @weeks.map(&:to_s),
+      datasets: build_datasets
     }
+  end
+
+  private
+
+  def build_datasets
+    data = @weeks.map do |start_of_week|
+      time_entries = @project.time_entries.between_dates(start_of_week, start_of_week + 7.days)
+      ((time_entries.map(&:duration).inject(:+) || 0.0) / (60 * 60)).round(2)
+    end
+
+    build_hash_dataset(data)
+  end
+
+  def build_hash_dataset(data)
+    [
+      {
+          label:            "Hours",
+          backgroundColor:  CHART_OPTIONS[:background_color],
+          borderColor:      CHART_OPTIONS[:border_color],
+          borderWidth:      CHART_OPTIONS[:border_width],
+          highlightFill:    "rgba(151, 187, 205, 0.75)",
+          highlightStroke:  "rgba(151, 187, 205, 1)",
+          data:             data
+      }
+    ]
   end
 
 end

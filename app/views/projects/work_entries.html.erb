@@ -1,4 +1,11 @@
-<%= render partial: 'shared/page_title', locals: { title: "#{ @project.name } - Time Entries " } %>
+<%= render partial: 'shared/page_title',
+  locals: {
+    title: @project.name,
+    description: @project.client.name,
+    menu: []
+  }
+%>
+
 
 <section class="content">
   <div class="row">

@@ -68,15 +68,7 @@
                 Select who is in charge of the project.
               </p>
             </div>
-
-            <div class="form-group">
-              <label>Hired Hours</label>
-              <%= text_field_tag 'project[hired_hours]', @project.hired_hours, type: 'number', class: "form-control", placeholder: "2700" %>
-              <p class="help-block">
-                Leave this value blank if the project is contract based.
-              </p>
-            </div>
-
+            
             <div class="form-group">
               <label>Expected Weekly Hours</label>
               <%= text_field_tag 'project[expected_hours]', @project.expected_hours, type: 'number', class: "form-control", placeholder: "160" %>

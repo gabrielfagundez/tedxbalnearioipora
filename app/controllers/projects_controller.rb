@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     @project.update_attributes(project_params)
     @project.update_attributes(billable: params[:project][:billable] == 'billable') if params[:project].present? && params[:project][:billable].present?
 
-    redirect_to project_path(project)
+    redirect_to project_path(params[:id])
   end
 
   def favorite

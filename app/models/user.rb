@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :favorite_projects
   has_many :user_events
   has_many :time_entries
-  has_many :weekly_entries
 
   def full_name
     "#{first_name} #{last_name}"

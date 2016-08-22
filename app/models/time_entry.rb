@@ -8,6 +8,10 @@ class TimeEntry < ActiveRecord::Base
 
   before_save :set_duration
 
+  def self.between_dates(start_date, end_date)
+    where("started_at >= ? AND ended_at < ?", start_date, end_date)
+  end
+
   def self.closed
     where.not(ended_at: nil)
   end

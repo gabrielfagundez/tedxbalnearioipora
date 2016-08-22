@@ -8,7 +8,7 @@ class ProjectStats
     {
       avg_four_weeks: average_weeks(4),
       contract_end_date: @project.contract_end_date || "~",
-      expected_hours: @project.expected_hours || "~"
+      avg_velocity: "#{ProjectVelocity.new(@project).avg_velocity(10)} points"
     }
   end
 

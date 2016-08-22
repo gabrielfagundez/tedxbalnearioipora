@@ -3,7 +3,8 @@ class ProjectTotalTimeChart
   CHART_OPTIONS = {
     background_color:   "rgba(151, 187, 205, 0.5)",
     border_color:       "rgba(151, 187, 205, 0.8)",
-    border_width:       2
+    border_width:       2,
+    point_hit_radius:   20
   }
 
   def initialize(project, weeks = 10)
@@ -31,9 +32,9 @@ class ProjectTotalTimeChart
   end
 
   def build_hash_dataset(data)
-    [
+    hash_dataset = [
       {
-          label:            "Hours",
+          label:            "Hours Billed",
           backgroundColor:  CHART_OPTIONS[:background_color],
           borderColor:      CHART_OPTIONS[:border_color],
           borderWidth:      CHART_OPTIONS[:border_width],
@@ -42,6 +43,24 @@ class ProjectTotalTimeChart
           data:             data
       }
     ]
+
+    hash_dataset.push(expected_hours_hash) if @project.expected_hours.present?
+
+    hash_dataset
+  end
+
+  def expected_hours_hash
+    {
+        label:            "Expected Hours",
+        type:             "line",
+        backgroundColor:  "rgba(0, 0, 0, 0)",
+        borderColor:      "rgba(255, 0, 0, 0.8)",
+        borderWidth:      1,
+        pointRadius:      0,
+        pointHoverRadius: 0,
+        pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
+        data:             Array.new(@weeks.length, @project.expected_hours)
+    }
   end
 
 end

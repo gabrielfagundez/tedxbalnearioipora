@@ -24,4 +24,8 @@ class Api::ProjectsController < Api::ApiController
     render json: Project.find(params[:id]).velocity.to_json
   end
 
+  def velocity_progress
+    render json: Project.find(params[:id]).velocity_progress.to_json
+  end
+
 end

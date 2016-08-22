@@ -38,6 +38,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def weekly_velocity?
+    self.velocity_frequency_in_days == 7
+  end
+
+  def biweekly_velocity?
+    self.velocity_frequency_in_days == 14
+  end
+
   def pretty_data
     {
       id: self.id,
@@ -57,6 +65,10 @@ class Project < ActiveRecord::Base
 
   def velocity
     ProjectVelocityChart.new(self).chart_data
+  end
+
+  def velocity_progress
+    ProjectVelocityProgressChart.new(self).chart_data
   end
 
   def total_time

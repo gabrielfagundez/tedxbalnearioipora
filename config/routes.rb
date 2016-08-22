@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         get :radar
         get :historical
         get :velocity
+        get :velocity_progress
       end
     end
     resources :time_categories, except: [:new, :edit]

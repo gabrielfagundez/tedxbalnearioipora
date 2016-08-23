@@ -3,6 +3,7 @@ class ProjectVelocityChart
   CHART_OPTIONS = {
     background_color:   "rgba(151, 187, 205, 0.5)",
     border_color:       "rgba(151, 187, 205, 0.8)",
+    avg_border_color:   "rgba(66, 113, 118, 1)",
     border_width:       2,
     point_radius:       5,
     point_hover_radius: 5,
@@ -22,6 +23,16 @@ class ProjectVelocityChart
       labels: weeks,
       datasets: [
           {
+              label:            "Average",
+              backgroundColor:  "rgba(0, 0, 0, 0)",
+              borderColor:      CHART_OPTIONS[:avg_border_color],
+              borderWidth:      3,
+              pointRadius:      0,
+              pointHoverRadius: 0,
+              pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
+              data:             [avg, avg, avg, avg, avg, avg, avg, avg, avg, avg]
+          },
+          {
               label:            "Points Completed",
               backgroundColor:  CHART_OPTIONS[:background_color],
               borderColor:      CHART_OPTIONS[:border_color],
@@ -30,16 +41,6 @@ class ProjectVelocityChart
               pointHoverRadius: CHART_OPTIONS[:point_hover_radius],
               pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
               data:             values
-          },
-          {
-              label:            "Average",
-              backgroundColor:  "rgba(0, 0, 0, 0)",
-              borderColor:      "rgba(255, 0, 0, 0.8)",
-              borderWidth:      1,
-              pointRadius:      0,
-              pointHoverRadius: 0,
-              pointHitRadius:   CHART_OPTIONS[:point_hit_radius],
-              data:             [avg, avg, avg, avg, avg, avg, avg, avg, avg, avg]
           }
         ]
       }

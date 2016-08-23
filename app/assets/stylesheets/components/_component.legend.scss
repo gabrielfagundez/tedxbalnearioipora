@@ -1,0 +1,30 @@
+.c-legend {
+	width: 100%;
+	text-align: center;
+}
+
+	.c-legend__component {
+		display: inline-block;
+		padding: 0 10px;
+	}
+
+		.c-legend__component__img {
+			height: 20px;
+			display: inline-block;
+		}
+
+			.c-legend__component__img--cirle {
+				width: 20px;
+				border-radius: 100%;
+			}
+
+			.c-legend__component__img--line {
+				border: 2px solid red;
+				border-radius: 3px;
+			}
+
+		.c-legend__component__text {
+			font-size: 12px;
+			line-height: 20px;
+			display: block;
+		}

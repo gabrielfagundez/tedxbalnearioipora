@@ -42,24 +42,26 @@ class ProjectsController < ApplicationController
   # TODO: Logic TBR when time tracking is ready
   def work_entries
     @project = Project.find(params[:id])
+    @categories = @project.client.account.time_categories
     @users = @project.client.users.all
   end
 
   def enter_work_entries
-    sanitized_entries = sanitize_entries
+    params[:entries].each do |entry|
+      user_id = entry[0].split("--")[0]
+      time_entry_id = entry[0].split("--")[1]
+      time_entry_value = entry[1]
 
-    sanitize_entries.keys.each do |user_id|
-      WeeklyEntry.create(
-        user_id: user_id,
-        project_id: params[:id],
-        week: params[:week],
-        communication: sanitized_entries[user_id]["1"].present? ? sanitized_entries[user_id]["1"].to_f : 0,
-        development: sanitized_entries[user_id]["2"].present? ? sanitized_entries[user_id]["2"].to_f : 0,
-        bugs: sanitized_entries[user_id]["3"].present? ? sanitized_entries[user_id]["3"].to_f : 0,
-        code_review: sanitized_entries[user_id]["4"].present? ? sanitized_entries[user_id]["4"].to_f : 0,
-        qa: sanitized_entries[user_id]["5"].present? ? sanitized_entries[user_id]["5"].to_f : 0,
-        infraestructure: sanitized_entries[user_id]["6"].present? ? sanitized_entries[user_id]["6"].to_f : 0,
-        uxui: sanitized_entries[user_id]["7"].present? ? sanitized_entries[user_id]["7"].to_f : 0)
+      if time_entry_value.present?
+        TimeEntry.create(
+          user_id:            user_id,
+          project_id:         params[:id],
+          description:        "Weekly Entry",
+          time_category_id:   time_entry_id,
+          started_at:         params[:week].to_datetime,
+          ended_at:           params[:week].to_datetime + time_entry_value.to_i.hours
+        )
+      end
     end
 
     redirect_to project_path(params[:id])
@@ -74,25 +76,6 @@ class ProjectsController < ApplicationController
 
   def set_favorite_project
     @favorite = FavoriteProject.where(project_id: params[:id], user_id: current_user.id).first
-  end
-
-  def sanitize_entries
-    entries = params[:entries]
-    sanitized_entries = {}
-    entries.each do |entry|
-      user_id = entry[0].split("--")[0]
-      tag_id = entry[0].split("--")[1]
-      tag_value = entry[1]
-
-      if tag_value.present?
-        if sanitized_entries[user_id].blank?
-          sanitized_entries[user_id] = {}
-        end
-        sanitized_entries[user_id][tag_id] = tag_value if tag_value.present?
-      end
-    end
-
-    sanitized_entries
   end
 
   def project_params

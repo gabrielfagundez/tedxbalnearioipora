@@ -46,20 +46,12 @@
 
             <div class="box-body">
               <div class="row">
-                <% [
-                      { cat_id: 1, name: 'Communication', size: 1 },
-                      { cat_id: 2, name: 'Development', size: 1 },
-                      { cat_id: 3, name: 'Bug Fixing', size: 1 },
-                      { cat_id: 4, name: 'Code Review', size: 1 },
-                      { cat_id: 5, name: 'QA', size: 1 },
-                      { cat_id: 6, name: 'Infraestructure', size: 1 },
-                      { cat_id: 7, name: 'UXUI', size: 1 }
-                   ].each do |cat| %>
+                <% @categories.each_with_index do |cat, index| %>
 
-                   <div class="col-xs-<%= cat[:size] %>">
+                   <div class="col-xs-<%= [0,1,2,3,4].include?(index) ? 2 : 1 %>">
                      <div class="form-group">
-                       <label><%= cat[:size] == 1 ? "<small>#{cat[:name]}</small>".html_safe : cat[:name] %></label>
-                       <%= text_field_tag "entries[#{user.id}--#{cat[:cat_id]}]", "", class: "form-control", placeholder: cat[:name] %>
+                       <label><small><%= [5,6].include?(index) ? cat.name.slice(0..10) : cat.name.slice(0..25) %></small></label>
+                       <%= text_field_tag "entries[#{user.id}--#{cat.id}]", "", class: "form-control", placeholder: cat[:name] %>
                      </div>
                    </div>
 

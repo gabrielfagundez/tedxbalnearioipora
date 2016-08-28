@@ -9,6 +9,15 @@
 
   <div class="c-white-box__desc"><%= @project.summary_text %></div>
 
+  <div class="c-white-box__desc">
+    <div class="c-team_leader_box">
+      <%= image_tag @project.team_leader.gravatar_image_url, class: "c-team_leader_box__image", alt: "Team Leader" %>
+      <div class="c-team_leader_box__name">
+        <%= "Team Leader: " + @project.team_leader.full_name %>
+      </div>
+    </div>
+  </div>
+
   <div class="c-white-box__action">
     <a href="<%= edit_project_path(@project.id) %>" class="o-button">Edit Project</a>
   </div>

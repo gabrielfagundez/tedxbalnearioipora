@@ -3,7 +3,7 @@
     <div class="col-xs-4 o-separator-right">
       <div class="c-list__item">
         <div class="c-list__item__key">Average Weekly Hours last 4 Weeks</div>
-        <div class="c-list__item__value"><%= @project.stats[:avg_four_weeks] %> h/we</div>
+        <div class="c-list__item__value"><%= @project.stats[:avg_four_weeks] %> h /week</div>
         <div class="c-list__item__action">
           <a href="<%= hours_project_path(@project) %>" class="o-button">Explore Distribution</a>
         </div>

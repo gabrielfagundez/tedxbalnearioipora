@@ -10,14 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require font-awesome
  *= require bootstrap/bootstrap
- *= require adminlte/adminlte
- *= require adminlte/skins
- *= require angular-ui-select/dist/select.css
- *= require bootstrap-colorpicker/dist/css/bootstrap-colorpicker
- *= require select2/dist/css/select2
- *= require angular-tooltips/dist/angular-tooltips.min
+ *= require main
  */

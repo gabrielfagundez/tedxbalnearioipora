@@ -1,16 +1,16 @@
 development:
   adapter: postgresql
-  database: mojito_dev
+  database: tedxbalnearioipora_dev
   host: localhost
   min_messages: WARNING
 
 test:
   adapter: postgresql
-  database: mojito_test
+  database: tedxbalnearioipora_test
   host: localhost
   min_messages: WARNING
 
 production:
   adapter: postgresql
-  database: mojito_prod
+  database: tedxbalnearioipora_prod
   host: localhost

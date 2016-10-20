@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mojito Cup</title>
+    <title>TEDxBalnearioIporá | Tacuarembó, Uruguay</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.png' %>
@@ -9,12 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body class="hold-transition skin-green sidebar-mini" style="background-color: #222d32" ng-app='MojitoApp', ng-controller='MainController'>
-    <%= render 'shared/header' %>
-    <%= render 'shared/sidebar' %>
-    <div class="content-wrapper">
-      <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
+  <body class="landing">
+    <%= yield %>
   </body>
 </html>

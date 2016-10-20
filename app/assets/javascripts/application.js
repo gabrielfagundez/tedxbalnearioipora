@@ -13,51 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/bootstrap
-//= require adminlte/adminlte
-//= require Chart.js/dist/Chart.js
-//= require angular/angular
-//= require angular-route/angular-route
-//= require angular-resource/angular-resource
-//= require angular-sanitize/angular-sanitize
-//= require angular-messages/angular-messages
-//= require angular-ui-select/dist/select
-//= require bootstrap-colorpicker/dist/js/bootstrap-colorpicker
-//= require select2/dist/js/select2.full
-//= require angular-tooltips/dist/angular-tooltips.min
-
-//= require app
-//= require routes
-//= require_tree ./charts
-//= require_tree ./components
-//= require_tree ./helpers
-//= require_tree ./models
-
-$(function() {
-  $('.colorpicker-element').colorpicker();
-
-  $('.js-proj-select2').on('select2:open', function() {
-    $(this).data('open', true);
-  });
-
-  $('.js-proj-select2').on('select2:close', function() {
-    $(this).data('open', false);
-  });
-
-  $('.js-cat-select2').on('select2:open', function() {
-    $(this).data('open', true);
-  });
-
-  $('.js-cat-select2').on('select2:close', function() {
-    $(this).data('open', false);
-  });
-});
-
-$(document).on('keydown', function(e) {
-  var keyCode = e.keyCode || e.which;
-
-  if (keyCode == 9) {
-    if($('.js-description').is(':focus')) {
-      $('.js-proj-select2').select2('open');
-    }
-  }
-})
+//= require skel.min
+//= require util
+//= require main

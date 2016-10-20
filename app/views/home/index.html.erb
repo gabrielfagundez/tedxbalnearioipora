@@ -1,108 +1,24 @@
-<section id= "content" class="content" ng-controller="WidgetsController">
-  <div class="c-dashboard-header">
-    <div class="c-dashboard-header__title">
-      Hi Gabriel, Welcome to Mojito!
-    </div>
-    <div class="c-dashboard-header__separator"></div>
-    <div class="c-dashboard-header__subtitle">
-      Last Week Overview
-    </div>
+<!-- Page Wrapper -->
+  <div id="page-wrapper">
+
+    <%= render partial: "banner" %>
+
+    <!-- TED -->
+    <%= render partial: "ted" %>
+
+    <!-- TEDx -->
+    <%= render partial: "tedx" %>
+
+    <!-- Speakers -->
+    <%= render partial: "speakers" %>
+
+    <!-- Sponsors -->
+    <%= render partial: "sponsors" %>
+
+    <!-- CTA -->
+    <%= render partial: "cta" %>
+
+    <!-- Footer -->
+    <%= render partial: "footer" %>
+
   </div>
-
-  <div class="c-white-box">
-    <div class="row">
-      <div class="col-xs-6 o-separator-right">
-        <div class="c-list__item">
-          <div class="c-list__item__key">Total Hours Tracked Last Week</div>
-          <div class="c-list__item__value"><%= @account_info[:last_week_hours] %>hs</div>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="c-list__item">
-          <div class="c-list__item__key">Total Users in this Account</div>
-          <div class="c-list__item__value"><%= @account_info[:users_count] %> users</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="c-dashboard-header">
-    <div class="c-dashboard-header__separator"></div>
-    <div class="c-dashboard-header__subtitle">
-      Favorite Projects
-    </div>
-  </div>
-
-  <% if @favorite_projects.any? %>
-    <% @favorite_projects.each do |p| %>
-      <div class="c-white-box">
-        <div class="c-white-box__upper-desc">
-          Project Summary
-        </div>
-
-        <div class="c-white-box__title">
-          <%= p.name %>
-        </div>
-
-        <div class="c-white-box__desc"><%= p.summary_text %></div>
-
-        <div class="c-white-box__action">
-          <a href="<%= project_path(p.id) %>" class="o-button">Explore Project</a>
-        </div>
-
-        <div class="o-separator"></div>
-
-        <div class="row">
-          <div class="col-xs-6"%>
-            <div class="c-white-box u-no-left-padding u-no-right-padding u-no-bottom-padding">
-              <div class="c-white-box__upper-desc">
-                Velocity Report
-              </div>
-
-              <div class="c-white-box__title">
-                Points Completed Over Time
-              </div>
-
-              <% if p.velocity_registers.present? %>
-                <canvas class="project_velocity" data-id=<%= p.id %> height="200" width="600"></canvas>
-              <% else %>
-                <div class="c-empty-state">
-                  <div class="c-empty-state__icon">
-                    <i class="fa fa-line-chart"></i>
-                  </div>
-                  <div class="c-empty-state__text">Oops, looks like we don't have velocity reports for this project yet</div>
-                </div>
-              <% end %>
-
-              <div class="c-white-box__action">
-                <a href="<%= velocity_project_path(p.id) %>" class="o-button">
-                  Explore Performance
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6"%>
-            <div class="c-white-box u-no-left-padding u-no-right-padding u-no-bottom-padding">
-              <div class="c-white-box__upper-desc">
-                Hours Usage
-              </div>
-
-              <div class="c-white-box__title">
-                Time Usage Over Time
-              </div>
-
-              <canvas class="project_total_time" data-id=<%= p.id %> height="200" width="600"></canvas>
-
-              <div class="c-white-box__action">
-                <a href="<%= hours_project_path(p.id) %>" class="o-button">
-                  Explore Distribution
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-
-</section>

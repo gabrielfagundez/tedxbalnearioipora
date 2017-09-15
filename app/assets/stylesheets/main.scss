@@ -2386,6 +2386,12 @@
 
     li {
       width: 33% !important;
+      @media screen and (max-width: 1000px) {
+        width: 50% !important;
+      }
+      @media screen and (max-width: 700px) {
+        width: 100% !important;
+      }
     }
 	}
 
